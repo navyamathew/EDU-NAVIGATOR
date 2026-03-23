@@ -1,0 +1,350 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Scholar Portal | Profile &amp; Settings</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-tertiary-fixed": "#001f24",
+              "tertiary": "#004f5a",
+              "surface-container-lowest": "#ffffff",
+              "outline": "#737785",
+              "surface-container": "#edeeef",
+              "secondary": "#1b6d24",
+              "surface-tint": "#0056d2",
+              "surface": "#f8f9fa",
+              "on-tertiary": "#ffffff",
+              "on-error-container": "#93000a",
+              "error-container": "#ffdad6",
+              "inverse-primary": "#b2c5ff",
+              "surface-bright": "#f8f9fa",
+              "on-primary-container": "#ccd8ff",
+              "on-primary": "#ffffff",
+              "surface-container-high": "#e7e8e9",
+              "primary": "#0040a1",
+              "tertiary-fixed": "#9eefff",
+              "surface-container-highest": "#e1e3e4",
+              "on-primary-fixed-variant": "#0040a1",
+              "on-secondary-fixed": "#002204",
+              "error": "#ba1a1a",
+              "background": "#f8f9fa",
+              "surface-container-low": "#f3f4f5",
+              "on-error": "#ffffff",
+              "tertiary-container": "#006976",
+              "on-surface-variant": "#424654",
+              "on-secondary-container": "#217128",
+              "on-background": "#191c1d",
+              "inverse-surface": "#2e3132",
+              "primary-fixed-dim": "#b2c5ff",
+              "outline-variant": "#c3c6d6",
+              "secondary-fixed": "#a3f69c",
+              "on-primary-fixed": "#001847",
+              "primary-container": "#0056d2",
+              "inverse-on-surface": "#f0f1f2",
+              "secondary-container": "#a0f399",
+              "surface-variant": "#e1e3e4",
+              "on-tertiary-fixed-variant": "#004e59",
+              "on-secondary-fixed-variant": "#005312",
+              "tertiary-fixed-dim": "#55d7ed",
+              "on-tertiary-container": "#74eaff",
+              "on-surface": "#191c1d",
+              "on-secondary": "#ffffff",
+              "surface-dim": "#d9dadb",
+              "secondary-fixed-dim": "#88d982",
+              "primary-fixed": "#dae2ff"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Plus Jakarta Sans"],
+              "label": ["Plus Jakarta Sans"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-icon {
+            font-variation-settings: 'FILL' 1;
+        }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f3f4f5; /* surface-container-low */
+        }
+        h1, h2, h3 {
+            font-family: 'Manrope', sans-serif;
+        }
+    </style>
+</head>
+<body class="text-on-surface">
+<!-- SideNavBar (Execution from JSON) -->
+<aside class="w-72 h-screen fixed left-0 top-0 bg-slate-50 dark:bg-slate-900 border-r border-slate-100 dark:border-slate-800 z-50 flex flex-col p-6 space-y-2">
+<div class="mb-10 px-4">
+<h1 class="font-['Manrope'] font-bold text-xl text-blue-800 dark:text-blue-200" style="">EDU NAVIGATOR</h1>
+<p class="text-xs text-on-surface-variant uppercase tracking-widest mt-1" style="">Opportunity Awaits</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="text-slate-500 dark:text-slate-400 flex items-center gap-3 px-4 py-3 hover:bg-slate-100 dark:hover:bg-slate-800/80 transition-all font-['Manrope'] font-semibold text-base" href="#" style="">
+<span class="material-symbols-outlined" data-icon="dashboard" style="">dashboard</span>
+<span class="" style="">HOME</span>
+</a>
+<a class="text-slate-500 dark:text-slate-400 flex items-center gap-3 px-4 py-3 hover:bg-slate-100 dark:hover:bg-slate-800/80 transition-all font-['Manrope'] font-semibold text-base" href="#" style="">
+<span class="material-symbols-outlined" data-icon="search" style="">search</span>
+<span class="" style="">OPPURTUNITY LISTING</span>
+</a>
+<a class="text-slate-500 dark:text-slate-400 flex items-center gap-3 px-4 py-3 hover:bg-slate-100 dark:hover:bg-slate-800/80 transition-all font-['Manrope'] font-semibold text-base" href="#" style="">
+<span class="material-symbols-outlined" data-icon="record_voice_over" style="">record_voice_over</span>
+<span class="" style="">Mentors</span>
+</a>
+<a class="text-slate-500 dark:text-slate-400 flex items-center gap-3 px-4 py-3 hover:bg-slate-100 dark:hover:bg-slate-800/80 transition-all font-['Manrope'] font-semibold text-base" href="#" style="">
+<span class="material-symbols-outlined" data-icon="calendar_today" style="">calendar_today</span>
+<span class="" style="">Events</span>
+</a>
+<a class="text-slate-500 dark:text-slate-400 flex items-center gap-3 px-4 py-3 hover:bg-slate-100 dark:hover:bg-slate-800/80 transition-all font-['Manrope'] font-semibold text-base" href="#" style="">
+<span class="material-symbols-outlined" data-icon="notifications" style="">notifications</span>
+<span class="" style="">Notifications</span>
+</a>
+<!-- Active State Logic: Settings page, so Settings is active -->
+<a class="bg-white dark:bg-slate-800 text-blue-700 dark:text-blue-400 rounded-lg shadow-sm font-bold flex items-center gap-3 px-4 py-3 transition-all font-['Manrope'] font-semibold text-base" href="#" style="">
+<span class="material-symbols-outlined active-icon" data-icon="settings" style="font-variation-settings: &quot;FILL&quot; 1;">settings</span>
+<span class="" style="">Settings</span>
+</a>
+</nav>
+<div class="mt-auto pt-6 border-t border-slate-200/50">
+<button class="w-full bg-primary-container text-white py-3 px-4 rounded-xl font-bold flex items-center justify-center gap-2 hover:opacity-90 transition-opacity" style="">
+<span class="material-symbols-outlined text-sm" data-icon="add_circle" style="">add_circle</span>
+                Find Scholarships
+            </button>
+<div class="mt-6 flex items-center gap-3 px-2">
+<img class="w-10 h-10 rounded-full object-cover" data-alt="Student profile picture close up" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_s_7ThfrzKTijBISK3gfLRhRRDQ6YU6Q4zOm0tbG4UzqWydFc7XAixu_JFzhhOdAwZg3xLkPcMOS7GHgTwwj2lkogsqYf3Gg9SfG6T3WYtHzSYFmakW2Sfmva2KrC3Iqn73z_5LezmXrjVyFtqzgp1BCyjU7r7rHu-kw6E5OOKX0xjYkbX-5RE5s37SkVNDwROKa0GPg7JA8b5WrHdz3KpNvcb0Wc-UmNnq6fIE87QrtVofAFAq5mXI0-6EFnn3auDEYQhtQ_KTU" style="">
+<div class="overflow-hidden">
+<p class="text-sm font-bold truncate" style="">Alex Rivera</p>
+<p class="text-xs text-on-surface-variant truncate" style="">Computer Science</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Canvas -->
+<main class="ml-72 min-h-screen p-12 max-w-7xl">
+<!-- Header Section -->
+<header class="mb-12">
+<h2 class="text-primary text-[2.25rem] font-bold tracking-tight leading-tight" style="">Student Profile</h2>
+<p class="text-on-surface-variant font-body mt-2" style="">Manage your academic identity and discovery preferences.</p>
+</header>
+<!-- Profile Content Grid (Asymmetric Bento Style) -->
+<div class="grid grid-cols-12 gap-8 items-start">
+<!-- Left Column: Personal Identity (Span 8) -->
+<div class="col-span-12 lg:col-span-8 space-y-8">
+<!-- Basic Info Card -->
+<section class="bg-surface-container-lowest rounded-xl p-8 shadow-sm transition-all hover:bg-surface-bright">
+<div class="flex flex-col md:flex-row gap-8 items-start">
+<div class="relative group">
+<img class="w-32 h-32 rounded-xl object-cover shadow-lg" data-alt="Student professional portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLFIVhwuvde04u-8FBn-nIytmWZ764ZGAaH-_2hsuUelPfZmPvq9lBSgFEJh_sz3mCUJGLm8OafEBCJfhi-AugXqT-duER5xqSeqqZ4bDJw0mtkketPWixbPwEqIFQVKowxNMscQJgmWmOPldQzjSXhiRq2v69-_BMuu_bnMoER6NORLpPUQnQctkmufEsNlYvwpBpLGHF5hvgUrxfX5WB6Q45XiGy473olhm4DUaGxWU6Jk3VCPmEPXHnfYUBSBURFKGnO5PYpxQ" style="">
+<button class="absolute -bottom-2 -right-2 bg-white p-2 rounded-full shadow-md text-primary hover:scale-110 transition-transform" style="">
+<span class="material-symbols-outlined text-sm" data-icon="edit" style="">edit</span>
+</button>
+</div>
+<div class="flex-1 grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-1">
+<label class="text-[0.875rem] font-medium text-on-surface-variant" style="">Full Name</label>
+<div class="bg-surface-container-high rounded-lg px-4 py-3 text-on-surface font-semibold" style="">Alex Rivera</div>
+</div>
+<div class="space-y-1">
+<label class="text-[0.875rem] font-medium text-on-surface-variant" style="">Email Address</label>
+<div class="bg-surface-container-high rounded-lg px-4 py-3 text-on-surface font-semibold" style="">a.rivera@scholarstream.edu</div>
+</div>
+<div class="space-y-1">
+<label class="text-[0.875rem] font-medium text-on-surface-variant" style="">Current Region</label>
+<div class="bg-surface-container-high rounded-lg px-4 py-3 text-on-surface font-semibold" style="">North America (EST)</div>
+</div>
+<div class="space-y-1">
+<label class="text-[0.875rem] font-medium text-on-surface-variant" style="">Phone</label>
+<div class="bg-surface-container-high rounded-lg px-4 py-3 text-on-surface font-semibold" style="">+1 (555) 012-3456</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Academic Background Card -->
+<section class="bg-surface-container-lowest rounded-xl p-8 shadow-sm transition-all hover:bg-surface-bright">
+<div class="flex items-center justify-between mb-8">
+<h3 class="text-xl font-bold tracking-tight" style="">Academic Background</h3>
+<span class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider" style="">Verified Enrollment</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="space-y-4">
+<div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="school" style="">school</span>
+</div>
+<div>
+<p class="text-xs text-on-surface-variant font-bold uppercase" style="">University</p>
+<p class="text-lg font-bold leading-tight" style="">Stanford University</p>
+<p class="text-sm text-on-surface-variant" style="">Class of 2025</p>
+</div>
+</div>
+<div class="space-y-4">
+<div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="auto_stories" style="">auto_stories</span>
+</div>
+<div>
+<p class="text-xs text-on-surface-variant font-bold uppercase" style="">Major</p>
+<p class="text-lg font-bold leading-tight" style="">Computer Science</p>
+<p class="text-sm text-on-surface-variant" style="">Focus: Machine Learning</p>
+</div>
+</div>
+<div class="space-y-4">
+<div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="grade" style="">grade</span>
+</div>
+<div>
+<p class="text-xs text-on-surface-variant font-bold uppercase" style="">Academic Standing</p>
+<p class="text-lg font-bold leading-tight" style="">3.92 GPA</p>
+<p class="text-sm text-on-surface-variant" style="">Dean's List (6 terms)</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Opportunity Preferences Card -->
+<section class="bg-surface-container-lowest rounded-xl p-8 shadow-sm transition-all hover:bg-surface-bright">
+<h3 class="text-xl font-bold tracking-tight mb-6" style="">Discovery Preferences</h3>
+<div class="space-y-6">
+<div class="flex flex-wrap gap-3">
+<span class="bg-primary/5 text-primary border border-primary/20 px-4 py-2 rounded-full text-sm font-semibold flex items-center gap-2" style="">
+<span class="material-symbols-outlined text-base" data-icon="check_circle" style="font-variation-settings: &quot;FILL&quot; 1;">check_circle</span>
+                                Merit-based Scholarships
+                            </span>
+<span class="bg-primary/5 text-primary border border-primary/20 px-4 py-2 rounded-full text-sm font-semibold flex items-center gap-2" style="">
+<span class="material-symbols-outlined text-base" data-icon="check_circle" style="font-variation-settings: &quot;FILL&quot; 1;">check_circle</span>
+                                Tech Internships
+                            </span>
+<span class="bg-primary/5 text-primary border border-primary/20 px-4 py-2 rounded-full text-sm font-semibold flex items-center gap-2" style="">
+<span class="material-symbols-outlined text-base" data-icon="check_circle" style="font-variation-settings: &quot;FILL&quot; 1;">check_circle</span>
+                                Research Grants
+                            </span>
+<span class="bg-primary/5 text-primary border border-primary/20 px-4 py-2 rounded-full text-sm font-semibold flex items-center gap-2" style="">
+<span class="material-symbols-outlined text-base" data-icon="check_circle" style="font-variation-settings: &quot;FILL&quot; 1;">check_circle</span>
+                                Study Abroad
+                            </span>
+<button class="bg-surface-container-high text-on-surface-variant px-4 py-2 rounded-full text-sm font-semibold hover:bg-surface-variant transition-colors" style="">
+                                + Add Category
+                            </button>
+</div>
+<div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+<div>
+<p class="font-bold" style="">Notification Frequency</p>
+<p class="text-sm text-on-surface-variant" style="">Receive curated summaries of new opportunities.</p>
+</div>
+<div class="flex bg-surface-container-high p-1 rounded-lg">
+<button class="px-4 py-1.5 rounded-md text-sm font-bold bg-white shadow-sm text-primary" style="">Weekly</button>
+<button class="px-4 py-1.5 rounded-md text-sm font-medium text-on-surface-variant hover:text-on-surface" style="">Daily</button>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Stats & Secondary Actions (Span 4) -->
+<div class="col-span-12 lg:col-span-4 space-y-8">
+<!-- Account Security Card -->
+<section class="bg-surface-container-lowest rounded-xl p-8 shadow-sm">
+<h3 class="text-lg font-bold tracking-tight mb-6" style="">Account Status</h3>
+<div class="space-y-6">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-tertiary/10 flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined" data-icon="shield" style="">shield</span>
+</div>
+<div class="flex-1">
+<p class="text-sm font-bold" style="">Identity Verification</p>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full mt-2">
+<div class="bg-tertiary w-4/5 h-full rounded-full"></div>
+</div>
+<p class="text-[0.7rem] text-on-surface-variant mt-1" style="">80% Complete</p>
+</div>
+</div>
+<div class="space-y-3">
+<button class="w-full flex items-center justify-between p-3 rounded-lg border border-outline-variant/20 hover:bg-surface-container-low transition-colors group" style="">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="key" style="">key</span>
+<span class="text-sm font-medium" style="">Change Password</span>
+</div>
+<span class="material-symbols-outlined text-sm opacity-0 group-hover:opacity-100 transition-opacity" data-icon="arrow_forward_ios" style="">arrow_forward_ios</span>
+</button>
+<button class="w-full flex items-center justify-between p-3 rounded-lg border border-outline-variant/20 hover:bg-surface-container-low transition-colors group" style="">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="phonelink_setup" style="">phonelink_setup</span>
+<span class="text-sm font-medium" style="">Two-Factor Auth</span>
+</div>
+<span class="material-symbols-outlined text-sm opacity-0 group-hover:opacity-100 transition-opacity" data-icon="arrow_forward_ios" style="">arrow_forward_ios</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Documents Hub -->
+<section class="bg-tertiary rounded-xl p-8 shadow-lg text-on-tertiary">
+<h3 class="text-lg font-bold tracking-tight mb-4" style="">Scholastic Vault</h3>
+<p class="text-sm opacity-80 mb-6 font-body" style="">Manage your transcripts, resumes, and portfolio assets securely.</p>
+<div class="space-y-3">
+<div class="flex items-center gap-3 p-3 bg-white/10 rounded-lg backdrop-blur-sm">
+<span class="material-symbols-outlined" data-icon="picture_as_pdf" style="">picture_as_pdf</span>
+<div class="flex-1">
+<p class="text-xs font-bold truncate" style="">Academic_Transcript_2024.pdf</p>
+<p class="text-[0.65rem] opacity-60" style="">Uploaded Mar 12, 2024</p>
+</div>
+</div>
+<div class="flex items-center gap-3 p-3 bg-white/10 rounded-lg backdrop-blur-sm">
+<span class="material-symbols-outlined" data-icon="description" style="">description</span>
+<div class="flex-1">
+<p class="text-xs font-bold truncate" style="">Resume_Computer_Science.pdf</p>
+<p class="text-[0.65rem] opacity-60" style="">Uploaded Jan 05, 2024</p>
+</div>
+</div>
+</div>
+<button class="mt-6 w-full py-2.5 bg-white text-tertiary rounded-lg font-bold text-sm hover:bg-tertiary-fixed transition-colors" style="">
+                        Upload Documents
+                    </button>
+</section>
+<!-- Help & Support -->
+<div class="p-6 bg-surface-container-high rounded-xl border-2 border-dashed border-outline-variant/50">
+<h4 class="font-bold text-sm mb-2" style="">Need assistance?</h4>
+<p class="text-xs text-on-surface-variant mb-4" style="">Our academic curators are here to help you optimize your profile for success.</p>
+<a class="text-primary text-xs font-bold flex items-center gap-1 hover:underline" href="#" style="">
+                        Visit Help Center 
+                        <span class="material-symbols-outlined text-xs" data-icon="open_in_new" style="">open_in_new</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Danger Zone -->
+<div class="mt-16 pt-8 border-t border-outline-variant/30 flex flex-col md:flex-row justify-between items-center gap-6">
+<div>
+<h4 class="font-bold text-on-surface" style="">Account Management</h4>
+<p class="text-xs text-on-surface-variant" style="">Archiving your account will hide your profile from all institutional discovery.</p>
+</div>
+<div class="flex gap-4">
+<button class="px-6 py-2 rounded-lg text-sm font-bold text-on-surface-variant hover:bg-surface-container-highest transition-colors" style="">Deactivate</button>
+<button class="px-6 py-2 rounded-lg text-sm font-bold text-error border border-error/20 hover:bg-error-container/20 transition-colors" style="">Delete Permanently</button>
+</div>
+</div>
+</main>
+<!-- Footer (Execution from JSON) -->
+<footer class="ml-72 w-[calc(100%-18rem)] py-12 bg-slate-100 dark:bg-slate-950 grid grid-cols-1 md:grid-cols-2 gap-8 px-12 border-t border-slate-200 dark:border-slate-800">
+<div>
+<h5 class="font-['Manrope'] font-black text-lg text-blue-900 dark:text-blue-100" style="">Scholar Stream</h5>
+<p class="font-['Plus_Jakarta_Sans'] text-xs uppercase tracking-widest text-slate-500 mt-2" style="">© 2024 Scholar Stream. The Academic Curator.</p>
+</div>
+<div class="flex flex-wrap md:justify-end gap-6 items-center">
+<a class="font-['Plus_Jakarta_Sans'] text-xs uppercase tracking-widest text-slate-500 hover:text-blue-600 transition-opacity" href="#" style="">Privacy Policy</a>
+<a class="font-['Plus_Jakarta_Sans'] text-xs uppercase tracking-widest text-slate-500 hover:text-blue-600 transition-opacity" href="#" style="">Terms of Service</a>
+<a class="font-['Plus_Jakarta_Sans'] text-xs uppercase tracking-widest text-slate-500 hover:text-blue-600 transition-opacity" href="#" style="">Help Center</a>
+<a class="font-['Plus_Jakarta_Sans'] text-xs uppercase tracking-widest text-slate-500 hover:text-blue-600 transition-opacity" href="#" style="">Contact</a>
+</div>
+</footer>
+</body></html>

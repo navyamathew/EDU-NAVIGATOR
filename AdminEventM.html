@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Academic Curator - Event Management Hub</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-tertiary-fixed-variant": "#004e59",
+              "surface-container": "#edeeef",
+              "secondary-fixed-dim": "#88d982",
+              "on-secondary": "#ffffff",
+              "on-background": "#191c1d",
+              "surface-container-high": "#e7e8e9",
+              "tertiary": "#004f5a",
+              "on-surface": "#191c1d",
+              "error-container": "#ffdad6",
+              "outline": "#737785",
+              "surface-dim": "#d9dadb",
+              "on-secondary-fixed-variant": "#005312",
+              "error": "#ba1a1a",
+              "on-tertiary-container": "#74eaff",
+              "on-tertiary": "#ffffff",
+              "on-surface-variant": "#424654",
+              "surface-container-highest": "#e1e3e4",
+              "outline-variant": "#c3c6d6",
+              "secondary-container": "#a0f399",
+              "secondary": "#1b6d24",
+              "primary-fixed": "#dae2ff",
+              "inverse-on-surface": "#f0f1f2",
+              "tertiary-container": "#006976",
+              "on-error-container": "#93000a",
+              "primary-fixed-dim": "#b2c5ff",
+              "on-primary-fixed-variant": "#0040a1",
+              "inverse-primary": "#b2c5ff",
+              "surface-variant": "#e1e3e4",
+              "secondary-fixed": "#a3f69c",
+              "inverse-surface": "#2e3132",
+              "surface": "#f8f9fa",
+              "on-primary-fixed": "#001847",
+              "surface-tint": "#0056d2",
+              "primary-container": "#0056d2",
+              "on-tertiary-fixed": "#001f24",
+              "on-secondary-container": "#217128",
+              "on-error": "#ffffff",
+              "tertiary-fixed": "#9eefff",
+              "surface-container-lowest": "#ffffff",
+              "on-primary": "#ffffff",
+              "background": "#f8f9fa",
+              "surface-container-low": "#f3f4f5",
+              "on-primary-container": "#ccd8ff",
+              "on-secondary-fixed": "#002204",
+              "tertiary-fixed-dim": "#55d7ed",
+              "surface-bright": "#f8f9fa",
+              "primary": "#0040a1"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Plus Jakarta Sans"],
+              "label": ["Plus Jakarta Sans"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .font-headline { font-family: 'Manrope', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-surface-container-low text-on-surface min-h-screen">
+<!-- SideNavBar Component -->
+<aside class="hidden md:flex flex-col h-screen w-64 fixed left-0 top-0 bg-slate-50 dark:bg-slate-950 border-r border-slate-100 dark:border-slate-800 z-50">
+<div class="px-6 py-8">
+<div class="flex items-center gap-3 mb-10">
+<div class="w-10 h-10 bg-primary-container rounded-lg flex items-center justify-center text-white shadow-sm">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">school</span>
+</div>
+<div>
+<h2 class="font-manrope font-black text-blue-900 dark:text-blue-100 leading-tight">Admin Dashboard</h2>
+<p class="text-xs text-slate-500 font-medium">Institutional Access</p>
+</div>
+</div>
+<nav class="space-y-1">
+<!-- Active Tab: Events -->
+<a class="flex items-center gap-3 bg-white dark:bg-slate-800 text-blue-700 dark:text-blue-300 rounded-lg px-4 py-3 shadow-sm font-medium translate-x-1 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+<span>Events</span>
+</a>
+<!-- Removed: Approvals, Users, Analytics tabs -->
+</nav>
+</div>
+<div class="mt-auto px-6 py-8 border-t border-slate-100 dark:border-slate-800 space-y-1">
+<a class="flex items-center gap-3 text-slate-600 dark:text-slate-400 px-4 py-3 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span>Support</span>
+</a>
+<a class="flex items-center gap-3 text-slate-600 dark:text-slate-400 px-4 py-3 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span>Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Wrapper -->
+<main class="md:ml-64 min-h-screen flex flex-col">
+<!-- TopAppBar Component -->
+<header class="flex justify-between items-center w-full px-8 py-4 z-40 sticky top-0 bg-white dark:bg-slate-900 shadow-sm dark:shadow-none">
+<div class="flex items-center gap-8 flex-1">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-slate-100 dark:bg-slate-800 border-none rounded-xl focus:ring-2 focus:ring-primary/20 transition-all text-sm" placeholder="Search events..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-slate-500 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-full transition-colors relative">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-white"></span>
+</button>
+<button class="p-2 text-slate-500 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-full transition-colors">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+<div class="h-8 w-[1px] bg-slate-200 mx-2"></div>
+<div class="flex items-center gap-3">
+<div class="text-right hidden sm:block">
+<p class="text-sm font-bold text-on-surface leading-none">Admin Curator</p>
+<p class="text-[10px] text-slate-500 font-medium">SUPER USER</p>
+</div>
+<img alt="Administrator Profile" class="w-10 h-10 rounded-full object-cover border-2 border-white shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEar2Vsl-WtKu8kJtMq6zAC4M0MF1_C-2s6nGdMB6XSqCxpb0q-cTJqYumDahyh0pbK5tyIdTyreB28B9xHQdR413XFkgCkTh2uUn_qzhvPVSUBlyopLKy04sRmAHPq1YNitHStUeNSzA2QMZQ7meU7sbTQsDNlxQf90tp65zssR8C3rCj0f1STW5LEjM_AdVg0WEWj6WKyJO3Q5EJItPIMokq74cwXU3Mls99eKxXxnWaYW_CUICPxgOEDUyLuw4Ax3VPNBJL9c0"/>
+</div>
+</div>
+</header>
+<!-- Dashboard Canvas -->
+<div class="p-8 space-y-10 max-w-7xl mx-auto w-full">
+<!-- Page Header -->
+<section class="space-y-2">
+<h1 class="text-4xl font-headline font-extrabold text-blue-900 tracking-tight">College Event Management</h1>
+<p class="text-on-surface-variant text-lg">Manage and upload campus events happening across Kerala.</p>
+</section>
+<!-- Main Dashboard Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- Add New Event Form: Column 5 -->
+<section class="lg:col-span-5 bg-surface-container-lowest rounded-xl p-8 shadow-sm">
+<div class="flex items-center gap-3 mb-8">
+<div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">add_circle</span>
+</div>
+<h3 class="text-xl font-headline font-bold text-on-surface">Publish New Event</h3>
+</div>
+<form class="space-y-5">
+<div class="space-y-1">
+<label class="block text-xs font-bold text-on-surface-variant uppercase tracking-wider ml-1">Event Name</label>
+<input class="w-full bg-surface-container-high border-none rounded-lg px-4 py-3 focus:bg-white focus:ring-2 focus:ring-primary/20 transition-all outline-none" placeholder="e.g. HackKerala 2024" type="text"/>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-1">
+<label class="block text-xs font-bold text-on-surface-variant uppercase tracking-wider ml-1">Host College</label>
+<select class="w-full bg-surface-container-high border-none rounded-lg px-4 py-3 focus:bg-white focus:ring-2 focus:ring-primary/20 transition-all outline-none text-sm appearance-none">
+<option>CET Trivandrum</option>
+<option>NIT Calicut</option>
+<option>MEC Thrikkakara</option>
+<option>TKM Kollam</option>
+</select>
+</div>
+<div class="space-y-1">
+<label class="block text-xs font-bold text-on-surface-variant uppercase tracking-wider ml-1">Category</label>
+<select class="w-full bg-surface-container-high border-none rounded-lg px-4 py-3 focus:bg-white focus:ring-2 focus:ring-primary/20 transition-all outline-none text-sm appearance-none">
+<option>Hackathon</option>
+<option>Workshop</option>
+<option>Symposium</option>
+<option>Cultural</option>
+</select>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-1">
+<label class="block text-xs font-bold text-on-surface-variant uppercase tracking-wider ml-1">Date</label>
+<input class="w-full bg-surface-container-high border-none rounded-lg px-4 py-3 focus:bg-white focus:ring-2 focus:ring-primary/20 transition-all outline-none text-sm" type="date"/>
+</div>
+<div class="space-y-1">
+<label class="block text-xs font-bold text-on-surface-variant uppercase tracking-wider ml-1">Time</label>
+<input class="w-full bg-surface-container-high border-none rounded-lg px-4 py-3 focus:bg-white focus:ring-2 focus:ring-primary/20 transition-all outline-none text-sm" type="time"/>
+</div>
+</div>
+<div class="space-y-1">
+<label class="block text-xs font-bold text-on-surface-variant uppercase tracking-wider ml-1">Venue (District/City)</label>
+<input class="w-full bg-surface-container-high border-none rounded-lg px-4 py-3 focus:bg-white focus:ring-2 focus:ring-primary/20 transition-all outline-none" placeholder="e.g. Kozhikode" type="text"/>
+</div>
+<div class="space-y-1">
+<label class="block text-xs font-bold text-on-surface-variant uppercase tracking-wider ml-1">Registration Link</label>
+<input class="w-full bg-surface-container-high border-none rounded-lg px-4 py-3 focus:bg-white focus:ring-2 focus:ring-primary/20 transition-all outline-none" placeholder="https://scholarstream.in/register/..." type="url"/>
+</div>
+<button class="w-full bg-gradient-to-br from-primary to-primary-container text-white font-bold py-4 rounded-xl shadow-lg hover:scale-[1.02] active:scale-98 transition-all flex items-center justify-center gap-2 mt-4" type="submit">
+<span>Publish Event</span>
+<span class="material-symbols-outlined text-lg">rocket_launch</span>
+</button>
+</form>
+</section>
+<!-- Recently Added Events: Column 7 -->
+<section class="lg:col-span-7 space-y-6">
+<div class="flex items-center justify-between">
+<h3 class="text-xl font-headline font-bold text-on-surface">Recently Added Events</h3>
+<div class="flex gap-2">
+<button class="px-3 py-1.5 bg-white rounded-lg text-sm font-medium text-slate-600 shadow-sm border border-slate-100">All</button>
+<button class="px-3 py-1.5 bg-white rounded-lg text-sm font-medium text-slate-600 shadow-sm border border-slate-100">Live</button>
+<button class="px-3 py-1.5 bg-white rounded-lg text-sm font-medium text-slate-600 shadow-sm border border-slate-100">Pending</button>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden">
+<table class="w-full text-left">
+<thead class="bg-slate-50/50">
+<tr>
+<th class="px-6 py-4 text-xs font-bold text-on-surface-variant uppercase tracking-widest">Event Name</th>
+<th class="px-6 py-4 text-xs font-bold text-on-surface-variant uppercase tracking-widest">Date</th>
+<th class="px-6 py-4 text-xs font-bold text-on-surface-variant uppercase tracking-widest">Status</th>
+<th class="px-6 py-4 text-xs font-bold text-on-surface-variant uppercase tracking-widest text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100">
+<!-- Row 1 -->
+<tr class="group hover:bg-slate-50 transition-colors">
+<td class="px-6 py-5">
+<p class="font-bold text-on-surface">Innovate-A-Thon 4.0</p>
+<p class="text-xs text-slate-500">CET Trivandrum</p>
+</td>
+<td class="px-6 py-5">
+<p class="text-sm font-medium text-on-surface">Oct 24, 2023</p>
+<p class="text-[10px] text-slate-400">10:00 AM</p>
+</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary-container text-on-secondary-container text-[11px] font-bold">
+<span class="w-1.5 h-1.5 bg-secondary rounded-full"></span>
+                                        LIVE
+                                    </span>
+</td>
+<td class="px-6 py-5 text-right space-x-2">
+<button class="p-2 text-primary hover:bg-primary-fixed-dim/20 rounded-lg transition-colors">
+<span class="material-symbols-outlined text-lg">edit</span>
+</button>
+<button class="p-2 text-error hover:bg-error-container/40 rounded-lg transition-colors">
+<span class="material-symbols-outlined text-lg">delete</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="group hover:bg-slate-50 transition-colors">
+<td class="px-6 py-5">
+<p class="font-bold text-on-surface">National Robotics Expo</p>
+<p class="text-xs text-slate-500">NIT Calicut</p>
+</td>
+<td class="px-6 py-5">
+<p class="text-sm font-medium text-on-surface">Nov 12, 2023</p>
+<p class="text-[10px] text-slate-400">09:30 AM</p>
+</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary-container text-on-secondary-container text-[11px] font-bold">
+<span class="w-1.5 h-1.5 bg-secondary rounded-full"></span>
+                                        LIVE
+                                    </span>
+</td>
+<td class="px-6 py-5 text-right space-x-2">
+<button class="p-2 text-primary hover:bg-primary-fixed-dim/20 rounded-lg transition-colors">
+<span class="material-symbols-outlined text-lg">edit</span>
+</button>
+<button class="p-2 text-error hover:bg-error-container/40 rounded-lg transition-colors">
+<span class="material-symbols-outlined text-lg">delete</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="group hover:bg-slate-50 transition-colors">
+<td class="px-6 py-5">
+<p class="font-bold text-on-surface">AI Workshop series</p>
+<p class="text-xs text-slate-500">MEC Thrikkakara</p>
+</td>
+<td class="px-6 py-5">
+<p class="text-sm font-medium text-on-surface">Nov 05, 2023</p>
+<p class="text-[10px] text-slate-400">02:00 PM</p>
+</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed-variant text-[11px] font-bold uppercase">
+<span class="w-1.5 h-1.5 bg-tertiary rounded-full"></span>
+                                        In Review
+                                    </span>
+</td>
+<td class="px-6 py-5 text-right space-x-2">
+<button class="p-2 text-primary hover:bg-primary-fixed-dim/20 rounded-lg transition-colors">
+<span class="material-symbols-outlined text-lg">edit</span>
+</button>
+<button class="p-2 text-error hover:bg-error-container/40 rounded-lg transition-colors">
+<span class="material-symbols-outlined text-lg">delete</span>
+</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="group hover:bg-slate-50 transition-colors">
+<td class="px-6 py-5">
+<p class="font-bold text-on-surface">Future Tech Summit</p>
+<p class="text-xs text-slate-500">TKM Kollam</p>
+</td>
+<td class="px-6 py-5">
+<p class="text-sm font-medium text-on-surface">Dec 01, 2023</p>
+<p class="text-[10px] text-slate-400">11:00 AM</p>
+</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-error-container text-on-error-container text-[11px] font-bold uppercase">
+<span class="w-1.5 h-1.5 bg-error rounded-full"></span>
+                                        Pending
+                                    </span>
+</td>
+<td class="px-6 py-5 text-right space-x-2">
+<button class="p-2 text-primary hover:bg-primary-fixed-dim/20 rounded-lg transition-colors">
+<span class="material-symbols-outlined text-lg">edit</span>
+</button>
+<button class="p-2 text-error hover:bg-error-container/40 rounded-lg transition-colors">
+<span class="material-symbols-outlined text-lg">delete</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="px-6 py-4 bg-slate-50/30 border-t border-slate-100 flex items-center justify-between">
+<p class="text-xs text-slate-500 font-medium">Showing 4 of 128 events</p>
+<div class="flex gap-2">
+<button class="p-1.5 hover:bg-slate-200 rounded-md transition-colors">
+<span class="material-symbols-outlined text-sm">chevron_left</span>
+</button>
+<button class="p-1.5 hover:bg-slate-200 rounded-md transition-colors">
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+<!-- Footer / Bottom Branding -->
+<footer class="mt-auto px-8 py-6 border-t border-slate-200/40 bg-white/50 flex justify-between items-center">
+<p class="text-xs font-medium text-slate-500">© 2024 Scholar Stream Academic Curator — Kerala Institutional Division</p>
+<div class="flex gap-6">
+<a class="text-xs text-slate-400 hover:text-primary transition-colors" href="#">Documentation</a>
+<a class="text-xs text-slate-400 hover:text-primary transition-colors" href="#">API Access</a>
+<a class="text-xs text-slate-400 hover:text-primary transition-colors" href="#">System Status</a>
+</div>
+</footer>
+</main>
+<!-- Contextual Floating Action Button (Only on main dashboard as per rules) -->
+<button class="fixed bottom-8 right-8 w-14 h-14 bg-primary text-white rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all z-50 md:hidden">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">add</span>
+</button>
+</body></html>
