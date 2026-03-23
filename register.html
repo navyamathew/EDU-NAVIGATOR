@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Edu Navigator - Sign Up</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-auth-compat.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@700;800&amp;family=Plus+Jakarta+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container-high": "#e7e8e9",
+              "secondary-fixed": "#a3f69c",
+              "on-secondary-fixed": "#002204",
+              "on-secondary-container": "#217128",
+              "on-secondary": "#ffffff",
+              "on-primary-fixed-variant": "#0040a1",
+              "background": "#f8f9fa",
+              "primary": "#0040a1",
+              "tertiary-fixed": "#9eefff",
+              "surface-tint": "#0056d2",
+              "on-secondary-fixed-variant": "#005312",
+              "surface-container": "#edeeef",
+              "outline-variant": "#c3c6d6",
+              "primary-fixed-dim": "#b2c5ff",
+              "on-error": "#ffffff",
+              "inverse-surface": "#2e3132",
+              "on-tertiary-fixed-variant": "#004e59",
+              "on-tertiary-container": "#74eaff",
+              "on-primary": "#ffffff",
+              "surface": "#f8f9fa",
+              "secondary-container": "#a0f399",
+              "inverse-on-surface": "#f0f1f2",
+              "error": "#ba1a1a",
+              "on-tertiary": "#ffffff",
+              "surface-bright": "#f8f9fa",
+              "on-surface": "#191c1d",
+              "outline": "#737785",
+              "tertiary-fixed-dim": "#55d7ed",
+              "surface-container-low": "#f3f4f5",
+              "surface-container-highest": "#e1e3e4",
+              "primary-container": "#0056d2",
+              "on-primary-fixed": "#001847",
+              "tertiary-container": "#006976",
+              "on-error-container": "#93000a",
+              "surface-variant": "#e1e3e4",
+              "secondary-fixed-dim": "#88d982",
+              "surface-dim": "#d9dadb",
+              "error-container": "#ffdad6",
+              "primary-fixed": "#dae2ff",
+              "on-primary-container": "#ccd8ff",
+              "tertiary": "#004f5a",
+              "on-tertiary-fixed": "#001f24",
+              "secondary": "#1b6d24",
+              "on-surface-variant": "#424654",
+              "surface-container-lowest": "#ffffff",
+              "on-background": "#191c1d",
+              "inverse-primary": "#b2c5ff"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Plus Jakarta Sans"],
+              "label": ["Plus Jakarta Sans"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bg-mesh {
+            background-color: #f3f4f5;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(0, 64, 161, 0.05) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(160, 243, 153, 0.1) 0px, transparent 50%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background font-body text-on-surface antialiased min-h-screen flex flex-col">
+<!-- Top Navigation Header -->
+<nav class="w-full top-0 sticky bg-[#f3f4f5] z-50">
+<div class="flex items-center justify-between px-6 h-16 w-full max-w-7xl mx-auto">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[#0040a1]" data-icon="school">school</span>
+<span class="text-xl font-extrabold text-[#0040a1] font-headline tracking-tight">Edu Navigator</span>
+</div>
+<button class="p-2 text-[#424654] hover:bg-surface-container rounded-full transition-colors">
+<span class="material-symbols-outlined" data-icon="close">close</span>
+</button>
+</div>
+</nav>
+<main class="flex-grow flex flex-col px-6 pt-4 pb-12 max-w-md mx-auto w-full bg-mesh">
+<!-- Welcome Section -->
+<header class="mb-10 mt-4">
+<h1 class="text-[2.25rem] font-headline font-extrabold text-primary leading-tight tracking-tight mb-3">
+                Begin Your Journey
+            </h1>
+<p class="text-on-surface-variant leading-relaxed">
+                Unlock scholarships, internships, and mentorship curated specifically for your academic goals.
+            </p>
+</header>
+<!-- Registration Form -->
+<form onsubmit="handleRegister(event)" class="space-y-6">
+<!-- Full Name -->
+<div class="space-y-2">
+<label class="block text-sm font-semibold text-on-surface-variant ml-1" for="full-name">Full Name</label>
+<div class="relative">
+<input class="w-full bg-surface-container-high border-none rounded-xl px-5 py-4 focus:ring-2 focus:ring-primary focus:bg-surface-container-lowest transition-all placeholder:text-outline" id="full-name" placeholder="Alex Rivers" type="text"/>
+</div>
+</div>
+<!-- Gmail ID -->
+<div class="space-y-2">
+<label class="block text-sm font-semibold text-on-surface-variant ml-1" for="email">Gmail ID</label>
+<div class="relative">
+<input class="w-full bg-surface-container-high border-none rounded-xl px-5 py-4 focus:ring-2 focus:ring-primary focus:bg-surface-container-lowest transition-all placeholder:text-outline" id="email" placeholder="alex@gmail.com" type="email"/>
+</div>
+</div>
+<!-- Password -->
+<div class="space-y-2">
+<label class="block text-sm font-semibold text-on-surface-variant ml-1" for="password">Password</label>
+<div class="relative">
+<input class="w-full bg-surface-container-high border-none rounded-xl px-5 py-4 focus:ring-2 focus:ring-primary focus:bg-surface-container-lowest transition-all placeholder:text-outline" id="password" placeholder="••••••••" type="password"/>
+<button class="absolute right-4 top-1/2 -translate-y-1/2 text-outline" type="button" onclick="togglePassword()">
+<span id="eyeIcon" class="material-symbols-outlined text-xl">visibility</span>
+</button>
+</div>
+</div>
+<!-- Role Selection -->
+<div class="space-y-2">
+<label class="block text-sm font-semibold text-on-surface-variant ml-1" for="role">Account Role</label>
+<div class="relative">
+<select class="w-full appearance-none bg-surface-container-high border-none rounded-xl px-5 py-4 focus:ring-2 focus:ring-primary focus:bg-surface-container-lowest transition-all text-on-surface" id="role">
+<option disabled="" selected="" value="">Select your role</option>
+<option value="student">Student</option>
+<option value="mentor">Mentor</option>
+<option value="administrator">Administrator</option>
+</select>
+<div class="pointer-events-none absolute inset-y-0 right-4 flex items-center text-outline">
+<span class="material-symbols-outlined" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Sign Up Button -->
+<div class="pt-4">
+<button class="w-full py-4 px-6 rounded-xl bg-gradient-to-br from-primary to-primary-container text-white font-bold text-lg hover:scale-[1.02] active:scale-95 transition-all shadow-md" type="submit">
+                    Sign Up
+                </button>
+</div>
+</form>
+<!-- Divider -->
+<div class="my-10 flex items-center gap-4">
+<div class="h-[1px] flex-grow bg-surface-container-highest"></div>
+<span class="text-xs font-bold text-outline uppercase tracking-widest">Or continue with</span>
+<div class="h-[1px] flex-grow bg-surface-container-highest"></div>
+</div>
+<!-- Social Register -->
+<div class="mb-10">
+<button type="button" onclick="handleGoogleRegister()" class="w-full flex items-center justify-center gap-2 py-3 px-4 bg-surface-container-lowest rounded-xl hover:bg-surface-bright transition-colors border border-outline-variant/10">
+<img alt="" class="w-5 h-5" data-alt="Google colorful logo icon" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAua-HSXyZ7JgLm61eG4ebqO94gN6J3IAfc0PKWRNKpjWVhHNl0NiRF9eP49xMU2TBqMeW8DZCAevs9nSEpAEmSZWbtQG_NGiKtA7JFxiWITWEfvnCpjDXbSRsOf1RAkl9qUaqSVkTCE2MU-5NOgnpAED3XNL3a4_--ulbS1eeHTldXSxFdezxDlUZQoX2WC_DZP4wkEB1URhAy9sr525L4nv0etqCGcDegvIdPZbOpfzN6Qmpwkc6hkb2VBHcUnr8CVsHVKTwc9po"/>
+<span class="text-sm font-semibold">Google</span>
+</button>
+</div>
+<!-- Footer Link -->
+<div class="text-center mt-auto">
+<p class="text-on-surface-variant">
+                Already have an account? 
+                <a class="text-primary font-bold hover:underline transition-all" href="login.html">Sign In</a>
+</p>
+</div>
+</main>
+<!-- Bottom Navigation Shell (Suppressed as per rules for Transactional screen) -->
+<!-- FAB Suppressed as per rules for Details/Transactional screen -->
+
+<script>
+async function handleRegister(e) {
+  e.preventDefault();
+
+  const name = document.getElementById("full-name").value;
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+  const role = document.getElementById("role").value;
+
+  if (!role) {
+    alert("Please select a role!");
+    return;
+  }
+
+  const res = await fetch("http://localhost:5000/register", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ name, email, password, role })
+  });
+
+  const data = await res.json();
+
+  if (res.ok) {
+    localStorage.setItem("idToken", data.idToken);
+    alert("Account created successfully!");
+    window.location.href = "login.html";
+  } else {
+    alert("Error: " + data.error);
+  }
+}
+
+function togglePassword() {
+  const input = document.getElementById("password");
+  const icon = document.getElementById("eyeIcon");
+  if (input.type === "password") {
+    input.type = "text";
+    icon.textContent = "visibility_off";
+  } else {
+    input.type = "password";
+    icon.textContent = "visibility";
+  }
+}
+</script>
+<script>
+const firebaseConfig = {
+  apiKey: "AIzaSyB-7PjG5gfg1f4FyKSKMeKsMIjiRUAPsx0",
+  authDomain: "mini-project-c7982.firebaseapp.com",
+  projectId: "mini-project-c7982"
+};
+
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+const provider = new firebase.auth.GoogleAuthProvider();
+
+async function handleGoogleRegister() {
+  const role = document.getElementById("role").value;
+
+  if (!role) {
+    alert("Please select a role before continuing with Google!");
+    return;
+  }
+
+  try {
+    const result = await auth.signInWithPopup(provider);
+    const idToken = await result.user.getIdToken();
+
+    const res = await fetch("http://localhost:5000/google-login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ idToken, role })
+    });
+
+    const data = await res.json();
+
+    if (res.ok) {
+      localStorage.setItem("idToken", idToken);
+      alert("Account created successfully!");
+      window.location.href = "login.html";
+    } else {
+      alert("Error: " + data.error);
+    }
+  } catch (err) {
+    alert("Google sign up failed: " + err.message);
+  }
+}
+</script>
+</body></html>
