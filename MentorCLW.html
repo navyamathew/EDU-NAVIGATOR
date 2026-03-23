@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Dr. Sarah Jenkins | Scholar Stream Educator</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,FILL@0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-tertiary-fixed": "#001f24",
+              "tertiary": "#004f5a",
+              "surface-container-lowest": "#ffffff",
+              "outline": "#737785",
+              "surface-container": "#edeeef",
+              "secondary": "#1b6d24",
+              "surface-tint": "#0056d2",
+              "surface": "#f8f9fa",
+              "on-tertiary": "#ffffff",
+              "on-error-container": "#93000a",
+              "error-container": "#ffdad6",
+              "inverse-primary": "#b2c5ff",
+              "surface-bright": "#f8f9fa",
+              "on-primary-container": "#ccd8ff",
+              "on-primary": "#ffffff",
+              "surface-container-high": "#e7e8e9",
+              "primary": "#0040a1",
+              "tertiary-fixed": "#9eefff",
+              "surface-container-highest": "#e1e3e4",
+              "on-primary-fixed-variant": "#0040a1",
+              "on-secondary-fixed": "#002204",
+              "error": "#ba1a1a",
+              "background": "#f8f9fa",
+              "surface-container-low": "#f3f4f5",
+              "on-error": "#ffffff",
+              "tertiary-container": "#006976",
+              "on-surface-variant": "#424654",
+              "on-secondary-container": "#217128",
+              "on-background": "#191c1d",
+              "inverse-surface": "#2e3132",
+              "primary-fixed-dim": "#b2c5ff",
+              "outline-variant": "#c3c6d6",
+              "secondary-fixed": "#a3f69c",
+              "on-primary-fixed": "#001847",
+              "primary-container": "#0056d2",
+              "inverse-on-surface": "#f0f1f2",
+              "secondary-container": "#a0f399",
+              "surface-variant": "#e1e3e4",
+              "on-tertiary-fixed-variant": "#004e59",
+              "on-secondary-fixed-variant": "#005312",
+              "tertiary-fixed-dim": "#55d7ed",
+              "on-tertiary-container": "#74eaff",
+              "on-surface": "#191c1d",
+              "on-secondary": "#ffffff",
+              "surface-dim": "#d9dadb",
+              "secondary-fixed-dim": "#88d982",
+              "primary-fixed": "#dae2ff"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Plus Jakarta Sans"],
+              "label": ["Plus Jakarta Sans"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f3f4f5; /* surface-container-low */
+        }
+        .editorial-shadow {
+            box-shadow: 0 10px 30px rgba(25, 28, 29, 0.04), 0 2px 8px rgba(25, 28, 29, 0.02);
+        }
+        .primary-gradient {
+            background: linear-gradient(135deg, #0040a1 0%, #0056d2 100%);
+        }
+    </style>
+</head>
+<body class="text-on-surface">
+<!-- TopNavBar Component -->
+<nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md shadow-sm shadow-blue-900/5 h-16 flex justify-between items-center px-8 max-w-full">
+<div class="flex items-center gap-2">
+<span class="font-['Manrope'] font-extrabold text-2xl tracking-tight text-blue-900 dark:text-blue-50" style="">EDU NAVIGATOR</span>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-slate-600 dark:text-slate-400 hover:text-blue-600 font-['Plus_Jakarta_Sans'] font-medium text-sm transition-colors" href="#" style="">Home</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-blue-600 font-['Plus_Jakarta_Sans'] font-medium text-sm transition-colors" href="#" style="">Resources</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="px-6 py-2 primary-gradient text-white rounded-lg font-['Plus_Jakarta_Sans'] font-bold text-sm scale-100 active:scale-95 duration-200" style="">Sign In</button>
+</div>
+</nav>
+<main class="pt-16 min-h-screen">
+<!-- Hero Header -->
+<header class="relative w-full bg-surface-container-highest h-64 overflow-hidden">
+<div class="absolute inset-0 opacity-20" data-alt="Abstract academic geometric dot pattern background" style="background-image: radial-gradient(circle at 2px 2px, #0040a1 1px, transparent 0); background-size: 40px 40px;"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-low to-transparent"></div>
+</header>
+<!-- Profile Section -->
+<div class="max-w-6xl mx-auto px-8 -mt-24 relative z-10">
+<div class="flex flex-col md:flex-row gap-8 items-end">
+<div class="relative">
+<img alt="Dr. Sarah Jenkins" class="w-48 h-48 rounded-xl object-cover border-8 border-surface-container-low editorial-shadow" data-alt="Professional headshot of a female academic educator" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1CygcUdDzxDJMzlQPrq7S3DcdpYuSQjeHGrq0TO7ZKXHBW5MaiWAd7suE-a3YkOnMkcn8XeCLyJWOWBClWev5gRya0-BoYW4_yErX7jJpLf0UDQF2xVNkKqK9Vq-rg_8YubLPSRZAxa01oCEs64nL4vYK5WOPsBlAqp-MBsXbm-Y1qlxoY1ZCJOX7UMRfy0bq4-8IIQpXOhsnPkWN14K-a-mR1hf-XLAjWfuiXMAss6Qlwj7hifsiQbeXSaD9qQCwXotoEYG6q0o" style=""/>
+<div class="absolute -bottom-2 -right-2 bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1 shadow-sm" style="">
+<span class="material-symbols-outlined text-[16px]" style='font-variation-settings: "FILL" 1;'>verified</span>
+                        Verified Mentor
+                    </div>
+</div>
+<div class="flex-1 pb-4">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div>
+<h1 class="text-4xl font-headline font-extrabold text-on-surface tracking-tight" style="">Dr. Sarah Jenkins</h1>
+<p class="text-on-surface-variant font-body mt-1 text-lg" style="">Senior Fellow in STEM Outreach • Harvard Graduate School of Education</p>
+<div class="flex gap-4 mt-3">
+<span class="text-sm font-label font-semibold text-primary" style="">12.4k <span class="text-on-surface-variant font-medium" style="">Followers</span></span>
+<span class="text-sm font-label font-semibold text-primary" style="">850 <span class="text-on-surface-variant font-medium" style="">Mentorships</span></span>
+</div>
+</div>
+<div class="flex gap-3">
+<button class="px-8 py-3 primary-gradient text-white rounded-xl font-headline font-bold editorial-shadow hover:scale-[1.02] transition-transform active:scale-95" style="">Follow</button>
+<button class="p-3 bg-surface-container-lowest text-primary rounded-xl border border-outline-variant/15 hover:bg-surface-bright transition-colors" style="">
+<span class="material-symbols-outlined" style="">mail</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Bento Layout Content -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mt-12 pb-24">
+<!-- Sidebar / About Info -->
+<div class="lg:col-span-4 space-y-8">
+<section class="bg-surface-container-lowest p-8 rounded-xl editorial-shadow">
+<h3 class="font-headline font-bold text-xl mb-6 flex items-center gap-2" style="">
+<span class="material-symbols-outlined text-primary" style="">school</span>
+                            Education &amp; Focus
+                        </h3>
+<ul class="space-y-4">
+<li class="flex flex-col" style="">
+<span class="text-xs font-label uppercase tracking-widest text-on-surface-variant mb-1" style="">Focus Areas</span>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 bg-surface-container-high rounded-full text-xs font-medium" style="">STEM Scholarships</span>
+<span class="px-3 py-1 bg-surface-container-high rounded-full text-xs font-medium" style="">PhD Funding</span>
+<span class="px-3 py-1 bg-surface-container-high rounded-full text-xs font-medium" style="">Diversity in Tech</span>
+</div>
+</li>
+<li class="flex flex-col pt-4 border-t border-outline-variant/10" style="">
+<span class="text-xs font-label uppercase tracking-widest text-on-surface-variant mb-1" style="">Affiliations</span>
+<span class="text-sm font-body font-semibold" style="">Ivy League Grant Committee</span>
+<span class="text-sm font-body text-on-surface-variant" style="">National Science Foundation Board</span>
+</li>
+</ul>
+</section>
+<!-- Quote / Editorial Pull -->
+<section class="bg-tertiary p-8 rounded-xl text-on-tertiary editorial-shadow relative overflow-hidden">
+<span class="material-symbols-outlined absolute -right-4 -bottom-4 text-white/10 text-9xl" style="">format_quote</span>
+<p class="text-xl font-headline font-semibold leading-relaxed relative z-10" style="">
+                            "Opportunity is rarely about luck; it's about the precision of your preparation and the clarity of your narrative."
+                        </p>
+</section>
+</div>
+<!-- Main Content Area -->
+<div class="lg:col-span-8 space-y-8">
+<!-- About Section -->
+<section class="bg-surface-container-lowest p-8 rounded-xl editorial-shadow">
+<h2 class="font-headline font-bold text-2xl mb-4" style="">About the Curator</h2>
+<p class="text-on-surface-variant font-body leading-loose mb-6" style="">
+                            Dr. Sarah Jenkins has spent over 15 years bridging the gap between high-potential students and elite academic funding. As a curator on Scholar Stream, she focuses on high-impact STEM opportunities that offer more than just financial support, but also a network for lifelong research and professional growth. 
+                        </p>
+<p class="text-on-surface-variant font-body leading-loose" style="">
+                            Her sessions focus on the 'hidden curriculum' of scholarship applications: crafting a personal brand that resonates with selection committees while maintaining authentic academic integrity.
+                        </p>
+</section>
+<!-- Featured Classes Section -->
+<section class="space-y-6">
+<div class="flex items-center justify-between px-4">
+<h2 class="font-headline font-bold text-2xl text-on-surface" style="">Featured Classes</h2>
+<button class="text-primary font-label font-bold text-sm hover:underline" style="">View All</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Video Card 1 -->
+<div class="group cursor-pointer">
+<div class="relative aspect-video rounded-xl overflow-hidden mb-3 editorial-shadow bg-slate-200">
+<img alt="Mastering Academic Writing class thumbnail" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC44UuasyPFMXYTXDoZrIbjHHsTvrszbBRM9fGS_yRSxdLLQrtoV9XrWT5zHkOrvx35YQ_1F8eHBv0gsE-bYTMiUCunZwzRA671dNz8Rw6bBWIvZFgp3YG6Gn6VHatTmeekNcd_6sHH9A-_uptzLhO3QGWNv7IX36eIdPVuPjgWZjn8pOelf7PCBH2UUy0LXhG-CAYKE5RXpoviGcUrnun__Bcp1zIgu-Jx__LTvvhCpn8duf2OmlLoqZyQlnnYIsURNXNsDn9hhcI" style=""/>
+<div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors flex items-center justify-center">
+<div class="w-14 h-14 rounded-full bg-white/90 flex items-center justify-center text-primary shadow-xl group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl" style='font-variation-settings: "FILL" 1;'>play_arrow</span>
+</div>
+</div>
+<div class="absolute bottom-2 right-2 bg-black/70 text-white px-2 py-1 rounded text-[10px] font-bold font-label tracking-wide uppercase" style="">
+                                        45:20
+                                    </div>
+</div>
+<h4 class="font-headline font-bold text-lg text-on-surface px-1" style="">DATA STRUCTURES </h4>
+<p class="text-on-surface-variant text-sm font-body px-1" style="">Advanced techniques for research clarity and impact.</p>
+</div>
+<!-- Video Card 2 -->
+<div class="group cursor-pointer">
+<div class="relative aspect-video rounded-xl overflow-hidden mb-3 editorial-shadow bg-slate-200">
+<img alt="Scholarship Strategy 101 class thumbnail" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCL5c24xzIQqJhuaPbhss75lmIMhmS8g42aB5YpZER9SUcD70G4c2D8y6IwwVfGqnEWSnYJ3We-LNmFsQ6k8jQcGHhi0LKT8s7jNuyIE-e_YI-SFfcaUXOilnoqmFk5SUDAFrLVBJ9K7lIBYBfm4YzoIFSSbCYndZR45TlIIFAA31jXgSO8X1RWyD0mQ7oEmuTpp7lrLkxxxw_1SGaZVxAZ2aeSrksO8fETNtQq267MKYwqyOfUdb1lXJbVx8gMBlHlFT5g6LI-Q20" style=""/>
+<div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors flex items-center justify-center">
+<div class="w-14 h-14 rounded-full bg-white/90 flex items-center justify-center text-primary shadow-xl group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl" style='font-variation-settings: "FILL" 1;'>play_arrow</span>
+</div>
+</div>
+<div class="absolute bottom-2 right-2 bg-black/70 text-white px-2 py-1 rounded text-[10px] font-bold font-label tracking-wide uppercase" style="">
+                                        1:12:05
+                                    </div>
+</div>
+<h4 class="font-headline font-bold text-lg text-on-surface px-1" style="">DATA BASE MANAGEMENT</h4>
+<p class="text-on-surface-variant text-sm font-body px-1" style="">A step-by-step roadmap to securing elite funding.</p>
+</div>
+<!-- Video Card 3 -->
+<div class="group cursor-pointer">
+<div class="relative aspect-video rounded-xl overflow-hidden mb-3 editorial-shadow bg-slate-200">
+<img alt="Personal Brand in Academia class thumbnail" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBiy4oiHgwA2fY6k-RBhuaQAR7N1zPK-c4p3L248rSmkOvj6Lox0X75T5ZmPWmCJhCpFnNmMKz2OjRHOqiUNiUX-eD9MFuczqDZ3AmYqrh-e32jNojwvbXc3SsY6ywd4ZhD87ZOkJH_UkQvrLwCH9bIc3M6w57u5XLzE5n-clou9sJqAnq2x_UA-fZbpNk7pQyTy_lTPugAL0YjQDTALIDctSQLDCLhQvJOpdLIaGqdBlUXvV0rZq4hkUd8WZ2DY2VmqyvCwRuAJ8c" style=""/>
+<div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors flex items-center justify-center">
+<div class="w-14 h-14 rounded-full bg-white/90 flex items-center justify-center text-primary shadow-xl group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl" style='font-variation-settings: "FILL" 1;'>play_arrow</span>
+</div>
+</div>
+<div class="absolute bottom-2 right-2 bg-black/70 text-white px-2 py-1 rounded text-[10px] font-bold font-label tracking-wide uppercase" style="">
+                                        38:15
+                                    </div>
+</div>
+<h4 class="font-headline font-bold text-lg text-on-surface px-1" style="">MY SQL</h4>
+<p class="text-on-surface-variant text-sm font-body px-1" style="">Crafting narratives that resonate with committees.</p>
+</div>
+<!-- Video Card 4 -->
+<div class="group cursor-pointer">
+<div class="relative aspect-video rounded-xl overflow-hidden mb-3 editorial-shadow bg-slate-200">
+<img alt="PhD Interview Prep class thumbnail" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcVTt8jkfAket_Rwie5Avf_IsBdrJiIKof5q67DRoHxhY4NGNbc5Hg5RHbeUxjlPZsu392CvXfbutOG0ltxPQr_92_iv2Zo-9IpArSDc3exi4GmfzmotJOabJZRju6MQGRpkf9MAwCZXKRFOPNJdS-sPqY7ldDQ_1Ao5T3ufFk4Wnsot3htcKoT0bq_nYLrTMEu3p9QzhzfWgEcMs7fsRyO4kCLE0OvDovO-_NtbNEExGlAmwY_SXBgU-NQeCLmfT66Iwvqb5XKNo" style=""/>
+<div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors flex items-center justify-center">
+<div class="w-14 h-14 rounded-full bg-white/90 flex items-center justify-center text-primary shadow-xl group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl" style='font-variation-settings: "FILL" 1;'>play_arrow</span>
+</div>
+</div>
+<div class="absolute bottom-2 right-2 bg-black/70 text-white px-2 py-1 rounded text-[10px] font-bold font-label tracking-wide uppercase" style="">
+                                        55:30
+                                    </div>
+</div>
+<h4 class="font-headline font-bold text-lg text-on-surface px-1" style=""> Interview Prep</h4>
+<p class="text-on-surface-variant text-sm font-body px-1" style="">Mastering the technical and behavioral interview.</p>
+</div>
+</div>
+</section>
+<!-- CTA Section (Upcoming Event) -->
+<div class="bg-surface-container p-1 rounded-2xl">
+<div class="bg-surface-container-lowest rounded-xl p-8 flex flex-col md:flex-row items-center gap-8">
+<div class="w-24 h-24 bg-primary-fixed text-primary rounded-xl flex flex-col items-center justify-center">
+<span class="text-2xl font-headline font-extrabold" style="">24</span>
+<span class="text-xs font-label uppercase font-bold" style="">Oct</span>
+</div>
+<div class="flex-1 text-center md:text-left">
+<span class="text-xs font-label text-primary font-bold uppercase tracking-widest mb-1 block" style="">Live Workshop</span>
+<h3 class="font-headline font-bold text-xl mb-2" style="">Mastering the Ivy League Statement of Purpose</h3>
+<p class="text-on-surface-variant text-sm font-body" style="">Join Dr. Jenkins for a deep dive into successful SOP examples and 1-on-1 feedback slots.</p>
+</div>
+<button class="px-6 py-3 border-2 border-primary text-primary hover:bg-primary-fixed/30 transition-colors rounded-xl font-headline font-bold whitespace-nowrap" style="">Reserve Spot</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Component -->
+<footer class="w-full py-12 bg-slate-100 dark:bg-slate-950 grid grid-cols-1 md:grid-cols-2 gap-8 px-12 border-t border-slate-200 dark:border-slate-800">
+<div>
+<div class="font-['Manrope'] font-black text-lg text-blue-900 dark:text-blue-100 mb-4" style="">Scholar Stream</div>
+<p class="font-['Plus_Jakarta_Sans'] text-xs uppercase tracking-widest text-slate-500" style="">© 2024 Scholar Stream. The Academic Curator.</p>
+</div>
+<div class="flex flex-wrap gap-x-8 gap-y-4 md:justify-end items-center">
+<a class="font-['Plus_Jakarta_Sans'] text-xs uppercase tracking-widest text-slate-500 hover:text-blue-600 transition-opacity" href="#" style="">Privacy Policy</a>
+<a class="font-['Plus_Jakarta_Sans'] text-xs uppercase tracking-widest text-slate-500 hover:text-blue-600 transition-opacity" href="#" style="">Terms of Service</a>
+<a class="font-['Plus_Jakarta_Sans'] text-xs uppercase tracking-widest text-slate-500 hover:text-blue-600 transition-opacity" href="#" style="">Help Center</a>
+<a class="font-['Plus_Jakarta_Sans'] text-xs uppercase tracking-widest text-slate-500 hover:text-blue-600 transition-opacity" href="#" style="">Contact</a>
+</div>
+</footer>
+</body></html>

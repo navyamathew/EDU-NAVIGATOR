@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mentor Directory</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Plus+Jakarta+Sans:wght@400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "error": "#ba1a1a",
+              "primary-container": "#0056d2",
+              "background": "#f8f9fa",
+              "tertiary-fixed-dim": "#55d7ed",
+              "on-tertiary-container": "#74eaff",
+              "tertiary-fixed": "#9eefff",
+              "surface-bright": "#f8f9fa",
+              "secondary-fixed-dim": "#88d982",
+              "secondary-container": "#a0f399",
+              "on-error": "#ffffff",
+              "on-surface-variant": "#424654",
+              "on-secondary-fixed-variant": "#005312",
+              "on-background": "#191c1d",
+              "inverse-surface": "#2e3132",
+              "surface-dim": "#d9dadb",
+              "on-primary-container": "#ccd8ff",
+              "on-tertiary-fixed-variant": "#004e59",
+              "inverse-primary": "#b2c5ff",
+              "on-error-container": "#93000a",
+              "surface-container-low": "#f3f4f5",
+              "outline-variant": "#c3c6d6",
+              "on-secondary-container": "#217128",
+              "on-tertiary": "#ffffff",
+              "secondary": "#1b6d24",
+              "tertiary": "#004f5a",
+              "on-tertiary-fixed": "#001f24",
+              "secondary-fixed": "#a3f69c",
+              "on-primary-fixed-variant": "#0040a1",
+              "primary-fixed": "#dae2ff",
+              "on-primary": "#ffffff",
+              "surface-container-lowest": "#ffffff",
+              "surface-container": "#edeeef",
+              "surface-container-high": "#e7e8e9",
+              "on-secondary-fixed": "#002204",
+              "tertiary-container": "#006976",
+              "surface-variant": "#e1e3e4",
+              "surface-container-highest": "#e1e3e4",
+              "on-surface": "#191c1d",
+              "on-primary-fixed": "#001847",
+              "surface-tint": "#0056d2",
+              "primary": "#0040a1",
+              "surface": "#f8f9fa",
+              "primary-fixed-dim": "#b2c5ff",
+              "on-secondary": "#ffffff",
+              "outline": "#737785",
+              "inverse-on-surface": "#f0f1f2",
+              "error-container": "#ffdad6"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Plus Jakarta Sans"],
+              "label": ["Plus Jakarta Sans"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "3xl": "1.5rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f3f4f5;
+        }
+        .header-anchor {
+            font-family: 'Manrope', sans-serif;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-surface-container-low text-on-background min-h-screen pb-24">
+<!-- Top App Bar -->
+<header class="w-full top-0 sticky z-50 bg-[#f3f4f5] dark:bg-slate-900 flex items-center justify-between px-6 py-4 w-full">
+<div class="flex items-center gap-4">
+<button class="text-[#0040a1] dark:text-blue-400 active:scale-95 transition-transform duration-200">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-['Manrope'] font-bold text-xl tracking-tight text-[#0040a1] dark:text-blue-400">Mentors</h1>
+</div>
+<button class="text-[#0040a1] dark:text-blue-400 active:scale-95 transition-transform duration-200">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</header>
+<main class="px-6 py-4">
+<!-- Editorial Pull Quote -->
+<section class="mb-8">
+<h2 class="text-[2.25rem] font-headline font-extrabold text-primary leading-tight">
+                Your Curated <br/>Circle of Growth.
+            </h2>
+<p class="text-on-surface-variant mt-2 font-body text-sm">Learning from the best in the industry.</p>
+</section>
+<!-- Search / Filter Area -->
+<div class="mb-8">
+<div class="relative group">
+<div class="absolute inset-y-0 left-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-outline" data-icon="search">search</span>
+</div>
+<input class="w-full pl-12 pr-4 py-4 bg-surface-container-high rounded-xl border-none focus:ring-2 focus:ring-primary focus:bg-surface-container-lowest transition-all font-body" placeholder="Search your mentors..." type="text"/>
+</div>
+</div>
+<!-- Mentor Cards Grid -->
+<div class="space-y-6">
+<!-- Mentor Card 1 -->
+<div class="bg-surface-container-lowest p-6 rounded-3xl shadow-[0_10px_30px_rgba(25,28,29,0.04)] hover:bg-surface-bright transition-all group">
+<div class="flex items-start justify-between mb-4">
+<div class="flex items-center gap-4">
+<div class="w-16 h-16 rounded-2xl overflow-hidden relative">
+<img alt="Mentor Profile" class="w-full h-full object-cover" data-alt="Professional female mentor smiling in office" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzOtFh55YVZl4Fcunm3WZf_RoWbLxDX1kmPBxqL6vuiswyzgPUkzXagv_PwbiRCa3ginYfizHB2hvJGRaoyG4edQaRM3lO-v0kCDkfn4XK6BwqlPiOFUd08tVMdGJp0VGjYgGatsJGESuGZxvbjzyBhPlrm3mVyPaetl3HEHpYES37FcZuAqQfjGa_6JVeOKzmK7SWT4x4pKWCJz8tTRnjgucynr6BG20G0uhemmG2FrQgfxXl2eiblJMrb0m3v1-kbHoOLun5FjE"/>
+</div>
+<div>
+<h3 class="font-headline font-bold text-lg text-on-surface">Dr. Sarah Jenkins</h3>
+<div class="flex items-center gap-1">
+<span class="bg-secondary-container text-on-secondary-container text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">Open</span>
+<span class="text-on-surface-variant text-xs font-body">Computer Science</span>
+</div>
+</div>
+</div>
+<button class="text-primary hover:bg-primary-fixed/30 p-2 rounded-full transition-colors"><span class="material-symbols-outlined" data-icon="person_check" style="font-variation-settings: 'FILL' 1;">person_check</span></button>
+</div>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-6 font-body">
+                    Former Senior Architect at Google with 12+ years of experience in distributed systems and cloud infrastructure.
+                </p>
+<button class="w-full py-3 bg-gradient-to-r from-primary to-primary-container text-on-primary font-bold rounded-xl hover:scale-[1.02] active:scale-95 transition-all text-sm font-label">
+                    View Profile
+                </button>
+</div>
+<!-- Mentor Card 2 -->
+<div class="bg-surface-container-lowest p-6 rounded-3xl shadow-[0_10px_30px_rgba(25,28,29,0.04)] hover:bg-surface-bright transition-all group">
+<div class="flex items-start justify-between mb-4">
+<div class="flex items-center gap-4">
+<div class="w-16 h-16 rounded-2xl overflow-hidden relative">
+<img alt="Mentor Profile" class="w-full h-full object-cover" data-alt="Male mentor with professional demeanor" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZYc8JfCaTae5JdVCEzmyeHOrlomE0ORSl3RwrmA9H4Z0cZAf5DHP_dTuSc0D7WZg9xADt5d1yuzUvxk52pUdDSzwtgQgc1iI-ukOaLRXdvnwihMjo56VzEKwUIu2tb62vNQGEndSQXQgk2uYr51xi1QNVBeGwpMgPHMq1ZhfQV8RdMMoBYN33ZDCQUVZOgHMQgzI8ViItu8YqjN_U_F0F-Ee0rOhk6ejpQkPpTH7jo7sgbGWa6ShXuHiUZ3JdiRzmr5s2jxC-g4E"/>
+</div>
+<div>
+<h3 class="font-headline font-bold text-lg text-on-surface">Marcus Thorne</h3>
+<div class="flex items-center gap-1">
+<span class="bg-tertiary-fixed text-on-tertiary-fixed text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">In Review</span>
+<span class="text-on-surface-variant text-xs font-body">Career Coach</span>
+</div>
+</div>
+</div>
+<button class="text-primary hover:bg-primary-fixed/30 p-2 rounded-full transition-colors"><span class="material-symbols-outlined" data-icon="person_check" style="font-variation-settings: 'FILL' 1;">person_check</span></button>
+</div>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-6 font-body">
+                    Specializing in interview prep for Fortune 500 companies. Helping students transition from academia to high-impact roles.
+                </p>
+<button class="w-full py-3 bg-gradient-to-r from-primary to-primary-container text-on-primary font-bold rounded-xl hover:scale-[1.02] active:scale-95 transition-all text-sm font-label">
+                    View Profile
+                </button>
+</div>
+<!-- Mentor Card 3 -->
+<div class="bg-surface-container-lowest p-6 rounded-3xl shadow-[0_10px_30px_rgba(25,28,29,0.04)] hover:bg-surface-bright transition-all group">
+<div class="flex items-start justify-between mb-4">
+<div class="flex items-center gap-4">
+<div class="w-16 h-16 rounded-2xl overflow-hidden relative">
+<img alt="Mentor Profile" class="w-full h-full object-cover" data-alt="Confident female mentor in creative workspace" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFNTAv484ySmluBCDqdepz21OstOY5d79M5CY9uo2sSIMYdfcdiwNGSo75jaHqNGrGNMkSzOIQoInmRV2ASnkuhLcpRwM3prtWbFh7NjtqfETtwWXqEZXMjJwortxmRQX-2IM6Jg1vn1ntcLhOZRddS4TDBtqEgxE24zB6IumAY0PXIK6hWnq_Oe5omO6WYdFsn3U1myyxx5j6TetTL11Xh8KyS_t1VNrlqqwQ0M-LchhteTGA7Z9DaDspCeD5L4Ylq1ndxsB79Ws"/>
+</div>
+<div>
+<h3 class="font-headline font-bold text-lg text-on-surface">Elena Rodriguez</h3>
+<div class="flex items-center gap-1">
+<span class="bg-secondary-container text-on-secondary-container text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">Open</span>
+<span class="text-on-surface-variant text-xs font-body">UX Design</span>
+</div>
+</div>
+</div>
+<button class="text-primary hover:bg-primary-fixed/30 p-2 rounded-full transition-colors"><span class="material-symbols-outlined" data-icon="person_check" style="font-variation-settings: 'FILL' 1;">person_check</span></button>
+</div>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-6 font-body">
+                    Design Lead at a top fintech startup. Passionate about accessibility, design systems, and inclusive product culture.
+                </p>
+<button class="w-full py-3 bg-gradient-to-r from-primary to-primary-container text-on-primary font-bold rounded-xl hover:scale-[1.02] active:scale-95 transition-all text-sm font-label">
+                    View Profile
+                </button>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-3 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl z-50 rounded-t-3xl border-t border-[#c3c6d6]/15 shadow-[0_-10px_30px_rgba(25,28,29,0.04)]">
+<a class="flex flex-col items-center justify-center text-[#424654] dark:text-slate-400 px-5 py-2 active:scale-90 transition-all duration-300 hover:text-[#0040a1]" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-['Plus_Jakarta_Sans'] font-medium text-[10px]">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-[#dae2ff] dark:bg-blue-900/40 text-[#0040a1] dark:text-blue-100 rounded-2xl px-5 py-2 active:scale-90 transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="school" style="font-variation-settings: 'FILL' 1;">school</span>
+<span class="font-['Plus_Jakarta_Sans'] font-medium text-[10px]">Mentors</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#424654] dark:text-slate-400 px-5 py-2 active:scale-90 transition-all duration-300 hover:text-[#0040a1]" href="#">
+<span class="material-symbols-outlined" data-icon="assignment_turned_in">assignment_turned_in</span>
+<span class="font-['Plus_Jakarta_Sans'] font-medium text-[10px]">Applications</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#424654] dark:text-slate-400 px-5 py-2 active:scale-90 transition-all duration-300 hover:text-[#0040a1]" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-['Plus_Jakarta_Sans'] font-medium text-[10px]">Profile</span>
+</a>
+</nav>
+</body></html>

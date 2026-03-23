@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Dashboard | Edu Navigator</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Plus+Jakarta+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-surface": "#191c1d",
+              "outline-variant": "#c3c6d6",
+              "on-secondary-fixed": "#002204",
+              "surface-container-low": "#f3f4f5",
+              "surface-dim": "#d9dadb",
+              "inverse-primary": "#b2c5ff",
+              "primary-container": "#0056d2",
+              "on-background": "#191c1d",
+              "on-secondary-fixed-variant": "#005312",
+              "inverse-on-surface": "#f0f1f2",
+              "on-secondary-container": "#217128",
+              "secondary-container": "#a0f399",
+              "on-secondary": "#ffffff",
+              "on-primary": "#ffffff",
+              "on-tertiary-fixed-variant": "#004e59",
+              "on-error-container": "#93000a",
+              "error": "#ba1a1a",
+              "secondary-fixed": "#a3f69c",
+              "on-tertiary": "#ffffff",
+              "on-primary-fixed": "#001847",
+              "on-tertiary-container": "#74eaff",
+              "surface-container-lowest": "#ffffff",
+              "inverse-surface": "#2e3132",
+              "primary": "#0040a1",
+              "error-container": "#ffdad6",
+              "on-tertiary-fixed": "#001f24",
+              "outline": "#737785",
+              "surface": "#f8f9fa",
+              "primary-fixed-dim": "#b2c5ff",
+              "surface-variant": "#e1e3e4",
+              "on-surface-variant": "#424654",
+              "tertiary": "#004f5a",
+              "surface-container": "#edeeef",
+              "surface-container-high": "#e7e8e9",
+              "on-error": "#ffffff",
+              "tertiary-fixed-dim": "#55d7ed",
+              "tertiary-container": "#006976",
+              "primary-fixed": "#dae2ff",
+              "on-primary-container": "#ccd8ff",
+              "background": "#f8f9fa",
+              "secondary-fixed-dim": "#88d982",
+              "tertiary-fixed": "#9eefff",
+              "on-primary-fixed-variant": "#0040a1",
+              "secondary": "#1b6d24",
+              "surface-tint": "#0056d2",
+              "surface-bright": "#f8f9fa",
+              "surface-container-highest": "#e1e3e4"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Plus Jakarta Sans"],
+              "label": ["Plus Jakarta Sans"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .font-manrope { font-family: 'Manrope', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-surface-container-low text-on-surface pb-20 lg:pb-0">
+<!-- SideNavBar Shell (Hidden on mobile) -->
+<aside class="hidden lg:flex h-screen w-64 fixed left-0 top-0 border-r-0 bg-slate-50 flex-col p-4 gap-y-2 z-50">
+<div class="mb-8 px-2 py-4">
+<h1 class="font-manrope font-extrabold text-blue-900 text-xl tracking-tight">Edu Navigator</h1>
+<p class="text-xs font-medium text-slate-500">Student Portal</p>
+</div>
+<nav class="flex-1 flex flex-col gap-y-1">
+<a class="flex items-center gap-3 px-4 py-3 bg-blue-50 text-blue-700 rounded-lg font-semibold transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-plus-jakarta text-sm">HOME</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="explore">explore</span>
+<span class="font-plus-jakarta text-sm uppercase">Opportunity Listing</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+<span class="font-plus-jakarta text-sm uppercase">Mentor</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="event">event</span>
+<span class="font-plus-jakarta text-sm">Events</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="font-plus-jakarta text-sm">Notifications</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-plus-jakarta text-sm">Settings</span>
+</a>
+</nav>
+<div class="mt-auto pt-4 border-t border-slate-200/60">
+<button class="w-full bg-gradient-to-br from-primary to-primary-container text-white py-3 rounded-xl font-semibold text-sm mb-4 transition-transform active:scale-95 shadow-lg shadow-blue-900/10">
+                Find Opportunities
+            </button>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span class="font-plus-jakarta text-sm">Help Center</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="lg:ml-64 min-h-screen">
+<!-- TopNavBar Shell -->
+<header class="sticky top-0 w-full flex items-center justify-between px-4 lg:px-8 py-3 h-16 bg-white/80 backdrop-blur-md z-40 shadow-sm">
+<div class="flex items-center gap-4 flex-1">
+<div class="lg:hidden font-manrope font-extrabold text-blue-900 text-lg">Edu Navigator</div>
+<div class="relative max-w-md w-full hidden md:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xl" data-icon="search">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container-high border-none rounded-lg focus:ring-2 focus:ring-primary/20 focus:bg-white transition-all text-sm" placeholder="Search internships or hackathons..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-2 lg:gap-4">
+<button class="p-2 text-slate-500 hover:bg-slate-50 rounded-full transition-all duration-200">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<div class="h-8 w-8 rounded-full bg-primary-fixed overflow-hidden ring-2 ring-white ml-2 shadow-sm">
+<img alt="User profile avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7faN7oqjMhlOdA6BTq-9vQXSXCRiTihfAF0wdNxdZLUNVXfLYcsp6MDe1h_OZZKmyyv8uO8Anioqeq5KoRo6_dgRcs-TkkDAdwOo153LRrLYUjI0GtWak37D3pHfeA1uqMcWwGhCpMCy9C0KzkXbzrJkoveKsEbGB0cV6NkhX36hgDn4hSMUijG-qfg9akQi_JQmI4XDqcOKWwIlJCy_dbhJIcu1nuBkXJ1cWSN47Eqf6RMQREBZokqOOV_sbUSQfvTRkVXZbRwM"/>
+</div>
+</div>
+</header>
+<!-- Dashboard Content -->
+<div class="p-4 lg:p-8 max-w-7xl mx-auto">
+<!-- Welcome Header -->
+<div class="mb-8 lg:mb-10 flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div>
+<h2 class="font-manrope text-2xl lg:text-3xl font-extrabold text-on-surface tracking-tight mb-2">Welcome back</h2>
+<p class="text-on-surface-variant font-medium text-sm lg:text-base">You have 2 new internship and hackathon updates today.</p>
+</div>
+<div class="flex gap-3">
+<div class="flex items-center gap-2 px-4 py-2 bg-secondary-container/30 text-secondary rounded-full font-semibold text-xs border border-secondary/10">
+<span class="material-symbols-outlined text-sm" data-icon="auto_awesome" style='font-variation-settings: "FILL" 1;'>auto_awesome</span>
+                        Personalized Filter Active
+                    </div>
+</div>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-12 gap-6">
+<!-- Smart Recommendations Section -->
+<div class="col-span-12">
+<div class="flex items-center justify-between mb-6">
+<h3 class="font-manrope font-bold text-xl text-on-surface">Top Opportunities</h3>
+<button class="text-primary font-bold text-sm hover:underline">Explore Explorer</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Recommendation Card 1: Internship -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm border border-transparent hover:border-outline-variant/20 hover:shadow-md transition-all group">
+<div class="flex justify-between items-start mb-4">
+<div class="bg-tertiary-fixed text-on-tertiary-fixed-variant px-2.5 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider">Internship</div>
+<button class="text-slate-400 group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="bookmark">bookmark</span>
+</button>
+</div>
+<h4 class="font-bold text-on-surface mb-1 text-lg leading-snug">Data Analyst Summer Intern</h4>
+<p class="text-primary text-xs font-bold mb-2">FinTech Solutions</p>
+<p class="text-on-surface-variant text-xs mb-4">Location: Remote / Trivandrum</p>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="px-2 py-0.5 bg-surface-container-high rounded text-[10px] text-slate-600 font-medium">Python</span>
+<span class="px-2 py-0.5 bg-surface-container-high rounded text-[10px] text-slate-600 font-medium">SQL</span>
+<span class="px-2 py-0.5 bg-surface-container-high rounded text-[10px] text-slate-600 font-medium">Tableau</span>
+</div>
+<div class="pt-4 border-t border-slate-50 flex items-center justify-between">
+<span class="text-[10px] text-slate-400">Match score: 94%</span>
+<div class="flex items-center gap-1 text-primary text-xs font-bold cursor-pointer hover:underline">
+                                    Apply Now <span class="material-symbols-outlined text-xs" data-icon="arrow_forward">arrow_forward</span>
+</div>
+</div>
+</div>
+<!-- Recommendation Card 2: Hackathon -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm border border-transparent hover:border-outline-variant/20 hover:shadow-md transition-all group">
+<div class="flex justify-between items-start mb-4">
+<div class="bg-secondary-container text-on-secondary-container px-2.5 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider">Hackathon</div>
+<button class="text-slate-400 group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="bookmark">bookmark</span>
+</button>
+</div>
+<h4 class="font-bold text-on-surface mb-1 text-lg leading-snug">Global AI Innovation Challenge</h4>
+<p class="text-primary text-xs font-bold mb-2">Tech Giants Foundation</p>
+<p class="text-on-surface-variant text-xs mb-4">Prizes: $10,000 + Incubation</p>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="px-2 py-0.5 bg-surface-container-high rounded text-[10px] text-slate-600 font-medium">Machine Learning</span>
+<span class="px-2 py-0.5 bg-surface-container-high rounded text-[10px] text-slate-600 font-medium">Cloud Dev</span>
+</div>
+<div class="pt-4 border-t border-slate-50 flex items-center justify-between">
+<span class="text-[10px] text-slate-400">Registration Closes in 3 days</span>
+<div class="flex items-center gap-1 text-primary text-xs font-bold cursor-pointer hover:underline">
+                                    Register <span class="material-symbols-outlined text-xs" data-icon="arrow_forward">arrow_forward</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Activity Breakdown -->
+<div class="col-span-12 lg:col-span-8 bg-surface-container-lowest p-6 rounded-xl shadow-sm mt-4">
+<h3 class="font-manrope font-bold text-xl text-on-surface mb-6">Recent Activity</h3>
+<div class="space-y-6">
+<div class="flex items-center gap-4 group">
+<div class="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all">
+<span class="material-symbols-outlined" data-icon="edit_note">edit_note</span>
+</div>
+<div class="flex-1">
+<p class="text-sm font-bold text-on-surface">Application Started</p>
+<p class="text-xs text-on-surface-variant">Global Leadership Internship Summer Program</p>
+</div>
+<span class="text-xs text-slate-400">2h ago</span>
+</div>
+<div class="flex items-center gap-4 group">
+<div class="w-12 h-12 rounded-xl bg-green-50 flex items-center justify-center text-secondary group-hover:bg-secondary group-hover:text-white transition-all">
+<span class="material-symbols-outlined" data-icon="terminal">terminal</span>
+</div>
+<div class="flex-1">
+<p class="text-sm font-bold text-on-surface">Hackathon Update</p>
+<p class="text-xs text-on-surface-variant">Team 'CodeCurators' formed for the AI Challenge</p>
+</div>
+<span class="text-xs text-slate-400">Yesterday</span>
+</div>
+</div>
+</div>
+<!-- Mentors Sidebar -->
+<div class="col-span-12 lg:col-span-4 space-y-6 lg:mt-4">
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm">
+<h3 class="font-manrope font-bold text-lg text-on-surface mb-6">Expert Mentors</h3>
+<div class="space-y-4">
+<div class="flex items-center gap-3">
+<img alt="Mentor portrait" class="h-10 w-10 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtr6EeU_94ee-fd2JBzXg2qMBW9DkK8yGg21l85qZr540Rx8EcMMaVpWcmbY-MhbqO-psCI_gQ5TM4Y01-EPTTMdeL2VkfY_0ar0Hh9oOVpY2_kgvhbp5u7Y82zuHGGopm2GpT3JfPjRt9EfnExaKeKYaGOj_CX8EmsH7svH6Z1halWg6753h-XwX-sEk0bDwl570lbwT5eQYw3TT-YKn-UgSyefJNrAyl1q1QtWyER7Bhd2bm_XVq3Hb007I7iMvx8vj77pxJrwE"/>
+<div>
+<p class="text-sm font-bold text-on-surface leading-tight">Prof. Elena Rodriguez</p>
+<p class="text-[10px] text-on-surface-variant">Tech &amp; Career Advisor</p>
+</div>
+<button class="ml-auto p-2 hover:bg-slate-50 text-primary rounded-lg transition-colors">
+<span class="material-symbols-outlined text-xl" data-icon="chat_bubble">chat_bubble</span>
+</button>
+</div>
+</div>
+<button class="w-full mt-6 py-2 bg-primary-fixed text-primary font-bold text-xs rounded-lg hover:bg-primary hover:text-white transition-all">
+                            Connect with More
+                        </button>
+</div>
+<!-- Insight Card -->
+<div class="bg-gradient-to-br from-tertiary to-tertiary-container p-6 rounded-xl text-white shadow-lg shadow-tertiary/10">
+<span class="material-symbols-outlined text-3xl mb-4" data-icon="lightbulb" style='font-variation-settings: "FILL" 1;'>lightbulb</span>
+<h4 class="font-bold mb-2">Hackathon Pro-tip</h4>
+<p class="text-xs text-white/80 leading-relaxed mb-4">Applying to internships after a hackathon increases your response rate by 2.5x.</p>
+<button class="text-xs font-bold underline decoration-2 underline-offset-4">Browse Hackathons</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer (Hidden on mobile) -->
+<footer class="hidden lg:block w-full py-12 px-8 bg-slate-50 mt-12 border-t border-slate-200">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="text-center md:text-left">
+<p class="font-manrope font-bold text-slate-900 text-lg mb-1">Edu Navigator</p>
+<p class="font-plus-jakarta text-xs text-slate-500">© 2024 Edu Navigator. All rights reserved.</p>
+</div>
+<div class="flex gap-8">
+<a class="text-slate-500 hover:text-blue-500 transition-colors text-xs font-medium" href="#">Terms of Service</a>
+<a class="text-slate-500 hover:text-blue-500 transition-colors text-xs font-medium" href="#">Privacy Policy</a>
+<a class="text-slate-500 hover:text-blue-500 transition-colors text-xs font-medium" href="#">Help Center</a>
+</div>
+</div>
+</footer>
+<!-- Bottom Navigation (Mobile Only) -->
+<nav class="lg:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200 flex items-center justify-around h-16 z-50 px-4">
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined" data-icon="home" style='font-variation-settings: "FILL" 1;'>home</span>
+<span class="text-[10px] font-bold">Home</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined" data-icon="explore">explore</span>
+<span class="text-[10px] font-medium">Explorer</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined" data-icon="bookmark">bookmark</span>
+<span class="text-[10px] font-medium">Saved</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="text-[10px] font-medium">Profile</span>
+</a>
+</nav>
+</main>
+</body></html>

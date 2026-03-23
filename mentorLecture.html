@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Add Video Link | Edu Navigator</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-fixed-dim": "#55d7ed",
+              "on-surface": "#191c1d",
+              "surface-container-highest": "#e1e3e4",
+              "primary": "#0040a1",
+              "on-primary-fixed": "#001847",
+              "surface-container": "#edeeef",
+              "outline": "#737785",
+              "surface-container-lowest": "#ffffff",
+              "error-container": "#ffdad6",
+              "on-surface-variant": "#424654",
+              "on-tertiary-container": "#74eaff",
+              "surface-variant": "#e1e3e4",
+              "on-tertiary-fixed-variant": "#004e59",
+              "on-secondary": "#ffffff",
+              "surface-bright": "#f8f9fa",
+              "primary-container": "#0056d2",
+              "on-error": "#ffffff",
+              "primary-fixed-dim": "#b2c5ff",
+              "primary-fixed": "#dae2ff",
+              "inverse-on-surface": "#f0f1f2",
+              "tertiary-fixed": "#9eefff",
+              "on-secondary-fixed-variant": "#005312",
+              "background": "#f8f9fa",
+              "secondary-container": "#a0f399",
+              "secondary-fixed-dim": "#88d982",
+              "on-error-container": "#93000a",
+              "on-background": "#191c1d",
+              "surface-container-low": "#f3f4f5",
+              "tertiary-container": "#006976",
+              "surface": "#f8f9fa",
+              "surface-tint": "#0056d2",
+              "outline-variant": "#c3c6d6",
+              "surface-dim": "#d9dadb",
+              "secondary": "#1b6d24",
+              "on-primary-container": "#ccd8ff",
+              "inverse-surface": "#2e3132",
+              "secondary-fixed": "#a3f69c",
+              "inverse-primary": "#b2c5ff",
+              "on-tertiary-fixed": "#001f24",
+              "surface-container-high": "#e7e8e9",
+              "on-primary-fixed-variant": "#0040a1",
+              "on-tertiary": "#ffffff",
+              "on-primary": "#ffffff",
+              "tertiary": "#004f5a",
+              "on-secondary-fixed": "#002204",
+              "error": "#ba1a1a",
+              "on-secondary-container": "#217128"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Plus Jakarta Sans"],
+              "label": ["Plus Jakarta Sans"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        h1, h2, h3 { font-family: 'Manrope', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface-container-low text-on-surface">
+<!-- SideNavBar Component -->
+<aside class="h-screen w-64 fixed left-0 top-0 overflow-y-auto bg-slate-50 dark:bg-slate-950 border-r border-slate-200 dark:border-slate-800 flex flex-col py-6 z-50">
+<div class="px-6 mb-10 flex items-center gap-3">
+<div class="w-10 h-10 bg-primary rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined text-white" data-icon="school">school</span>
+</div>
+<div>
+<h1 class="font-manrope font-black text-blue-900 dark:text-white text-lg leading-tight">Edu Navigator</h1>
+<p class="text-xs text-slate-500 font-medium">Mentor Portal</p>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-300 hover:bg-blue-50/50 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-medium text-sm">Dashboard</span>
+</a>
+<!-- Active State: Resources -->
+<a class="flex items-center gap-3 px-4 py-3 text-blue-700 dark:text-blue-400 font-bold border-r-4 border-blue-700 dark:border-blue-400 bg-blue-50/50 dark:bg-blue-900/20 scale-102 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="folder_open">folder_open</span>
+<span class="font-medium text-sm">Resources</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-300 hover:bg-blue-50/50 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="event_available">event_available</span>
+<span class="font-medium text-sm">Workshops</span>
+</a>
+</nav>
+<div class="px-4 mt-8">
+<button class="w-full bg-primary hover:bg-primary-container text-white py-3 rounded-xl font-bold flex items-center justify-center gap-2 transition-all active:scale-95">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+<span class="text-sm">Create Workshop</span>
+</button>
+</div>
+<div class="mt-auto border-t border-slate-200 dark:border-slate-800 pt-4 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:text-blue-600 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-medium text-sm">Profile Settings</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:text-error transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="font-medium text-sm">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-64 min-h-screen">
+<!-- TopAppBar Component -->
+<header class="w-full sticky top-0 z-40 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md shadow-sm flex items-center justify-between px-8 py-3 h-16">
+<div class="flex items-center flex-1 max-w-xl">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" data-icon="search">search</span>
+<input class="w-full bg-slate-100 dark:bg-slate-800 border-none rounded-full py-2 pl-10 pr-4 focus:ring-2 focus:ring-blue-700/20 text-sm" placeholder="Search resources, students, or classes..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-slate-500 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-full transition-colors active:scale-95">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 text-slate-500 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-full transition-colors active:scale-95">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+</button>
+<div class="h-8 w-[1px] bg-slate-200 dark:bg-slate-700 mx-2"></div>
+<div class="flex items-center gap-3 pl-2">
+<div class="text-right hidden sm:block">
+<p class="text-xs font-bold text-on-surface">Dr. Elena Rodriguez</p>
+<p class="text-[10px] text-slate-500">Senior Mentor</p>
+</div>
+<img alt="Mentor Profile Avatar" class="w-10 h-10 rounded-full object-cover border-2 border-primary/10" data-alt="Professional female portrait for profile avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuByCsu47X2k9NPuPC2e4vpXoZ490A-zvUs_sol2GFwqdZ32q5HZQgiABSHBPzxSt8kxFE212e6IBGa7sKrHEOeu4pgOrlBSqK1pWpQKKHd97OZa6L-PnIN5a3XZAwwNnUjQ9FknQSwKSu_egouSZQD158wzvph8b5Ius6BL5Y6AmBxvc-oeJwcN6ewo0QjlJT1DhFmAg2rj6fPQEFnqcU2t8T8mzd7Er0pGZl0EMbfTxkr3du7wCn_GPfS033zrfnRGSnarjbpwme4"/>
+</div>
+</div>
+</header>
+<!-- Form Content -->
+<div class="p-8 max-w-4xl mx-auto">
+<!-- Breadcrumbs -->
+<nav class="flex items-center gap-2 mb-6 text-sm">
+<a class="text-slate-500 hover:text-primary" href="#">Resources</a>
+<span class="material-symbols-outlined text-xs text-slate-400" data-icon="chevron_right">chevron_right</span>
+<span class="text-primary font-bold">Add Video Link</span>
+</nav>
+<div class="mb-10">
+<h2 class="text-3xl font-manrope font-extrabold text-on-surface tracking-tight mb-2">Publish New Resource</h2>
+<p class="text-on-surface-variant max-w-2xl">Share high-quality educational content with your students. Ensure video links are public or unlisted for accessibility.</p>
+</div>
+<!-- Single Column Form Container -->
+<div class="space-y-6">
+<div class="bg-surface-container-lowest p-8 rounded-xl shadow-sm border border-transparent">
+<div class="space-y-6">
+<!-- Title Field -->
+<div>
+<label class="block text-sm font-semibold text-on-surface-variant mb-2" for="video-title">Video Title</label>
+<input class="w-full bg-surface-container-high border-none rounded-lg py-3 px-4 focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary/20 text-on-surface placeholder:text-slate-400 transition-all" id="video-title" placeholder="e.g., Advanced Quantum Mechanics - Lecture 1" type="text"/>
+</div>
+<!-- YouTube Link Field -->
+<div>
+<label class="block text-sm font-semibold text-on-surface-variant mb-2" for="video-link">YouTube Link</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" data-icon="link">link</span>
+<input class="w-full bg-surface-container-high border-none rounded-lg py-3 pl-12 pr-4 focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary/20 text-on-surface placeholder:text-slate-400 transition-all" id="video-link" placeholder="https://www.youtube.com/watch?v=..." type="url"/>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Category Field -->
+<div>
+<label class="block text-sm font-semibold text-on-surface-variant mb-2" for="category">Category</label>
+<select class="w-full bg-surface-container-high border-none rounded-lg py-3 px-4 focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary/20 text-on-surface appearance-none cursor-pointer transition-all" id="category">
+<option disabled="" selected="" value="">Select a field</option>
+<option value="physics">Physics</option>
+<option value="cs">Computer Science</option>
+<option value="math">Mathematics</option>
+<option value="bio">Biology</option>
+</select>
+</div>
+<!-- Visibility Status -->
+<div>
+<label class="block text-sm font-semibold text-on-surface-variant mb-2">Status</label>
+<div class="flex items-center bg-secondary-container/30 px-4 py-3 rounded-lg border border-secondary-container/50">
+<span class="material-symbols-outlined text-secondary mr-2" data-icon="visibility" data-weight="fill" style="font-variation-settings: 'FILL' 1;">visibility</span>
+<span class="text-on-secondary-container text-sm font-bold">Public Release</span>
+</div>
+</div>
+</div>
+<!-- Description Field -->
+<div>
+<label class="block text-sm font-semibold text-on-surface-variant mb-2" for="description">Description</label>
+<textarea class="w-full bg-surface-container-high border-none rounded-lg py-3 px-4 focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary/20 text-on-surface placeholder:text-slate-400 transition-all resize-none" id="description" placeholder="Provide a brief overview of the topics covered in this lecture..." rows="5"></textarea>
+</div>
+</div>
+</div>
+<!-- Form Actions -->
+<div class="flex items-center gap-4">
+<button class="bg-gradient-to-br from-primary to-primary-container text-white px-8 py-3 rounded-xl font-bold hover:scale-[1.02] transition-transform active:scale-95 shadow-lg shadow-primary/20">
+                            Publish Video
+                        </button>
+<button class="bg-transparent text-primary hover:bg-primary-fixed/30 px-8 py-3 rounded-xl font-bold transition-all active:scale-95">
+                            Cancel
+                        </button>
+</div>
+<!-- Recent Resource (Editorial Break) -->
+<div class="p-6 bg-transparent border border-outline-variant/15 rounded-xl max-w-md">
+<p class="text-[10px] uppercase tracking-widest font-bold text-slate-500 mb-4">Last Published</p>
+<div class="flex gap-4 items-center">
+<div class="w-20 h-14 rounded-lg bg-slate-200 overflow-hidden shrink-0">
+<img alt="Recent video thumbnail" class="w-full h-full object-cover" data-alt="Abstract science visualization for video thumbnail" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFw2pc7dj8WQy5WTTzb8-cIou4GnOq5uqLTRHhmddLOplWlA6niRUf7rzrR94kUJCI9-Uz93Mb53o_TWOa7Yw1rfzQdKYSuiwmBJYDJ8lHKOUEiS8OegXtsrHXLf8YZDor4DVb0qeAyMidemQlYAyv0JZHuhuOSuChiE_tpx1H6edkPIIvV_9vsNS37tSYsEbt2xeeTORb2Bvm_xhIH2bUlX2B2AEBC7BEHaqI-hRSBX48343c6Iv4eTwIqgc4YeNqWi2E-WNYm38"/>
+</div>
+<div>
+<h4 class="text-sm font-bold leading-tight mb-1">Introduction to String Theory</h4>
+<p class="text-xs text-slate-500">2 days ago • Physics</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer / Bottom Spacer -->
+<footer class="p-8 text-center">
+<p class="text-xs text-slate-400">© 2024 Edu Navigator Mentor Portal. All resources are subject to Academic Integrity Policies.</p>
+</footer>
+</main>
+</body></html>

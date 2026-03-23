@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Scholar Stream | Mastering the Ivy League SOP</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-surface-variant": "#424654",
+                        "secondary-fixed-dim": "#88d982",
+                        "surface-container-high": "#e7e8e9",
+                        "primary-fixed-dim": "#b2c5ff",
+                        "outline": "#737785",
+                        "tertiary-fixed-dim": "#55d7ed",
+                        "on-primary": "#ffffff",
+                        "secondary-container": "#a0f399",
+                        "on-secondary-fixed-variant": "#005312",
+                        "surface": "#f8f9fa",
+                        "secondary-fixed": "#a3f69c",
+                        "surface-container": "#edeeef",
+                        "tertiary-fixed": "#9eefff",
+                        "on-tertiary-fixed": "#001f24",
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface": "#191c1d",
+                        "surface-container-highest": "#e1e3e4",
+                        "on-secondary-fixed": "#002204",
+                        "surface-container-low": "#f3f4f5",
+                        "on-primary-fixed": "#001847",
+                        "inverse-surface": "#2e3132",
+                        "on-background": "#191c1d",
+                        "inverse-primary": "#b2c5ff",
+                        "secondary": "#1b6d24",
+                        "on-tertiary-container": "#74eaff",
+                        "error-container": "#ffdad6",
+                        "primary": "#0040a1",
+                        "on-tertiary-fixed-variant": "#004e59",
+                        "primary-fixed": "#dae2ff",
+                        "on-error-container": "#93000a",
+                        "primary-container": "#0056d2",
+                        "outline-variant": "#c3c6d6",
+                        "background": "#f8f9fa",
+                        "on-error": "#ffffff",
+                        "inverse-on-surface": "#f0f1f2",
+                        "surface-variant": "#e1e3e4",
+                        "tertiary-container": "#006976",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed-variant": "#0040a1",
+                        "on-primary-container": "#ccd8ff",
+                        "error": "#ba1a1a",
+                        "on-secondary-container": "#217128",
+                        "tertiary": "#004f5a",
+                        "surface-dim": "#d9dadb",
+                        "surface-tint": "#0056d2",
+                        "surface-bright": "#f8f9fa"
+                    },
+                    fontFamily: {
+                        "headline": ["Manrope"],
+                        "body": ["Plus Jakarta Sans"],
+                        "label": ["Plus Jakarta Sans"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .bg-glass {
+            backdrop-filter: blur(20px);
+        }
+        .main-gradient-button {
+            background: linear-gradient(135deg, #0040a1 0%, #0056d2 100%);
+        }
+        .hero-mesh {
+            background-color: #f8f9fa;
+            background-image: radial-gradient(at 0% 0%, #dae2ff 0, transparent 50%), radial-gradient(at 100% 0%, #a0f399 0, transparent 50%);
+        }
+    </style>
+</head>
+<body class="bg-background font-body text-on-surface selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl shadow-sm dark:shadow-none h-20">
+<div class="flex justify-between items-center h-full px-8 max-w-7xl mx-auto">
+<div class="text-2xl font-bold tracking-tighter text-blue-900 dark:text-blue-100 font-headline">Scholar Stream</div>
+<div class="hidden md:flex items-center space-x-8">
+<a class="font-headline text-sm font-semibold tracking-wide text-blue-700 dark:text-blue-400 border-b-2 border-blue-700 dark:border-blue-400 pb-1" href="#">Workshops</a>
+<a class="font-headline text-sm font-semibold tracking-wide text-slate-600 dark:text-slate-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors duration-200" href="#">Scholarships</a>
+<a class="font-headline text-sm font-semibold tracking-wide text-slate-600 dark:text-slate-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors duration-200" href="#">Mentorship</a>
+<a class="font-headline text-sm font-semibold tracking-wide text-slate-600 dark:text-slate-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors duration-200" href="#">Archive</a>
+</div>
+<div class="flex items-center space-x-4">
+<button class="text-slate-600 dark:text-slate-400 font-headline text-sm font-semibold hover:text-blue-800 transition-colors">Sign In</button>
+<button class="main-gradient-button text-white px-6 py-2.5 rounded-lg font-headline text-sm font-semibold hover:scale-105 transition-transform duration-200 shadow-sm">Create Account</button>
+</div>
+</div>
+</nav>
+<main class="pt-20">
+<!-- Hero & Form Section -->
+<section class="hero-mesh min-h-[921px] flex items-center py-16 px-8">
+<div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+<!-- Left Content: Editorial Information -->
+<div class="lg:col-span-7 space-y-8">
+<div class="inline-flex items-center px-4 py-1 rounded-full bg-secondary-container text-on-secondary-container font-label text-xs font-bold tracking-widest uppercase">
+                        Exclusive Masterclass
+                    </div>
+<h1 class="font-headline text-5xl md:text-6xl font-extrabold text-on-surface leading-[1.1] tracking-tight">
+                        Mastering the <span class="text-primary">Ivy League</span> Statement of Purpose
+                    </h1>
+<p class="text-lg text-on-surface-variant max-w-2xl leading-relaxed">
+                        Transform your academic journey with a strategic deep-dive into narrative crafting. Learn how to articulate your vision, align with institutional values, and secure your place at the world's most prestigious universities.
+                    </p>
+<div class="flex flex-wrap gap-6 items-center py-4">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-xl bg-surface-container-highest flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+</div>
+<div>
+<p class="text-xs font-bold font-label uppercase tracking-wider text-outline">Date</p>
+<p class="font-headline font-bold text-on-surface">Oct 24, 2024</p>
+</div>
+</div>
+<div class="flex items-center gap-3 border-l border-outline-variant/30 pl-6">
+<div class="w-12 h-12 rounded-xl bg-surface-container-highest flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="schedule">schedule</span>
+</div>
+<div>
+<p class="text-xs font-bold font-label uppercase tracking-wider text-outline">Time</p>
+<p class="font-headline font-bold text-on-surface">6:00 PM - 8:00 PM EST</p>
+</div>
+</div>
+</div>
+<!-- Highlights Bento -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
+<div class="bg-surface-container-lowest p-6 rounded-2xl flex items-center gap-4 hover:bg-surface-bright transition-all duration-300">
+<div class="bg-tertiary-fixed w-10 h-10 rounded-full flex items-center justify-center text-on-tertiary-fixed-variant">
+<span class="material-symbols-outlined" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<div>
+<p class="font-headline font-bold text-on-surface">Verified Certificate</p>
+<p class="text-xs text-on-surface-variant">Industry recognized credential</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-2xl flex items-center gap-4 hover:bg-surface-bright transition-all duration-300">
+<div class="bg-secondary-fixed w-10 h-10 rounded-full flex items-center justify-center text-on-secondary-fixed-variant">
+<span class="material-symbols-outlined" data-icon="groups" style="font-variation-settings: 'FILL' 1;">groups</span>
+</div>
+<div>
+<p class="font-headline font-bold text-on-surface">250+ Students Joined</p>
+<p class="text-xs text-on-surface-variant">Join a thriving global cohort</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Content: Registration Form -->
+<div class="lg:col-span-5">
+<div class="bg-surface-container-lowest p-8 md:p-10 rounded-3xl shadow-lg shadow-on-surface/[0.04]">
+<h2 class="font-headline text-2xl font-bold text-on-surface mb-2">Secure Your Spot</h2>
+<p class="text-sm text-on-surface-variant mb-8">Limited seats available for the live Q&amp;A session.</p>
+<form action="#" class="space-y-6">
+<div class="space-y-1.5">
+<label class="font-label text-xs font-bold text-on-surface-variant uppercase tracking-wider block ml-1">Full Name</label>
+<input class="w-full bg-surface-container-high border-none rounded-xl px-4 py-3.5 focus:ring-2 focus:ring-primary focus:bg-white transition-all outline-none text-on-surface" placeholder="Alex Thompson" type="text"/>
+</div>
+<div class="space-y-1.5">
+<label class="font-label text-xs font-bold text-on-surface-variant uppercase tracking-wider block ml-1">Gmail ID</label>
+<input class="w-full bg-surface-container-high border-none rounded-xl px-4 py-3.5 focus:ring-2 focus:ring-primary focus:bg-white transition-all outline-none text-on-surface" placeholder="alex@gmail.com" type="email"/>
+</div>
+<div class="space-y-1.5">
+<label class="font-label text-xs font-bold text-on-surface-variant uppercase tracking-wider block ml-1">College Name</label>
+<input class="w-full bg-surface-container-high border-none rounded-xl px-4 py-3.5 focus:ring-2 focus:ring-primary focus:bg-white transition-all outline-none text-on-surface" placeholder="Harvard University" type="text"/>
+</div>
+<div class="space-y-1.5">
+<label class="font-label text-xs font-bold text-on-surface-variant uppercase tracking-wider block ml-1">Phone Number</label>
+<input class="w-full bg-surface-container-high border-none rounded-xl px-4 py-3.5 focus:ring-2 focus:ring-primary focus:bg-white transition-all outline-none text-on-surface" placeholder="+1 (555) 000-0000" type="tel"/>
+</div>
+<button class="w-full main-gradient-button text-white py-4 rounded-xl font-headline font-bold text-lg hover:scale-[1.02] transition-transform shadow-md mt-4" type="submit">
+                                Register Now
+                            </button>
+<p class="text-center text-[10px] text-outline px-4 leading-relaxed">
+                                By registering, you agree to Scholar Stream's Terms of Service and Privacy Policy. A confirmation link will be sent to your email.
+                            </p>
+</form>
+</div>
+</div>
+</div>
+</section>
+<!-- Secondary Detail Section -->
+<section class="bg-surface py-24 px-8 border-t border-outline-variant/10">
+<div class="max-w-7xl mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+<div class="space-y-4">
+<span class="material-symbols-outlined text-primary text-4xl" data-icon="history_edu">history_edu</span>
+<h3 class="font-headline text-xl font-bold">Narrative Mastery</h3>
+<p class="text-on-surface-variant leading-relaxed">Move beyond standard templates and learn to tell a story that resonates with admission committees on a human level.</p>
+</div>
+<div class="space-y-4">
+<span class="material-symbols-outlined text-primary text-4xl" data-icon="architecture">architecture</span>
+<h3 class="font-headline text-xl font-bold">Structural Precision</h3>
+<p class="text-on-surface-variant leading-relaxed">Understand the architecture of a winning SOP, from the opening hook to the decisive conclusion.</p>
+</div>
+<div class="space-y-4">
+<span class="material-symbols-outlined text-primary text-4xl" data-icon="forum">forum</span>
+<h3 class="font-headline text-xl font-bold">Live Mentorship</h3>
+<p class="text-on-surface-variant leading-relaxed">Get your specific questions answered during our 30-minute interactive deep-dive and case study review.</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-16 mt-auto bg-slate-100 dark:bg-slate-950">
+<div class="flex flex-col md:flex-row justify-between items-center px-12 max-w-7xl mx-auto border-t border-slate-200/50 dark:border-slate-800/50 pt-12">
+<div class="mb-8 md:mb-0">
+<span class="font-headline font-extrabold text-blue-900 dark:text-blue-100 text-xl">Scholar Stream</span>
+<p class="font-body text-xs text-slate-500 mt-2 uppercase tracking-widest">© 2024 Scholar Stream. The Academic Curator.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-8">
+<a class="font-body text-xs uppercase tracking-widest text-slate-500 hover:text-blue-600 transition-all" href="#">Privacy Policy</a>
+<a class="font-body text-xs uppercase tracking-widest text-slate-500 hover:text-blue-600 transition-all" href="#">Terms of Service</a>
+<a class="font-body text-xs uppercase tracking-widest text-slate-500 hover:text-blue-600 transition-all" href="#">Accessibility</a>
+<a class="font-body text-xs uppercase tracking-widest text-slate-500 hover:text-blue-600 transition-all" href="#">Contact Support</a>
+<a class="font-body text-xs uppercase tracking-widest text-slate-500 hover:text-blue-600 transition-all" href="#">About Us</a>
+</div>
+</div>
+</footer>
+</body></html>
