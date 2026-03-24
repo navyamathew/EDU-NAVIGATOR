@@ -92,7 +92,7 @@
 <header class="w-full top-0 sticky z-50 bg-[#f8f9fa] shadow-[0_2px_8px_rgba(25,28,29,0.02)]">
 <div class="flex items-center justify-between px-6 py-4 max-w-7xl mx-auto">
 <div class="flex items-center gap-4">
-<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-high transition-colors">
+<button onclick="window.location.href='StudHome.html'" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-high transition-colors">
 <span class="material-symbols-outlined text-on-surface">arrow_back</span>
 </button>
 <h1 class="font-headline font-bold tracking-tight text-[#191c1d] text-xl">The Curator</h1>
@@ -102,7 +102,7 @@
 </div>
 </div>
 </header>
-<main class="max-w-md mx-auto px-6 pt-10 pb-32 bg-mesh min-h-[calc(100vh-72px)]">
+<main class="max-w-md mx-auto px-6 pt-10 pb-10 bg-mesh min-h-[calc(100vh-72px)]">
 <!-- Editorial Header -->
 <div class="mb-12">
 <h2 class="font-headline text-3xl font-extrabold text-on-surface tracking-tight mb-3">
@@ -115,7 +115,7 @@
 <!-- Preference Grid -->
 <div class="space-y-4">
 <!-- Scholarships Tile -->
-<div class="group relative overflow-hidden bg-surface-container-lowest rounded-[1.5rem] p-6 transition-all duration-300 hover:bg-surface-bright active:scale-95 shadow-[0_2px_8px_rgba(25,28,29,0.02)] cursor-pointer outline-primary/0 outline outline-2 hover:outline-primary/10">
+<div onclick="window.location.href='ScholarListing.html'" class="group relative overflow-hidden bg-surface-container-lowest rounded-[1.5rem] p-6 transition-all duration-300 hover:bg-surface-bright active:scale-95 shadow-[0_2px_8px_rgba(25,28,29,0.02)] cursor-pointer outline-primary/0 outline outline-2 hover:outline-primary/10">
 <div class="flex items-start justify-between">
 <div class="space-y-4">
 <div class="w-12 h-12 rounded-2xl bg-primary-fixed flex items-center justify-center text-primary">
@@ -132,7 +132,7 @@
 </div>
 </div>
 <!-- Internships Tile -->
-<div class="group relative overflow-hidden bg-surface-container-lowest rounded-[1.5rem] p-6 transition-all duration-300 hover:bg-surface-bright active:scale-95 shadow-[0_2px_8px_rgba(25,28,29,0.02)] cursor-pointer outline-primary/0 outline outline-2 hover:outline-primary/10">
+<div onclick="window.location.href='InternshipListing.html'" class="group relative overflow-hidden bg-surface-container-lowest rounded-[1.5rem] p-6 transition-all duration-300 hover:bg-surface-bright active:scale-95 shadow-[0_2px_8px_rgba(25,28,29,0.02)] cursor-pointer outline-primary/0 outline outline-2 hover:outline-primary/10">
 <div class="flex items-start justify-between">
 <div class="space-y-4">
 <div class="w-12 h-12 rounded-2xl bg-secondary-container flex items-center justify-center text-secondary">
@@ -149,7 +149,7 @@
 </div>
 </div>
 <!-- Hackathons Tile -->
-<div class="group relative overflow-hidden bg-surface-container-lowest rounded-[1.5rem] p-6 transition-all duration-300 hover:bg-surface-bright active:scale-95 shadow-[0_2px_8px_rgba(25,28,29,0.02)] cursor-pointer outline-primary/0 outline outline-2 hover:outline-primary/10">
+<div  onclick="window.location.href='HackListing.html'" class="group relative overflow-hidden bg-surface-container-lowest rounded-[1.5rem] p-6 transition-all duration-300 hover:bg-surface-bright active:scale-95 shadow-[0_2px_8px_rgba(25,28,29,0.02)] cursor-pointer outline-primary/0 outline outline-2 hover:outline-primary/10">
 <div class="flex items-start justify-between">
 <div class="space-y-4">
 <div class="w-12 h-12 rounded-2xl bg-tertiary-fixed flex items-center justify-center text-tertiary">
@@ -173,16 +173,6 @@
 <div class="w-2 h-1.5 rounded-full bg-outline-variant"></div>
 </div>
 </main>
-<!-- Fixed Action Footer -->
-<div class="fixed bottom-0 left-0 w-full p-6 bg-surface-container-lowest/80 backdrop-blur-xl">
-<div class="max-w-md mx-auto">
-<button class="w-full bg-gradient-to-br from-primary to-primary-container text-on-primary font-bold py-4 rounded-xl shadow-lg hover:scale-[1.02] active:scale-95 transition-all duration-200">
-                Save Preferences
-            </button>
-<p class="text-center text-xs text-on-surface-variant mt-4 font-medium uppercase tracking-widest">
-                Step 1 of 3
-            </p>
-</div>
-</div>
+
 <!-- BottomNavBar Suppression: This is a focused Task-Focused screen (Preferences) -->
 </body></html>

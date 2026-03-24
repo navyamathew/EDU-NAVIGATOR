@@ -88,14 +88,14 @@
 <!-- TopAppBar -->
 <header class="fixed top-0 w-full z-50 bg-[#f8f9fa] flex items-center justify-between px-6 h-16 w-full">
 <div class="flex items-center gap-4">
-<span class="material-symbols-outlined text-[#0040a1]" data-icon="menu">menu</span>
+<span onclick="window.location.href='OL1.html'" class="material-symbols-outlined text-[#0040a1] cursor-pointer">arrow_back</span>
 <span class="font-['Manrope'] font-bold text-2xl tracking-tight text-[#0040a1]">Curator</span>
 </div>
 <div class="w-8 h-8 rounded-full bg-surface-container-highest overflow-hidden">
 <img alt="Student Profile" data-alt="User avatar placeholder for student profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQ-pxIUqr_cgqokb9kMXb_gGMeI0AqFBco9FRV8MpTJt1tLI7eOToDbUnBHLAVafHuhe_LepK3L6gZHEjqqZWjYeX2-bNukQVLFXHO5kRlIU061b_PbmjRZN0X5ldpitF4oMVC7WRIgeFGoj_P3RdDZboNR-f3uSAOQ5spuaO2Ba-Juh8cj2d_Ybqoqwt_FllLbjvfKOzixJUHvObWDDXq-LNxYBCVqNlAul-ST6rcI7Kj54wr3IfdtTnEN7mvip10mZS_te-9Ld8"/>
 </div>
 </header>
-<main class="mt-20 px-6">
+<main class="mt-20 px-6 lg:ml-64">
 <!-- Hero Section -->
 <section class="mb-8">
 <h1 class="text-[2.25rem] leading-tight font-extrabold text-primary tracking-tight mb-2">Discover Futures.</h1>
@@ -229,23 +229,43 @@
 </div>
 </div>
 </main>
-<!-- BottomNavBar -->
-<nav class="fixed bottom-0 left-0 w-full h-20 flex justify-around items-center px-4 pb-safe bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl z-50 border-t border-[#c3c6d6]/15 shadow-[0_-10px_30px_rgba(25,28,29,0.04)] rounded-t-3xl">
-<div class="flex flex-col items-center justify-center text-[#424654] px-5 py-1.5 hover:text-[#0040a1]">
-<span class="material-symbols-outlined text-2xl mb-1" data-icon="work">work</span>
-<span class="font-['Plus_Jakarta_Sans'] text-[10px] font-semibold uppercase tracking-wider">Internships</span>
+<!-- Sidebar -->
+<aside class="hidden lg:flex h-screen w-64 fixed left-0 top-0 bg-slate-50 flex-col p-4 gap-y-2 z-50 border-r border-slate-200">
+<div class="mb-8 px-2 py-4">
+  <h1 class="font-headline font-extrabold text-blue-900 text-xl tracking-tight">Edu Navigator</h1>
+  <p class="text-xs font-medium text-slate-500">Student Portal</p>
 </div>
-<div class="flex flex-col items-center justify-center text-[#424654] px-5 py-1.5 hover:text-[#0040a1]">
-<span class="material-symbols-outlined text-2xl mb-1" data-icon="terminal">terminal</span>
-<span class="font-['Plus_Jakarta_Sans'] text-[10px] font-semibold uppercase tracking-wider">Hackathons</span>
-</div>
-<div class="flex flex-col items-center justify-center bg-[#dae2ff] text-[#0040a1] rounded-2xl px-5 py-1.5">
-<span class="material-symbols-outlined text-2xl mb-1" data-icon="school" style="font-variation-settings: 'FILL' 1;">school</span>
-<span class="font-['Plus_Jakarta_Sans'] text-[10px] font-semibold uppercase tracking-wider">Scholarships</span>
-</div>
-<div class="flex flex-col items-center justify-center text-[#424654] px-5 py-1.5 hover:text-[#0040a1]">
-<span class="material-symbols-outlined text-2xl mb-1" data-icon="bookmark">bookmark</span>
-<span class="font-['Plus_Jakarta_Sans'] text-[10px] font-semibold uppercase tracking-wider">Saved</span>
-</div>
+<nav class="flex-1 flex flex-col gap-y-1">
+  <a href="StudHome.html" class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg transition-all">
+    <span class="material-symbols-outlined">dashboard</span>
+    <span class="text-sm">HOME</span>
+  </a>
+  <a href="OL1.html" class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg transition-all">
+    <span class="material-symbols-outlined">explore</span>
+    <span class="text-sm uppercase">Opportunity Listing</span>
+  </a>
+  <a href="MentorList.html" class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg transition-all">
+    <span class="material-symbols-outlined">groups</span>
+    <span class="text-sm uppercase">Mentor</span>
+  </a>
+  <a href="EventListing.html" class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg transition-all">
+    <span class="material-symbols-outlined">event</span>
+    <span class="text-sm">Events</span>
+  </a>
+  <a href="Notification.html" class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg transition-all">
+    <span class="material-symbols-outlined">notifications</span>
+    <span class="text-sm">Notifications</span>
+  </a>
+  <a href="StudProfileSetting.html" class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg transition-all">
+    <span class="material-symbols-outlined">settings</span>
+    <span class="text-sm">Settings</span>
+  </a>
 </nav>
+<div class="mt-auto pt-4 border-t border-slate-200/60">
+  <a href="StudHome.html" class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg transition-all">
+    <span class="material-symbols-outlined">help</span>
+    <span class="text-sm">Help Center</span>
+  </a>
+</div>
+</aside>
 </body></html>

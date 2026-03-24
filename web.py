@@ -145,14 +145,22 @@ def login():
     db.collection("users").document(uid).set({
         "email": email,
         "provider": "password",
-        "role": role
     }, merge=True)
+
+    user_doc = db.collection("users").document(uid).get()
+    user_data = user_doc.to_dict()
+    stored_role = user_data.get("role", "")
+    
+    if stored_role != role:
+        return jsonify({"error": f"Incorrect role. You are registered as a {stored_role}."}), 401
 
     return jsonify({
         "message": "Login successful",
         "idToken": result["idToken"],
         "refreshToken": result["refreshToken"],
-        "localId": result["localId"]
+        "localId": result["localId"],
+        "role": user.custom_claims.get("role") if user.custom_claims else role,
+        "name": user_data.get("name", "Student")
     }), 200
 
 
