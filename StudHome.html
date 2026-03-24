@@ -91,23 +91,23 @@
 <span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
 <span class="font-plus-jakarta text-sm">HOME</span>
 </a>
-<a class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg transition-all duration-300 ease-in-out" href="#">
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg transition-all duration-300 ease-in-out" href="OL1.html">
 <span class="material-symbols-outlined" data-icon="explore">explore</span>
 <span class="font-plus-jakarta text-sm uppercase">Opportunity Listing</span>
 </a>
-<a class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg transition-all duration-300 ease-in-out" href="#">
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg transition-all duration-300 ease-in-out" href="MentorList.html">
 <span class="material-symbols-outlined" data-icon="groups">groups</span>
 <span class="font-plus-jakarta text-sm uppercase">Mentor</span>
 </a>
-<a class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg transition-all duration-300 ease-in-out" href="#">
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg transition-all duration-300 ease-in-out" href="EventListing.html">
 <span class="material-symbols-outlined" data-icon="event">event</span>
 <span class="font-plus-jakarta text-sm">Events</span>
 </a>
-<a class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg transition-all duration-300 ease-in-out" href="#">
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg transition-all duration-300 ease-in-out" href="Notification.html">
 <span class="material-symbols-outlined" data-icon="notifications">notifications</span>
 <span class="font-plus-jakarta text-sm">Notifications</span>
 </a>
-<a class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg transition-all duration-300 ease-in-out" href="#">
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg transition-all duration-300 ease-in-out" href="StudProfileSetting.html">
 <span class="material-symbols-outlined" data-icon="settings">settings</span>
 <span class="font-plus-jakarta text-sm">Settings</span>
 </a>
@@ -134,12 +134,16 @@
 </div>
 </div>
 <div class="flex items-center gap-2 lg:gap-4">
-<button class="p-2 text-slate-500 hover:bg-slate-50 rounded-full transition-all duration-200">
+<button class="p-2 text-slate-500 hover:bg-slate-50 rounded-full transition-all duration-200 relative" onclick="window.location.href='Notification.html'">
 <span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span id="notifBadge" class="hidden absolute top-1 right-1 w-4 h-4 bg-red-500 text-white text-[9px] font-bold rounded-full flex items-center justify-center"></span>
 </button>
-<div class="h-8 w-8 rounded-full bg-primary-fixed overflow-hidden ring-2 ring-white ml-2 shadow-sm">
-<img alt="User profile avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7faN7oqjMhlOdA6BTq-9vQXSXCRiTihfAF0wdNxdZLUNVXfLYcsp6MDe1h_OZZKmyyv8uO8Anioqeq5KoRo6_dgRcs-TkkDAdwOo153LRrLYUjI0GtWak37D3pHfeA1uqMcWwGhCpMCy9C0KzkXbzrJkoveKsEbGB0cV6NkhX36hgDn4hSMUijG-qfg9akQi_JQmI4XDqcOKWwIlJCy_dbhJIcu1nuBkXJ1cWSN47Eqf6RMQREBZokqOOV_sbUSQfvTRkVXZbRwM"/>
-</div>
+<a href="StudProfileSet.html">
+  <div class="h-8 w-8 rounded-full bg-primary-fixed overflow-hidden ring-2 ring-white ml-2 shadow-sm cursor-pointer">
+    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7faN7oqjMhlOdA6BTq-9vQXSXCRiTihfAF0wdNxdZLUNVXfLYcsp6MDe1h_OZZKmyyv8uO8Anioqeq5KoRo6_dgRcs-TkkDAdwOo153LRrLYUjI0GtWak37D3pHfeA1uqMcWwGhCpMCy9C0KzkXbzrJkoveKsEbGB0cV6NkhX36hgDn4hSMUijG-qfg9akQi_JQmI4XDqcOKWwIlJCy_dbhJIcu1nuBkXJ1cWSN47Eqf6RMQREBZokqOOV_sbUSQfvTRkVXZbRwM" 
+         class="w-full h-full object-cover" />
+  </div>
+</a>
 </div>
 </header>
 <!-- Dashboard Content -->
@@ -147,7 +151,7 @@
 <!-- Welcome Header -->
 <div class="mb-8 lg:mb-10 flex flex-col md:flex-row md:items-end justify-between gap-6">
 <div>
-<h2 class="font-manrope text-2xl lg:text-3xl font-extrabold text-on-surface tracking-tight mb-2">Welcome back</h2>
+<h2 class="font-manrope text-2xl lg:text-3xl font-extrabold text-on-surface tracking-tight mb-2" id="welcomeName">Welcome back</h2>
 <p class="text-on-surface-variant font-medium text-sm lg:text-base">You have 2 new internship and hackathon updates today.</p>
 </div>
 <div class="flex gap-3">
@@ -289,7 +293,7 @@
 <span class="material-symbols-outlined" data-icon="home" style='font-variation-settings: "FILL" 1;'>home</span>
 <span class="text-[10px] font-bold">Home</span>
 </a>
-<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<a class="flex flex-col items-center gap-1 text-slate-400" href="OL1.html">
 <span class="material-symbols-outlined" data-icon="explore">explore</span>
 <span class="text-[10px] font-medium">Explorer</span>
 </a>
@@ -297,10 +301,52 @@
 <span class="material-symbols-outlined" data-icon="bookmark">bookmark</span>
 <span class="text-[10px] font-medium">Saved</span>
 </a>
-<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<a class="flex flex-col items-center gap-1 text-slate-400" href="StudProfileSet.html">
 <span class="material-symbols-outlined" data-icon="person">person</span>
 <span class="text-[10px] font-medium">Profile</span>
 </a>
 </nav>
 </main>
+
+<script>
+  // Check if user is logged in
+  const idToken = localStorage.getItem("idToken");
+  if (!idToken) {
+    window.location.href = "login.html";
+  }
+
+  // Load user info
+  async function loadUserInfo() {
+    const res = await fetch("http://localhost:5000/dashboard", {
+      headers: { "Authorization": idToken }
+    });
+
+    const data = await res.json();
+    if (!res.ok) {
+      window.location.href = "login.html";
+      return;
+    }
+
+    // Set name
+    const name = localStorage.getItem("userName") || "Student";
+    document.getElementById("welcomeName").textContent = "Welcome back, " + name + "!";
+  }
+
+  loadUserInfo();
+
+  async function loadNotifications() {
+  const res = await fetch("http://localhost:5000/notifications/unread", {
+    headers: { "Authorization": idToken }
+  });
+
+  const data = await res.json();
+  if (res.ok && data.length > 0) {
+    const badge = document.getElementById("notifBadge");
+    badge.textContent = data.length > 9 ? "9+" : data.length;
+    badge.classList.remove("hidden");
+  }
+}
+
+loadNotifications();
+</script>
 </body></html>

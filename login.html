@@ -137,8 +137,17 @@ async function handleLogin(e) {
 
   if (res.ok) {
     localStorage.setItem("idToken", data.idToken);
-    alert("Login successful!");
-    // window.location.href = "/dashboard"; // uncomment this when you have a dashboard page
+    localStorage.setItem("role", data.role);
+    localStorage.setItem("userName", data.name);
+
+    const role = data.role;
+    if (role === "student") {
+      window.location.href = "StudHome.html";
+    } else if (role === "mentor") {
+      window.location.href = "mentorPage.html";
+    } else {
+      alert("Admin dashboard coming soon!");
+    }
   } else {
     alert("Error: " + data.error);
   }
