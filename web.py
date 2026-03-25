@@ -1,11 +1,33 @@
 import os
 import requests
+import json 
 from datetime import datetime
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import firebase_admin
 from firebase_admin import credentials, auth, firestore
 from dotenv import load_dotenv
+
+# ... your existing imports ...
+import google.generativeai as genai
+
+load_dotenv()
+
+# --- AI CONFIGURATION START ---
+genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
+
+system_instruction = """
+You are the EDU-NAVIGATOR Matching Engine... (copy the full text from the previous message)
+"""
+
+model = genai.GenerativeModel(
+    model_name='gemini-1.5-flash',
+    system_instruction=system_instruction
+)
+# --- AI CONFIGURATION END ---
+
+app = Flask(__name__)
+# ... your Firebase init code ...
 
 # ==============================
 # LOAD ENV VARIABLES
@@ -229,6 +251,91 @@ def dashboard():
         "message": "Welcome to dashboard",
         "uid": uid
     }), 200
+
+# ==============================
+# AI RECOMMENDATIONS
+# ==============================
+@app.route("/ai/recommendations", methods=["GET"])
+def get_ai_recommendations():
+    uid, error = verify_user()
+    if error:
+        return jsonify({"error": error[0]}), error[1]
+
+    # 1. Fetch student profile
+    user_doc = db.collection("users").document(uid).get()
+    if not user_doc.exists:
+        return jsonify({"error": "Profile not found"}), 404
+    profile = user_doc.to_dict()
+
+    # 2. Fetch all posts
+    all_posts = []
+    for post_type in ["scholarship", "internship", "hackathon", "workshop"]:
+        docs = db.collection("posts").where("type", "==", post_type).stream()
+        for doc in docs:
+            data = doc.to_dict()
+            data["id"] = doc.id
+            if "created_at" in data:
+                data["created_at"] = data["created_at"].strftime("%b %d, %Y")
+            all_posts.append(data)
+
+    if not all_posts:
+        return jsonify([]), 200
+
+    # 3. Build prompt for Gemini
+    prompt = f"""
+You are an academic opportunity matching engine for a student portal in Kerala, India.
+
+STUDENT PROFILE:
+- Name: {profile.get('name', 'Unknown')}
+- Major: {profile.get('major', 'Not specified')}
+- University: {profile.get('university', 'Not specified')}
+- GPA: {profile.get('gpa', 'Not specified')}
+- Region: {profile.get('region', 'Not specified')}
+
+AVAILABLE OPPORTUNITIES (JSON):
+{json.dumps(all_posts, indent=2)}
+
+TASK:
+Analyze the student's profile and rank the top 5 most relevant opportunities for them.
+For each, provide a short 1-sentence personalized reason why it matches their profile.
+Score each opportunity from 0 to 100.
+
+RETURN ONLY valid JSON in this exact format, no markdown, no extra text:
+{{
+  "recommendations": [
+    {{
+      "post_id": "<id from the opportunity>",
+      "score": <0-100>,
+      "match_reason": "<1 sentence why this fits the student>"
+    }}
+  ]
+}}
+"""
+
+    try:
+        response = model.generate_content(prompt)
+        raw = response.text.strip()
+        # Strip markdown fences if present
+        if raw.startswith("```"):
+            raw = raw.split("```")[1]
+            if raw.startswith("json"):
+                raw = raw[4:]
+        ai_result = json.loads(raw.strip())
+    except Exception as e:
+        return jsonify({"error": f"AI error: {str(e)}"}), 500
+
+    # 4. Merge AI scores back into post data
+    post_map = {p["id"]: p for p in all_posts}
+    enriched = []
+    for rec in ai_result.get("recommendations", []):
+        post = post_map.get(rec["post_id"])
+        if post:
+            post["ai_score"] = rec["score"]
+            post["match_reason"] = rec["match_reason"]
+            enriched.append(post)
+
+    return jsonify(enriched), 200
+
 
 # ==============================
 # PROFILE

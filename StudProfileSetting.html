@@ -105,6 +105,25 @@
     </div>
   </div>
 </div>
+
+<!-- Logout Confirmation Modal -->
+<div id="logoutModal" class="hidden fixed inset-0 bg-black/50 z-50 flex items-center justify-center">
+  <div class="bg-white rounded-2xl p-8 max-w-sm w-full mx-4 shadow-xl">
+    <div class="w-12 h-12 bg-primary-container rounded-full flex items-center justify-center mb-4">
+      <span class="material-symbols-outlined text-primary">logout</span>
+    </div>
+    <h3 class="text-xl font-bold mb-2">Log Out?</h3>
+    <p class="text-on-surface-variant text-sm mb-6">Are you sure you want to log out of your account?</p>
+    <div class="flex gap-3">
+      <button onclick="closeLogoutModal()" class="flex-1 py-3 rounded-xl border border-outline-variant font-bold text-sm hover:bg-surface-container-low transition-colors">
+        Cancel
+      </button>
+      <button onclick="confirmLogout()" class="flex-1 py-3 rounded-xl bg-primary text-white font-bold text-sm hover:opacity-90 transition-colors">
+        Yes, Log Out
+      </button>
+    </div>
+  </div>
+</div>
 <body class="text-on-surface">
 <!-- SideNavBar -->
 <aside class="w-72 h-screen fixed left-0 top-0 bg-slate-50 dark:bg-slate-900 border-r border-slate-100 dark:border-slate-800 z-50 flex flex-col p-6 space-y-2">
@@ -141,13 +160,6 @@
 <span class="material-symbols-outlined text-sm" data-icon="add_circle">add_circle</span>
                 Find Scholarships
             </button>
-<div class="mt-6 flex items-center gap-3 px-2">
-<img class="w-10 h-10 rounded-full object-cover grayscale opacity-60" data-alt="Student profile placeholder" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_s_7ThfrzKTijBISK3gfLRhRRDQ6YU6Q4zOm0tbG4UzqWydFc7XAixu_JFzhhOdAwZg3xLkPcMOS7GHgTwwj2lkogsqYf3Gg9SfG6T3WYtHzSYFmakW2Sfmva2KrC3Iqn73z_5LezmXrjVyFtqzgp1BCyjU7r7rHu-kw6E5OOKX0xjYkbX-5RE5s37SkVNDwROKa0GPg7JA8b5WrHdz3KpNvcb0Wc-UmNnq6fIE87QrtVofAFAq5mXI0-6EFnn3auDEYQhtQ_KTU"/>
-<div class="overflow-hidden">
-<p class="text-sm font-bold truncate">Alex Rivera</p>
-<p class="text-xs text-on-surface-variant truncate italic">Incomplete Profile</p>
-</div>
-</div>
 </div>
 </aside>
 <!-- Main Canvas -->
@@ -339,7 +351,7 @@
 <p class="text-xs text-on-surface-variant">Archiving your account will hide your profile from all institutional discovery.</p>
 </div>
 <div class="flex gap-4">
-<button class="px-6 py-2 rounded-lg text-sm font-bold text-on-surface-variant hover:bg-surface-container-highest transition-colors">Deactivate</button>
+<button onclick="openLogoutModal()" class="px-6 py-2 rounded-lg text-sm font-bold text-on-surface-variant hover:bg-surface-container-highest transition-colors">Logout</button>
 <button onclick="openDeleteModal()" class="px-6 py-2 rounded-lg text-sm font-bold text-error border border-error/20 hover:bg-error-container/20 transition-colors">Delete Permanently</button>
 </div>
 </div>
@@ -504,6 +516,30 @@ async function deleteAccount() {
   } else {
     alert("Error: " + data.error);
   }
+}
+
+function handleLogout() {
+  if (confirm("Are you sure you want to log out?")) {
+    localStorage.removeItem("idToken");
+    localStorage.removeItem("role");
+    localStorage.removeItem("userName");
+    window.location.href = "login.html";
+  }
+}
+
+function openLogoutModal() {
+  document.getElementById("logoutModal").classList.remove("hidden");
+}
+
+function closeLogoutModal() {
+  document.getElementById("logoutModal").classList.add("hidden");
+}
+
+function confirmLogout() {
+  localStorage.removeItem("idToken");
+  localStorage.removeItem("role");
+  localStorage.removeItem("userName");
+  window.location.href = "login.html";
 }
 </script>
 
