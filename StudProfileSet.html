@@ -149,27 +149,27 @@
 <section class="bg-surface-container-lowest rounded-xl p-8 shadow-sm transition-all hover:bg-surface-bright">
 <div class="flex flex-col md:flex-row gap-8 items-start">
 <div class="relative group">
-<img class="w-32 h-32 rounded-xl object-cover shadow-lg" data-alt="Student professional portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLFIVhwuvde04u-8FBn-nIytmWZ764ZGAaH-_2hsuUelPfZmPvq9lBSgFEJh_sz3mCUJGLm8OafEBCJfhi-AugXqT-duER5xqSeqqZ4bDJw0mtkketPWixbPwEqIFQVKowxNMscQJgmWmOPldQzjSXhiRq2v69-_BMuu_bnMoER6NORLpPUQnQctkmufEsNlYvwpBpLGHF5hvgUrxfX5WB6Q45XiGy473olhm4DUaGxWU6Jk3VCPmEPXHnfYUBSBURFKGnO5PYpxQ" style="">
-<button class="absolute -bottom-2 -right-2 bg-white p-2 rounded-full shadow-md text-primary hover:scale-110 transition-transform" style="">
-<span class="material-symbols-outlined text-sm" data-icon="edit" style="">edit</span>
+<img id="profilePhoto" class="w-32 h-32 rounded-xl object-cover shadow-lg" src="" alt="Profile Photo"/>
+<button onclick="window.location.href='StudProfileSetting.html'" class="absolute -bottom-2 -right-2 bg-white p-2 rounded-full shadow-md text-primary hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-sm">edit</span>
 </button>
 </div>
 <div class="flex-1 grid grid-cols-1 md:grid-cols-2 gap-6">
 <div class="space-y-1">
 <label class="text-[0.875rem] font-medium text-on-surface-variant" style="">Full Name</label>
-<div class="bg-surface-container-high rounded-lg px-4 py-3 text-on-surface font-semibold" style="">Alex Rivera</div>
+<div id="name" class="bg-surface-container-high rounded-lg px-4 py-3 text-on-surface font-semibold"></div>
 </div>
 <div class="space-y-1">
 <label class="text-[0.875rem] font-medium text-on-surface-variant" style="">Email Address</label>
-<div class="bg-surface-container-high rounded-lg px-4 py-3 text-on-surface font-semibold" style="">a.rivera@scholarstream.edu</div>
+<div id="email" class="bg-surface-container-high rounded-lg px-4 py-3 text-on-surface font-semibold"></div>
 </div>
 <div class="space-y-1">
 <label class="text-[0.875rem] font-medium text-on-surface-variant" style="">Current Region</label>
-<div class="bg-surface-container-high rounded-lg px-4 py-3 text-on-surface font-semibold" style="">North America (EST)</div>
+<div id="region" class="bg-surface-container-high rounded-lg px-4 py-3 text-on-surface font-semibold"></div>
 </div>
 <div class="space-y-1">
 <label class="text-[0.875rem] font-medium text-on-surface-variant" style="">Phone</label>
-<div class="bg-surface-container-high rounded-lg px-4 py-3 text-on-surface font-semibold" style="">+1 (555) 012-3456</div>
+<div id="phone" class="bg-surface-container-high rounded-lg px-4 py-3 text-on-surface font-semibold"></div>
 </div>
 </div>
 </div>
@@ -187,7 +187,7 @@
 </div>
 <div>
 <p class="text-xs text-on-surface-variant font-bold uppercase" style="">University</p>
-<p class="text-lg font-bold leading-tight" style="">Stanford University</p>
+<p id="university" class="text-lg font-bold leading-tight"></p>
 <p class="text-sm text-on-surface-variant" style="">Class of 2025</p>
 </div>
 </div>
@@ -197,7 +197,7 @@
 </div>
 <div>
 <p class="text-xs text-on-surface-variant font-bold uppercase" style="">Major</p>
-<p class="text-lg font-bold leading-tight" style="">Computer Science</p>
+<p id="major" class="text-lg font-bold leading-tight"></p>
 <p class="text-sm text-on-surface-variant" style="">Focus: Machine Learning</p>
 </div>
 </div>
@@ -207,7 +207,7 @@
 </div>
 <div>
 <p class="text-xs text-on-surface-variant font-bold uppercase" style="">Academic Standing</p>
-<p class="text-lg font-bold leading-tight" style="">3.92 GPA</p>
+<p id="gpa" class="text-lg font-bold leading-tight"></p>
 <p class="text-sm text-on-surface-variant" style="">Dean's List (6 terms)</p>
 </div>
 </div>
@@ -347,4 +347,31 @@
 <a class="font-['Plus_Jakarta_Sans'] text-xs uppercase tracking-widest text-slate-500 hover:text-blue-600 transition-opacity" href="#" style="">Contact</a>
 </div>
 </footer>
+<script>
+const idToken = localStorage.getItem("idToken");
+if (!idToken) window.location.href = "login.html";
+
+async function loadProfile() {
+  const res = await fetch("http://localhost:5000/profile", {
+    headers: { "Authorization": idToken }
+  });
+  const data = await res.json();
+  if (!res.ok) { window.location.href = "login.html"; return; }
+
+  document.getElementById("name").textContent = data.name || "Not set";
+  document.getElementById("email").textContent = data.email || "Not set";
+  document.getElementById("region").textContent = data.region || "Not set";
+  document.getElementById("phone").textContent = data.phone || "Not set";
+  document.getElementById("university").textContent = data.university || "Not set";
+  document.getElementById("major").textContent = data.major || "Not set";
+  document.getElementById("gpa").textContent = data.gpa ? data.gpa + " GPA" : "Not set";
+
+  if (data.photo) {
+    document.getElementById("profilePhoto").src = data.photo;
+  }
+}
+
+loadProfile();
+</script>
+
 </body></html>

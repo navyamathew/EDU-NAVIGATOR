@@ -13,7 +13,11 @@ from dotenv import load_dotenv
 load_dotenv()
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={r"/*": {
+    "origins": "*",  
+    "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    "allow_headers": ["Content-Type", "Authorization"]
+}})
 
 # ==============================
 # INITIALIZE FIREBASE
@@ -215,6 +219,264 @@ def dashboard():
         "uid": uid
     }), 200
 
+# ==============================
+# PROFILE
+# ==============================
+@app.route("/profile", methods=["GET"])
+def get_profile():
+    uid, error = verify_user()
+    if error:
+        return jsonify({"error": error[0]}), error[1]
+
+    user_doc = db.collection("users").document(uid).get()
+    user_data = user_doc.to_dict()
+
+    return jsonify({
+        "name": user_data.get("name", ""),
+        "email": user_data.get("email", ""),
+        "region": user_data.get("region", ""),
+        "phone": user_data.get("phone", ""),
+        "university": user_data.get("university", ""),
+        "major": user_data.get("major", ""),
+        "gpa": user_data.get("gpa", ""),
+        "photo": user_data.get("photo", "")
+    }), 200
+
+@app.route("/profile", methods=["PUT"])
+def update_profile():
+    uid, error = verify_user()
+    if error:
+        return jsonify({"error": error[0]}), error[1]
+
+    data = request.get_json()
+
+    update_data = {}
+    if data.get("name"): update_data["name"] = data["name"]
+    if data.get("region"): update_data["region"] = data["region"]
+    if data.get("phone"): update_data["phone"] = data["phone"]
+    if data.get("university"): update_data["university"] = data["university"]
+    if data.get("major"): update_data["major"] = data["major"]
+    if data.get("gpa"): update_data["gpa"] = data["gpa"]
+
+    db.collection("users").document(uid).update(update_data)
+
+    return jsonify({"message": "Profile updated successfully"}), 200
+
+@app.route("/profile/email", methods=["PUT"])
+def update_email():
+    uid, error = verify_user()
+    if error:
+        return jsonify({"error": error[0]}), error[1]
+
+    data = request.get_json()
+    new_email = data.get("email")
+
+    if not new_email:
+        return jsonify({"error": "No email provided"}), 400
+
+    try:
+        # Update email in Firebase Auth
+        auth.update_user(uid, email=new_email, email_verified=False)
+
+        # Update email in Firestore
+        db.collection("users").document(uid).update({"email": new_email})
+
+        # Send verification email to new address
+        id_token = request.headers.get("Authorization")
+        verification_url = f"https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key={FIREBASE_API_KEY}"
+        requests.post(verification_url, json={
+            "requestType": "VERIFY_EMAIL",
+            "idToken": id_token
+        })
+
+        return jsonify({"message": "Email updated! Please verify your new email address."}), 200
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 400
+
+@app.route("/profile/photo", methods=["PUT"])
+def update_photo():
+    uid, error = verify_user()
+    if error:
+        return jsonify({"error": error[0]}), error[1]
+
+    data = request.get_json()
+    photo = data.get("photo")
+
+    if not photo:
+        return jsonify({"error": "No photo provided"}), 400
+
+    db.collection("users").document(uid).update({"photo": photo})
+
+    return jsonify({"message": "Photo updated successfully"}), 200
+
+@app.route("/profile/delete", methods=["DELETE"])
+def delete_account():
+    uid, error = verify_user()
+    if error:
+        return jsonify({"error": error[0]}), error[1]
+
+    try:
+        # Delete from Firestore
+        db.collection("users").document(uid).delete()
+
+        # Delete from Firebase Auth
+        auth.delete_user(uid)
+
+        return jsonify({"message": "Account deleted successfully"}), 200
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 400
+
+# ==============================
+# POSTS (Mentor → Student)
+# ==============================
+
+# CREATE POST
+@app.route("/posts", methods=["POST"])
+def create_post():
+    uid, error = verify_user()
+    if error:
+        return jsonify({"error": error[0]}), error[1]
+
+    data = request.get_json()
+    title = data.get("title")
+    description = data.get("description")
+    post_type = data.get("type")  # workshop, internship, scholarship, hackathon
+    date = data.get("date", "")
+    time = data.get("time", "")
+    location = data.get("location", "")
+    link = data.get("link", "")
+    funding = data.get("funding", "")
+    deadline = data.get("deadline", "")
+
+    valid_types = ["workshop", "internship", "scholarship", "hackathon"]
+    if not title or not description or post_type not in valid_types:
+        return jsonify({"error": "Title, description and valid type are required"}), 400
+
+    # Get mentor name
+    mentor_doc = db.collection("users").document(uid).get()
+    mentor_data = mentor_doc.to_dict()
+    mentor_name = mentor_data.get("name", "Unknown Mentor")
+
+    db.collection("posts").add({
+        "title": title,
+        "description": description,
+        "type": post_type,
+        "date": date,
+        "time": time,
+        "location": location,
+        "link": link,
+        "funding": funding,
+        "deadline": deadline,
+        "mentor_id": uid,
+        "mentor_name": mentor_name,
+        "created_at": datetime.utcnow()
+    })
+
+    return jsonify({"message": "Post created successfully"}), 201
+
+
+# GET POSTS BY TYPE
+@app.route("/posts/<post_type>", methods=["GET"])
+def get_posts(post_type):
+    uid, error = verify_user()
+    if error:
+        return jsonify({"error": error[0]}), error[1]
+
+    valid_types = ["workshop", "internship", "scholarship", "hackathon"]
+    if post_type not in valid_types:
+        return jsonify({"error": "Invalid post type"}), 400
+
+    posts_ref = db.collection("posts") \
+        .where("type", "==", post_type) \
+        .order_by("created_at", direction=firestore.Query.DESCENDING)
+
+    docs = posts_ref.stream()
+    posts = []
+    for doc in docs:
+        data = doc.to_dict()
+        data["id"] = doc.id
+        # Convert timestamp to string
+        if "created_at" in data:
+            data["created_at"] = data["created_at"].strftime("%b %d, %Y")
+        posts.append(data)
+
+    return jsonify(posts), 200
+
+
+# GET MENTOR'S OWN POSTS
+@app.route("/posts/my/all", methods=["GET"])
+def get_my_posts():
+    uid, error = verify_user()
+    if error:
+        return jsonify({"error": error[0]}), error[1]
+
+    posts_ref = db.collection("posts") \
+        .where("mentor_id", "==", uid) \
+        .order_by("created_at", direction=firestore.Query.DESCENDING)
+
+    docs = posts_ref.stream()
+    posts = []
+    for doc in docs:
+        data = doc.to_dict()
+        data["id"] = doc.id
+        if "created_at" in data:
+            data["created_at"] = data["created_at"].strftime("%b %d, %Y")
+        posts.append(data)
+
+    return jsonify(posts), 200
+
+
+# DELETE POST
+@app.route("/posts/<post_id>", methods=["DELETE"])
+def delete_post(post_id):
+    uid, error = verify_user()
+    if error:
+        return jsonify({"error": error[0]}), error[1]
+
+    post_ref = db.collection("posts").document(post_id)
+    post = post_ref.get()
+
+    if not post.exists:
+        return jsonify({"error": "Post not found"}), 404
+
+    if post.to_dict().get("mentor_id") != uid:
+        return jsonify({"error": "Unauthorized"}), 403
+
+    post_ref.delete()
+    return jsonify({"message": "Post deleted"}), 200
+
+
+# UPDATE POST
+@app.route("/posts/<post_id>", methods=["PUT"])
+def update_post(post_id):
+    uid, error = verify_user()
+    if error:
+        return jsonify({"error": error[0]}), error[1]
+
+    post_ref = db.collection("posts").document(post_id)
+    post = post_ref.get()
+
+    if not post.exists:
+        return jsonify({"error": "Post not found"}), 404
+
+    if post.to_dict().get("mentor_id") != uid:
+        return jsonify({"error": "Unauthorized"}), 403
+
+    data = request.get_json()
+    post_ref.update({
+        "title": data.get("title"),
+        "description": data.get("description"),
+        "date": data.get("date", ""),
+        "time": data.get("time", ""),
+        "location": data.get("location", ""),
+        "link": data.get("link", ""),
+        "funding": data.get("funding", ""),
+        "deadline": data.get("deadline", "")
+    })
+
+    return jsonify({"message": "Post updated"}), 200
 
 # ==================================================
 # NOTIFICATIONS SECTION

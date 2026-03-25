@@ -150,83 +150,9 @@
 </div></div>
 </div>
 </section>
-<!-- Scholarship List (Bento-ish Stack) -->
-<div class="space-y-6">
-<!-- Scholarship Card 1 -->
-<div class="bg-surface-container-lowest rounded-[1.5rem] overflow-hidden group transition-all duration-300 hover:bg-surface-bright">
-<div class="p-6">
-<div class="flex justify-between items-start mb-4">
-<div class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">Open</div>
-<span class="material-symbols-outlined text-outline" data-icon="bookmark">bookmark</span>
-</div>
-<h3 class="text-xl font-bold text-on-surface mb-1 leading-snug">Global Tech Innovators Grant</h3>
-<p class="text-sm text-on-surface-variant mb-4">For students demonstrating excellence in software architecture and community impact.</p>
-<div class="flex items-center gap-6 mb-6">
-<div>
-<p class="text-[10px] uppercase tracking-tighter text-outline font-bold">Funding</p>
-<p class="text-lg font-extrabold text-primary">$25,000</p>
-</div>
-<div class="h-8 w-[1px] bg-outline-variant/15"></div>
-<div>
-<p class="text-[10px] uppercase tracking-tighter text-outline font-bold">Deadline</p>
-<p class="text-sm font-bold text-on-surface">Oct 12, 2024</p>
-</div>
-</div>
-<button class="w-full py-4 rounded-xl bg-gradient-to-br from-primary to-primary-container text-white font-bold text-sm transition-transform active:scale-[0.98]">
-                        Register Directly
-                    </button>
-</div>
-</div>
-<!-- Scholarship Card 2 -->
-<div class="bg-surface-container-lowest rounded-[1.5rem] overflow-hidden group transition-all duration-300 hover:bg-surface-bright">
-<div class="p-6">
-<div class="flex justify-between items-start mb-4">
-<div class="bg-tertiary-fixed text-on-tertiary-fixed-variant px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">In Review</div>
-<span class="material-symbols-outlined text-primary" data-icon="bookmark" style="font-variation-settings: 'FILL' 1;">bookmark</span>
-</div>
-<h3 class="text-xl font-bold text-on-surface mb-1 leading-snug">The Merit Foundation Fellowship</h3>
-<p class="text-sm text-on-surface-variant mb-4">Post-graduate research funding for environmental sustainability projects.</p>
-<div class="flex items-center gap-6 mb-6">
-<div>
-<p class="text-[10px] uppercase tracking-tighter text-outline font-bold">Funding</p>
-<p class="text-lg font-extrabold text-primary">$12,500</p>
-</div>
-<div class="h-8 w-[1px] bg-outline-variant/15"></div>
-<div>
-<p class="text-[10px] uppercase tracking-tighter text-outline font-bold">Deadline</p>
-<p class="text-sm font-bold text-on-surface">Nov 05, 2024</p>
-</div>
-</div>
-<button class="w-full py-4 rounded-xl bg-surface-container-high text-on-surface-variant font-bold text-sm transition-transform active:scale-[0.98]">
-                        Application Pending
-                    </button>
-</div>
-</div>
-<!-- Scholarship Card 3 -->
-<div class="bg-surface-container-lowest rounded-[1.5rem] overflow-hidden group transition-all duration-300 hover:bg-surface-bright">
-<div class="p-6">
-<div class="flex justify-between items-start mb-4">
-<div class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">Open</div>
-<span class="material-symbols-outlined text-outline" data-icon="bookmark">bookmark</span>
-</div>
-<h3 class="text-xl font-bold text-on-surface mb-1 leading-snug">Women in STEM Excellence</h3>
-<p class="text-sm text-on-surface-variant mb-4">Supporting the next generation of female leaders in hard sciences and engineering.</p>
-<div class="flex items-center gap-6 mb-6">
-<div>
-<p class="text-[10px] uppercase tracking-tighter text-outline font-bold">Funding</p>
-<p class="text-lg font-extrabold text-primary">$40,000</p>
-</div>
-<div class="h-8 w-[1px] bg-outline-variant/15"></div>
-<div>
-<p class="text-[10px] uppercase tracking-tighter text-outline font-bold">Deadline</p>
-<p class="text-sm font-bold text-on-surface">Dec 20, 2024</p>
-</div>
-</div>
-<button class="w-full py-4 rounded-xl bg-gradient-to-br from-primary to-primary-container text-white font-bold text-sm transition-transform active:scale-[0.98]">
-                        Register Directly
-                    </button>
-</div>
-</div>
+<!-- Internship List -->
+<div id="internshipList" class="space-y-6">
+  <p class="text-center text-on-surface-variant py-12">Loading internships...</p>
 </div>
 </main>
 <!-- Sidebar -->
@@ -268,4 +194,57 @@
   </a>
 </div>
 </aside>
+<script>
+const idToken = localStorage.getItem("idToken");
+if (!idToken) window.location.href = "login.html";
+
+async function loadInternships() {
+  const res = await fetch("http://localhost:5000/posts/internship", {
+    headers: { "Authorization": idToken }
+  });
+
+  const posts = await res.json();
+  const container = document.getElementById("internshipList");
+
+  if (!res.ok || posts.length === 0) {
+    container.innerHTML = '<p class="text-center text-on-surface-variant py-12">No internships available yet.</p>';
+    return;
+  }
+
+  container.innerHTML = posts.map(post => `
+    <div class="bg-surface-container-lowest rounded-[1.5rem] overflow-hidden group transition-all duration-300 hover:bg-surface-bright">
+      <div class="p-6">
+        <div class="flex justify-between items-start mb-4">
+          <div class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">Open</div>
+          <span class="material-symbols-outlined text-outline">bookmark</span>
+        </div>
+        <h3 class="text-xl font-bold text-on-surface mb-1 leading-snug">${post.title}</h3>
+        <p class="text-sm text-on-surface-variant mb-4">${post.description}</p>
+        <div class="flex items-center gap-6 mb-4">
+          ${post.funding ? `
+          <div>
+            <p class="text-[10px] uppercase tracking-tighter text-outline font-bold">Stipend</p>
+            <p class="text-lg font-extrabold text-primary">${post.funding}</p>
+          </div>
+          <div class="h-8 w-[1px] bg-outline-variant/15"></div>
+          ` : ""}
+          ${post.deadline ? `
+          <div>
+            <p class="text-[10px] uppercase tracking-tighter text-outline font-bold">Deadline</p>
+            <p class="text-sm font-bold text-on-surface">${post.deadline}</p>
+          </div>
+          ` : ""}
+        </div>
+        <p class="text-xs text-on-surface-variant mb-4">📍 ${post.location || "Remote"} &nbsp;|&nbsp; Posted by ${post.mentor_name}</p>
+        ${post.link ? `
+        <a href="${post.link}" target="_blank" class="block w-full py-4 rounded-xl bg-gradient-to-br from-primary to-primary-container text-white font-bold text-sm text-center transition-transform active:scale-[0.98]">
+          Apply Now
+        </a>` : ""}
+      </div>
+    </div>
+  `).join("");
+}
+
+loadInternships();
+</script>
 </body></html>

@@ -101,7 +101,7 @@
 <!-- TopAppBar -->
 <header class="fixed top-0 w-full lg:ml-64 z-50 bg-[#f8f9fa] dark:bg-slate-900 flex items-center justify-between px-6 h-16">
 <div class="flex items-center gap-4">
-<span class="material-symbols-outlined text-[#0040a1] dark:text-blue-400">menu</span>
+<span onclick="window.location.href='OL1.html'" class="material-symbols-outlined text-[#0040a1] cursor-pointer">arrow_back</span>
 <h1 class="font-['Manrope'] font-bold text-2xl tracking-tight text-[#0040a1] dark:text-blue-400 font-extrabold tracking-tighter">Curator</h1>
 </div>
 <div class="flex items-center gap-2">
@@ -174,128 +174,17 @@
   </button>
 </div></div>
 </section>
+
 <!-- Hackathon Cards List -->
 <section class="space-y-6">
 <div class="flex items-center justify-between mb-2">
 <h3 class="font-headline text-lg font-bold text-on-surface">Featured Opportunities</h3>
-<span class="text-xs font-bold text-primary flex items-center gap-1">SEE ALL <span class="material-symbols-outlined text-sm">arrow_forward</span></span>
 </div>
-<!-- Card 1 -->
-<div class="bg-surface-container-lowest rounded-2xl p-6 shadow-[0_10px_30px_rgba(25,28,29,0.04)] group hover:bg-surface-bright transition-all duration-300">
-<div class="flex justify-between items-start mb-4">
-<div>
-<span class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest">Open</span>
-<h4 class="font-headline text-xl font-bold text-on-surface mt-2">Global FinTech Sprint 2024</h4>
-</div>
-<button class="text-outline hover:text-primary transition-colors">
-<span class="material-symbols-outlined">bookmark</span>
-</button>
-</div>
-<div class="grid grid-cols-2 gap-4 mb-6">
-<div class="flex items-center gap-2">
-<div class="w-8 h-8 rounded-lg bg-primary-fixed flex items-center justify-center">
-<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">payments</span>
-</div>
-<div>
-<p class="text-[10px] text-on-surface-variant font-bold uppercase tracking-tighter">Prize Pool</p>
-<p class="text-sm font-bold text-on-surface">$25,000</p>
-</div>
-</div>
-<div class="flex items-center gap-2">
-<div class="w-8 h-8 rounded-lg bg-tertiary-fixed flex items-center justify-center">
-<span class="material-symbols-outlined text-tertiary text-sm" style="font-variation-settings: 'FILL' 1;">calendar_today</span>
-</div>
-<div>
-<p class="text-[10px] text-on-surface-variant font-bold uppercase tracking-tighter">Dates</p>
-<p class="text-sm font-bold text-on-surface">Oct 12-14</p>
-</div>
-</div>
-</div>
-<div class="flex items-center justify-between pt-4 border-t border-outline-variant/10">
-<div class="flex -space-x-2">
-<img alt="User" class="w-7 h-7 rounded-full border-2 border-surface-container-lowest" data-alt="User avatar small" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtXHJipr1-WnQpnqiu8naWG6cOFdm6qy3DHND5O18LB997JPnvM_BKXfDJb5dtSWsXxKGq8tG1jbzWdeq5PMB2KXgeabcVfufQ68qNXzfUvNFztq0TRxLDnCvHWCXPwnQiCO5ZZ6VMsn31CTIlacTuFc09EET9ChoRPXB_6RljDxQFmnQLi5-Mtf_-GXodLwnfJYR6WoytMqpj0f3pE6kIOHLpVRocanM1h3i6LXQw7100IltXdpHWBnBmVcZeY64v_UnzYoePlNk"/>
-<img alt="User" class="w-7 h-7 rounded-full border-2 border-surface-container-lowest" data-alt="User avatar small" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkBrBre2X7SE9m_GrrjkF36NgZs6M35GaRKYgdJyjoW_4C14LUdsSVmVxPym5yA2LtlXCL-ryf4tkCqTABw90ZV--zAJFepqxRbSUXSCSWiud5nQ2fN4jC1gup6F4yRijJteOlJSTPkA0nDVHbOU6MvldehTAaIss8Yd5GQWBab7c9cNkh44XXCJEqsw-npqazpifjV8ERajcIVocjWkekt5aosF9epe-CJjwcnlzQP8PPZQPcAE_nYHueP15JbwLKmTtdJiz9jiM"/>
-<div class="w-7 h-7 rounded-full bg-surface-container-high border-2 border-surface-container-lowest flex items-center justify-center text-[10px] font-bold">+42</div>
-</div>
-<button class="bg-gradient-to-br from-primary to-primary-container text-white px-8 py-2.5 rounded-lg font-bold text-sm transition-transform active:scale-95 shadow-md">Join</button>
-</div>
-</div>
-<!-- Card 2 -->
-<div class="bg-surface-container-lowest rounded-2xl p-6 shadow-[0_10px_30px_rgba(25,28,29,0.04)] group hover:bg-surface-bright transition-all duration-300">
-<div class="flex justify-between items-start mb-4">
-<div>
-<span class="bg-tertiary-fixed text-on-tertiary-fixed-variant px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest">In Review</span>
-<h4 class="font-headline text-xl font-bold text-on-surface mt-2">Eco-Urban Architecture Hack</h4>
-</div>
-<button class="text-outline hover:text-primary transition-colors">
-<span class="material-symbols-outlined">bookmark</span>
-</button>
-</div>
-<div class="grid grid-cols-2 gap-4 mb-6">
-<div class="flex items-center gap-2">
-<div class="w-8 h-8 rounded-lg bg-primary-fixed flex items-center justify-center">
-<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">payments</span>
-</div>
-<div>
-<p class="text-[10px] text-on-surface-variant font-bold uppercase tracking-tighter">Prize Pool</p>
-<p class="text-sm font-bold text-on-surface">$10,000</p>
-</div>
-</div>
-<div class="flex items-center gap-2">
-<div class="w-8 h-8 rounded-lg bg-tertiary-fixed flex items-center justify-center">
-<span class="material-symbols-outlined text-tertiary text-sm" style="font-variation-settings: 'FILL' 1;">calendar_today</span>
-</div>
-<div>
-<p class="text-[10px] text-on-surface-variant font-bold uppercase tracking-tighter">Dates</p>
-<p class="text-sm font-bold text-on-surface">Nov 05-08</p>
-</div>
-</div>
-</div>
-<div class="flex items-center justify-between pt-4 border-t border-outline-variant/10">
-<p class="text-xs font-medium text-on-surface-variant">Team capacity: <span class="text-on-surface font-bold">2/4</span></p>
-<button class="bg-surface-container-high text-on-surface-variant px-8 py-2.5 rounded-lg font-bold text-sm transition-transform active:scale-95">Closed</button>
-</div>
-</div>
-<!-- Card 3 -->
-<div class="bg-surface-container-lowest rounded-2xl p-6 shadow-[0_10px_30px_rgba(25,28,29,0.04)] group hover:bg-surface-bright transition-all duration-300">
-<div class="flex justify-between items-start mb-4">
-<div>
-<span class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest">Open</span>
-<h4 class="font-headline text-xl font-bold text-on-surface mt-2">Cyber Defense Challenge</h4>
-</div>
-<button class="text-outline hover:text-primary transition-colors">
-<span class="material-symbols-outlined">bookmark</span>
-</button>
-</div>
-<div class="grid grid-cols-2 gap-4 mb-6">
-<div class="flex items-center gap-2">
-<div class="w-8 h-8 rounded-lg bg-primary-fixed flex items-center justify-center">
-<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">payments</span>
-</div>
-<div>
-<p class="text-[10px] text-on-surface-variant font-bold uppercase tracking-tighter">Prize Pool</p>
-<p class="text-sm font-bold text-on-surface">$40,000</p>
-</div>
-</div>
-<div class="flex items-center gap-2">
-<div class="w-8 h-8 rounded-lg bg-tertiary-fixed flex items-center justify-center">
-<span class="material-symbols-outlined text-tertiary text-sm" style="font-variation-settings: 'FILL' 1;">calendar_today</span>
-</div>
-<div>
-<p class="text-[10px] text-on-surface-variant font-bold uppercase tracking-tighter">Dates</p>
-<p class="text-sm font-bold text-on-surface">Dec 20-22</p>
-</div>
-</div>
-</div>
-<div class="flex items-center justify-between pt-4 border-t border-outline-variant/10">
-<div class="flex gap-2">
-<span class="text-[10px] font-bold text-primary bg-primary-fixed px-2 py-0.5 rounded">WEB3</span>
-<span class="text-[10px] font-bold text-primary bg-primary-fixed px-2 py-0.5 rounded">SECURITY</span>
-</div>
-<button class="bg-gradient-to-br from-primary to-primary-container text-white px-8 py-2.5 rounded-lg font-bold text-sm transition-transform active:scale-95 shadow-md">Join</button>
-</div>
+<div id="hackathonList" class="space-y-6">
+  <p class="text-center text-on-surface-variant py-12">Loading hackathons...</p>
 </div>
 </section>
+
 </main>
 
 <!-- Sidebar -->
@@ -344,4 +233,69 @@
 <button class="fixed bottom-24 right-6 w-14 h-14 bg-primary text-white rounded-full shadow-2xl flex items-center justify-center z-40 active:scale-90 transition-transform">
 <span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">add</span>
 </button>
+
+<script>
+const idToken = localStorage.getItem("idToken");
+if (!idToken) window.location.href = "login.html";
+
+async function loadHackathons() {
+  const res = await fetch("http://localhost:5000/posts/hackathon", {
+    headers: { "Authorization": idToken }
+  });
+
+  const posts = await res.json();
+  const container = document.getElementById("hackathonList");
+
+  if (!res.ok || posts.length === 0) {
+    container.innerHTML = '<p class="text-center text-on-surface-variant py-12">No hackathons available yet.</p>';
+    return;
+  }
+
+  container.innerHTML = posts.map(post => `
+    <div class="bg-surface-container-lowest rounded-2xl p-6 shadow-[0_10px_30px_rgba(25,28,29,0.04)] group hover:bg-surface-bright transition-all duration-300">
+      <div class="flex justify-between items-start mb-4">
+        <div>
+          <span class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest">Open</span>
+          <h4 class="font-headline text-xl font-bold text-on-surface mt-2">${post.title}</h4>
+        </div>
+        <button class="text-outline hover:text-primary transition-colors">
+          <span class="material-symbols-outlined">bookmark</span>
+        </button>
+      </div>
+      <p class="text-sm text-on-surface-variant mb-4">${post.description}</p>
+      <div class="grid grid-cols-2 gap-4 mb-6">
+        ${post.funding ? `
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-lg bg-primary-fixed flex items-center justify-center">
+            <span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">payments</span>
+          </div>
+          <div>
+            <p class="text-[10px] text-on-surface-variant font-bold uppercase tracking-tighter">Prize Pool</p>
+            <p class="text-sm font-bold text-on-surface">${post.funding}</p>
+          </div>
+        </div>` : ""}
+        ${post.deadline ? `
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-lg bg-tertiary-fixed flex items-center justify-center">
+            <span class="material-symbols-outlined text-tertiary text-sm" style="font-variation-settings: 'FILL' 1;">calendar_today</span>
+          </div>
+          <div>
+            <p class="text-[10px] text-on-surface-variant font-bold uppercase tracking-tighter">Deadline</p>
+            <p class="text-sm font-bold text-on-surface">${post.deadline}</p>
+          </div>
+        </div>` : ""}
+      </div>
+      <p class="text-xs text-on-surface-variant mb-4">📍 ${post.location || "Online"} &nbsp;|&nbsp; Posted by ${post.mentor_name}</p>
+      <div class="flex items-center justify-between pt-4 border-t border-outline-variant/10">
+        ${post.link ? `
+        <a href="${post.link}" target="_blank" class="w-full bg-gradient-to-br from-primary to-primary-container text-white px-8 py-2.5 rounded-lg font-bold text-sm text-center transition-transform active:scale-95 shadow-md">
+          Join Now
+        </a>` : ""}
+      </div>
+    </div>
+  `).join("");
+}
+
+loadHackathons();
+</script>
 </body></html>
