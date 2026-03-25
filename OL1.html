@@ -88,18 +88,55 @@
   </style>
   </head>
 <body class="bg-surface-container-low font-body text-on-surface min-h-screen">
+  <aside class="hidden lg:flex h-screen w-64 fixed left-0 top-0 border-r-0 bg-slate-50 flex-col p-4 gap-y-2 z-50">
+<div class="mb-8 px-2 py-4">
+<h1 class="font-manrope font-extrabold text-blue-900 text-xl tracking-tight">Edu Navigator</h1>
+<p class="text-xs font-medium text-slate-500">Student Portal</p>
+</div>
+<nav class="flex-1 flex flex-col gap-y-1">
+<a class="flex items-center gap-3 px-4 py-3 bg-blue-50 text-blue-700 rounded-lg font-semibold transition-all duration-300 ease-in-out" href="#">
+
+<span class="font-plus-jakarta text-sm">HOME</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg transition-all duration-300 ease-in-out" href="OL1.html">
+
+<span class="font-plus-jakarta text-sm uppercase">Opportunity Listing</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg transition-all duration-300 ease-in-out" href="MentorList.html">
+
+<span class="font-plus-jakarta text-sm uppercase">Organizer</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg transition-all duration-300 ease-in-out" href="EventListing.html">
+
+<span class="font-plus-jakarta text-sm">Events</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg transition-all duration-300 ease-in-out" href="Notification.html">
+
+<span class="font-plus-jakarta text-sm">Notifications</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg transition-all duration-300 ease-in-out" href="StudProfileSetting.html">
+
+<span class="font-plus-jakarta text-sm">Settings</span>
+</a>
+</nav>
+
+<div class="mt-auto pt-4 border-t border-slate-200/60">
+
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg transition-all duration-300 ease-in-out" href="#">
+
+</a>
+</div>
+</aside>
+
 <!-- Top Navigation Suppression: Not a top-level destination, it's a preference setting flow -->
 <header class="w-full top-0 sticky z-50 bg-[#f8f9fa] shadow-[0_2px_8px_rgba(25,28,29,0.02)]">
 <div class="flex items-center justify-between px-6 py-4 max-w-7xl mx-auto">
 <div class="flex items-center gap-4">
 <button onclick="window.location.href='StudHome.html'" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-high transition-colors">
-<span class="material-symbols-outlined text-on-surface">arrow_back</span>
+<span class="material-symbols-outlined text-xs" data-icon="arrow_forward"></span>
 </button>
-<h1 class="font-headline font-bold tracking-tight text-[#191c1d] text-xl">The Curator</h1>
 </div>
-<div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center overflow-hidden cursor-pointer" onclick="window.location.href='StudProfileSet.html'">
-<img class="w-full h-full object-cover" data-alt="Student Profile Avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBy0BsvgCQMSfYDlWGGuCP4ccDshlrLKAprpLIIXGoTpPKKjwaUWLSwIj7i-Uwe6bLSguzpsnE5W2tboYj7hyDgsFZ9WOuclJUOGBJgc7J6uq1LB2gZfPL7wmOKZrz4kTSP76W8KpJfpW_k_dUSd1JyztHK7cqJlsqs5vui4wIJi4nBweWA-guTFPBkU3lowKBFy9MZrcGErIC_PZkCHtHV0npM7MaAWZp2SA5zoMGI6c1DpBKGjP6j3HnJLyuxh3iaxRx6WyJBCqw"/>
-</div>
+
 </div>
 </header>
 <main class="max-w-md mx-auto px-6 pt-10 pb-10 bg-mesh min-h-[calc(100vh-72px)]">
@@ -119,7 +156,7 @@
 <div class="flex items-start justify-between">
 <div class="space-y-4">
 <div class="w-12 h-12 rounded-2xl bg-primary-fixed flex items-center justify-center text-primary">
-<span class="material-symbols-outlined text-3xl" data-icon="school">school</span>
+<span class="material-symbols-outlined text-3xl" data-icon="school"></span>
 </div>
 <div>
 <h3 class="font-headline text-xl font-bold text-on-surface">Scholarships</h3>
@@ -136,7 +173,7 @@
 <div class="flex items-start justify-between">
 <div class="space-y-4">
 <div class="w-12 h-12 rounded-2xl bg-secondary-container flex items-center justify-center text-secondary">
-<span class="material-symbols-outlined text-3xl" data-icon="work">work</span>
+<span class="material-symbols-outlined text-3xl" data-icon="work"></span>
 </div>
 <div>
 <h3 class="font-headline text-xl font-bold text-on-surface">Internships</h3>
@@ -153,7 +190,7 @@
 <div class="flex items-start justify-between">
 <div class="space-y-4">
 <div class="w-12 h-12 rounded-2xl bg-tertiary-fixed flex items-center justify-center text-tertiary">
-<span class="material-symbols-outlined text-3xl" data-icon="code">code</span>
+<span class="material-symbols-outlined text-3xl" data-icon="code"></span>
 </div>
 <div>
 <h3 class="font-headline text-xl font-bold text-on-surface">Hackathons</h3>
@@ -165,6 +202,36 @@
 </div>
 </div>
 </div>
+</div>
+<!-- Workshops Tile -->
+<div onclick="window.location.href='WorkshopListing.html'" 
+  class="group relative overflow-hidden bg-surface-container-lowest rounded-[1.5rem] p-6 transition-all duration-300 hover:bg-surface-bright active:scale-95 shadow-[0_2px_8px_rgba(25,28,29,0.02)] cursor-pointer outline-primary/0 outline outline-2 hover:outline-primary/10">
+
+  <div class="flex items-start justify-between">
+    
+    <div class="space-y-4">
+      
+      <!-- Icon -->
+      <div class="w-12 h-12 rounded-2xl bg-secondary-fixed flex items-center justify-center text-secondary">
+        <span class="material-symbols-outlined text-3xl">groups</span>
+      </div>
+
+      <!-- Text -->
+      <div>
+        <h3 class="font-headline text-xl font-bold text-on-surface">Workshops</h3>
+        <p class="text-sm text-on-surface-variant mt-1">
+          Hands-on sessions, training, and skill development.
+        </p>
+      </div>
+
+    </div>
+
+    <!-- Selection Circle -->
+    <div class="w-6 h-6 rounded-full border-2 border-outline-variant group-hover:border-primary flex items-center justify-center transition-colors">
+      <div class="w-3 h-3 rounded-full bg-primary scale-0 transition-transform"></div>
+    </div>
+
+  </div>
 </div>
 <!-- Progress Indicator -->
 <div class="mt-12 flex items-center justify-center gap-2">

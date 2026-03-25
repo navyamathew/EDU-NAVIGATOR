@@ -90,50 +90,8 @@
   </style>
 </head>
 <body class="bg-surface-container-low text-on-background min-h-screen pb-24">
-<!-- SideNavBar Shell (Hidden on mobile) -->
-<aside class="hidden lg:flex h-screen w-64 fixed left-0 top-0 border-r-0 bg-slate-50 flex-col p-4 gap-y-2 z-50">
-<div class="mb-8 px-2 py-4">
-<h1 class="font-manrope font-extrabold text-blue-900 text-xl tracking-tight">Edu Navigator</h1>
-<p class="text-xs font-medium text-slate-500">Student Portal</p>
-</div>
-<nav class="flex-1 flex flex-col gap-y-1">
-<a class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg transition-all duration-300 ease-in-out" href="StudHome.html">
-<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
-<span class="font-plus-jakarta text-sm">HOME</span>
-</a>
-<a class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg transition-all duration-300 ease-in-out" href="OL1.html">
-<span class="material-symbols-outlined" data-icon="explore">explore</span>
-<span class="font-plus-jakarta text-sm uppercase">Opportunity Listing</span>
-</a>
-<a class="flex items-center gap-3 px-4 py-3 bg-blue-50 text-blue-700 rounded-lg font-semibold transition-all duration-300 ease-in-out" href="MentorList.html">
-<span class="material-symbols-outlined" data-icon="groups">groups</span>
-<span class="font-plus-jakarta text-sm uppercase">Mentor</span>
-</a>
-<a class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg transition-all duration-300 ease-in-out" href="EventListing.html">
-<span class="material-symbols-outlined" data-icon="event">event</span>
-<span class="font-plus-jakarta text-sm">Events</span>
-</a>
-<a class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg transition-all duration-300 ease-in-out" href="Notification.html">
-<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
-<span class="font-plus-jakarta text-sm">Notifications</span>
-</a>
-<a class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg transition-all duration-300 ease-in-out" href="StudProfileSetting.html">
-<span class="material-symbols-outlined" data-icon="settings">settings</span>
-<span class="font-plus-jakarta text-sm">Settings</span>
-</a>
-</nav>
-<div class="mt-auto pt-4 border-t border-slate-200/60">
-<button class="w-full bg-gradient-to-br from-primary to-primary-container text-white py-3 rounded-xl font-semibold text-sm mb-4 transition-transform active:scale-95 shadow-lg shadow-blue-900/10">
-                Find Opportunities
-            </button>
-<a class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg transition-all duration-300 ease-in-out" href="#">
-<span class="material-symbols-outlined" data-icon="help">help</span>
-<span class="font-plus-jakarta text-sm">Help Center</span>
-</a>
-</div>
-</aside>
 <!-- Top App Bar -->
-<header class="w-full top-0 sticky z-50 bg-[#f3f4f5] dark:bg-slate-900 flex items-center justify-between px-6 py-4 w-full lg:ml-64">
+<header class="w-full top-0 sticky z-50 bg-[#f3f4f5] dark:bg-slate-900 flex items-center justify-between px-6 py-4 w-full">
 <div class="flex items-center gap-4">
 <button class="text-[#0040a1] dark:text-blue-400 active:scale-95 transition-transform duration-200">
 <span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
@@ -144,7 +102,7 @@
 <span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
 </button>
 </header>
-<main class="px-6 py-4 lg:ml-64">
+<main class="px-6 py-4">
 <!-- Editorial Pull Quote -->
 <section class="mb-8">
 <h2 class="text-[2.25rem] font-headline font-extrabold text-primary leading-tight">
@@ -238,28 +196,5 @@
 </div>
 </main>
 <!-- Bottom Navigation Bar -->
-<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-3 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl z-50 rounded-t-3xl border-t border-[#c3c6d6]/15 shadow-[0_-10px_30px_rgba(25,28,29,0.04)]">
-<a class="flex flex-col items-center justify-center text-[#424654] dark:text-slate-400 px-5 py-2 active:scale-90 transition-all duration-300 hover:text-[#0040a1]" href="StudHome.html">
-<span class="material-symbols-outlined" data-icon="home">home</span>
-<span class="font-['Plus_Jakarta_Sans'] font-medium text-[10px]">Home</span>
-</a>
-<a class="flex flex-col items-center justify-center bg-[#dae2ff] dark:bg-blue-900/40 text-[#0040a1] dark:text-blue-100 rounded-2xl px-5 py-2 active:scale-90 transition-all duration-300" href="MentorList.html">
-<span class="material-symbols-outlined" data-icon="school" style="font-variation-settings: 'FILL' 1;">school</span>
-<span class="font-['Plus_Jakarta_Sans'] font-medium text-[10px]">Mentors</span>
-</a>
-<a class="flex flex-col items-center justify-center text-[#424654] dark:text-slate-400 px-5 py-2 active:scale-90 transition-all duration-300 hover:text-[#0040a1]" href="OL1.html">
-<span class="material-symbols-outlined" data-icon="assignment_turned_in">assignment_turned_in</span>
-<span class="font-['Plus_Jakarta_Sans'] font-medium text-[10px]">Opportunities</span>
-</a>
-<a class="flex flex-col items-center justify-center text-[#424654] dark:text-slate-400 px-5 py-2 active:scale-90 transition-all duration-300 hover:text-[#0040a1]" href="StudProfileSetting.html">
-<span class="material-symbols-outlined" data-icon="person">person</span>
-<span class="font-['Plus_Jakarta_Sans'] font-medium text-[10px]">Profile</span>
-</a>
-<script>
-  // Check if user is logged in
-  const idToken = localStorage.getItem("idToken");
-  if (!idToken) {
-    window.location.href = "login.html";
-  }
-</script>
+
 </body></html>
