@@ -69,7 +69,9 @@ Google
 
 <!-- FORM -->
 <form onsubmit="handleLogin(event)" class="space-y-6">
-
+ <p id="errorMsg" class="text-red-500 text-sm hidden">
+    Invalid credentials
+  </p>
 <div>
 <label class="block text-sm font-semibold">I am a...</label>
 <select class="w-full px-4 py-3 rounded-xl bg-gray-200">
@@ -123,6 +125,9 @@ const provider = new firebase.auth.GoogleAuthProvider();
 async function handleLogin(e) {
   e.preventDefault();
 
+  // ✅ ADD THIS LINE HERE
+  document.getElementById("errorMsg").classList.add("hidden");
+
   const email = document.querySelector('input[type="email"]').value;
   const password = document.querySelector('input[type="password"]').value;
   const role = document.querySelector('select').value.toLowerCase();
@@ -135,22 +140,22 @@ async function handleLogin(e) {
 
   const data = await res.json();
 
-  if (res.ok) {
-    localStorage.setItem("idToken", data.idToken);
-    localStorage.setItem("role", data.role);
-    localStorage.setItem("userName", data.name);
+if (res.ok) {
+  localStorage.setItem("idToken", data.idToken);
+  localStorage.setItem("role", data.role);
+  localStorage.setItem("userName", data.name);
 
-    const role = data.role;
-    if (role === "student") {
-      window.location.href = "StudHome.html";
-    } else if (role === "mentor") {
-      window.location.href = "mentorPage.html";
-    } else {
-      alert("Admin dashboard coming soon!");
-    }
+  const role = data.role;
+  if (role === "student") {
+    window.location.href = "StudHome.html";
+  } else if (role === "mentor") {
+    window.location.href = "mentorPage.html";
   } else {
-    alert("Error: " + data.error);
+    alert("Admin dashboard coming soon!");
   }
+} else {
+  document.getElementById("errorMsg").classList.remove("hidden");
+}
 }
 
 async function handleGoogleLogin() {
