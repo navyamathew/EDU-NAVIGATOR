@@ -85,7 +85,45 @@
     }
   </style>
 </head>
-<body class="bg-surface-container-low font-body text-on-surface antialiased pb-24">
+<body class="bg-surface-container-low font-body text-on-surface antialiased">
+  <aside class="hidden lg:flex h-screen w-64 fixed left-0 top-0 bg-slate-50 flex-col p-4 gap-y-2 z-50 border-r border-slate-200">
+  <div class="mb-8 px-2 py-4">
+    <h1 class="font-headline font-extrabold text-blue-900 text-xl tracking-tight">Edu Navigator</h1>
+    <p class="text-xs font-medium text-slate-500">Student Portal</p>
+  </div>
+
+  <nav class="flex-1 flex flex-col gap-y-1">
+    <a href="StudHome.html" class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg">
+      <span class="material-symbols-outlined">dashboard</span>
+      <span class="text-sm">Home</span>
+    </a>
+
+    <a href="OL1.html" class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg">
+      <span class="material-symbols-outlined">explore</span>
+      <span class="text-sm">Opportunity Listing</span>
+    </a>
+
+    <a href="MentorList.html" class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg">
+      <span class="material-symbols-outlined">groups</span>
+      <span class="text-sm">Mentor</span>
+    </a>
+
+    <a href="EventListing.html" class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg">
+      <span class="material-symbols-outlined">event</span>
+      <span class="text-sm">Event</span>
+    </a>
+
+    <a href="Notification.html" class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg">
+      <span class="material-symbols-outlined">notifications</span>
+      <span class="text-sm">Notifications</span>
+    </a>
+
+    <a href="StudProfileSetting.html" class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg">
+      <span class="material-symbols-outlined">settings</span>
+      <span class="text-sm">Settings</span>
+    </a>
+  </nav>
+</aside>
 <!-- TopAppBar -->
 <header class="bg-[#f3f4f5] dark:bg-slate-900 w-full top-0 sticky z-50 flex items-center justify-between px-6 h-16 w-full shadow-none">
 <div class="flex items-center gap-4">
@@ -98,7 +136,8 @@
 <img class="w-full h-full object-cover" data-alt="User profile avatar smiling young adult student" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUx6aZUDnG2hL-cK3kxD5vXTbmuNue2j5OMDC5BPRbby8A006OhwsUycqhVsFMrsGQF1_EzqR1j0h6m0OIKwI75lX_kX42JTnHE4QkxQe-Qsdd9aEf7DR1xQQiveGuSyxseftHup1x2eokKJ4RgkIFeasqsI-4vqaYffPn5Wn88JDyDC8xQ-iFTLlqme95taFo4fwIckfxkm7khW9xwxTwJ6O4vVj1FR_3zrol2qoEHpUG_1DqxQptK1s6Z2vVSnp8BiHfl_N2VoI"/>
 </div>
 </header>
-<main class="px-6 py-4 max-w-md mx-auto">
+<main class="px-6 py-4 lg:ml-64 flex justify-center">
+  <div class="w-full max-w-2xl">
 <!-- Editorial Intro -->
 <section class="mb-8">
 <p class="font-headline font-extrabold text-display-sm text-primary leading-tight">
@@ -185,30 +224,8 @@
 </div>
 </div>
 </div>
+  </div>
 </main>
 <!-- BottomNavBar -->
-<nav class="fixed bottom-0 w-full z-50 rounded-t-[1.5rem] bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-t border-[#c3c6d6]/15 shadow-[0_-10px_30px_rgba(25,28,29,0.04)]">
-<div class="flex justify-around items-center w-full px-4 pb-safe pt-2 h-20">
-<!-- Discover (Active) -->
-<a class="flex flex-col items-center justify-center text-[#0040a1] dark:text-blue-300 bg-[#dae2ff]/40 dark:bg-blue-900/30 rounded-2xl px-4 py-1.5 active:scale-90 transition-transform duration-150" href="#">
-<span class="material-symbols-outlined" data-icon="explore" style="font-variation-settings: 'FILL' 1;">explore</span>
-<span class="font-['Plus_Jakarta_Sans'] font-medium text-[11px]">Discover</span>
-</a>
-<!-- My Events -->
-<a class="flex flex-col items-center justify-center text-[#424654] dark:text-slate-400 px-4 py-1.5 active:scale-90 transition-transform duration-150 hover:text-[#0040a1] dark:hover:text-blue-300" href="#">
-<span class="material-symbols-outlined" data-icon="event_available">event_available</span>
-<span class="font-['Plus_Jakarta_Sans'] font-medium text-[11px]">My Events</span>
-</a>
-<!-- Alerts -->
-<a class="flex flex-col items-center justify-center text-[#424654] dark:text-slate-400 px-4 py-1.5 active:scale-90 transition-transform duration-150 hover:text-[#0040a1] dark:hover:text-blue-300" href="#">
-<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
-<span class="font-['Plus_Jakarta_Sans'] font-medium text-[11px]">Alerts</span>
-</a>
-<!-- Profile -->
-<a class="flex flex-col items-center justify-center text-[#424654] dark:text-slate-400 px-4 py-1.5 active:scale-90 transition-transform duration-150 hover:text-[#0040a1] dark:hover:text-blue-300" href="#">
-<span class="material-symbols-outlined" data-icon="person">person</span>
-<span class="font-['Plus_Jakarta_Sans'] font-medium text-[11px]">Profile</span>
-</a>
-</div>
-</nav>
+
 </body></html>

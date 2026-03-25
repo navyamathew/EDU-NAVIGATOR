@@ -90,23 +90,47 @@
     </style>
 </head>
 <body class="bg-background font-body text-on-surface selection:bg-primary-fixed selection:text-on-primary-fixed">
+    <aside class="hidden lg:flex h-screen w-64 fixed left-0 top-0 bg-slate-50 flex-col p-4 gap-y-2 z-50 border-r border-slate-200">
+  <div class="mb-8 px-2 py-4">
+    <h1 class="font-headline font-extrabold text-blue-900 text-xl tracking-tight">Edu Navigator</h1>
+    <p class="text-xs font-medium text-slate-500">Student Portal</p>
+  </div>
+
+  <nav class="flex-1 flex flex-col gap-y-1">
+    <a href="StudHome.html" class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg">
+      <span class="material-symbols-outlined">dashboard</span>
+      <span class="text-sm">Home</span>
+    </a>
+
+    <a href="OL1.html" class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg">
+      <span class="material-symbols-outlined">explore</span>
+      <span class="text-sm">Opportunity Listing</span>
+    </a>
+
+    <a href="MentorList.html" class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg">
+      <span class="material-symbols-outlined">groups</span>
+      <span class="text-sm">Mentor</span>
+    </a>
+
+    <a href="EventListing.html" class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg">
+      <span class="material-symbols-outlined">event</span>
+      <span class="text-sm">Event</span>
+    </a>
+
+    <a href="Notification.html" class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg">
+      <span class="material-symbols-outlined">notifications</span>
+      <span class="text-sm">Notifications</span>
+    </a>
+
+    <a href="StudProfileSetting.html" class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg">
+      <span class="material-symbols-outlined">settings</span>
+      <span class="text-sm">Settings</span>
+    </a>
+  </nav>
+</aside>
 <!-- TopNavBar -->
-<nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl shadow-sm dark:shadow-none h-20">
-<div class="flex justify-between items-center h-full px-8 max-w-7xl mx-auto">
-<div class="text-2xl font-bold tracking-tighter text-blue-900 dark:text-blue-100 font-headline">Scholar Stream</div>
-<div class="hidden md:flex items-center space-x-8">
-<a class="font-headline text-sm font-semibold tracking-wide text-blue-700 dark:text-blue-400 border-b-2 border-blue-700 dark:border-blue-400 pb-1" href="#">Workshops</a>
-<a class="font-headline text-sm font-semibold tracking-wide text-slate-600 dark:text-slate-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors duration-200" href="#">Scholarships</a>
-<a class="font-headline text-sm font-semibold tracking-wide text-slate-600 dark:text-slate-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors duration-200" href="#">Mentorship</a>
-<a class="font-headline text-sm font-semibold tracking-wide text-slate-600 dark:text-slate-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors duration-200" href="#">Archive</a>
-</div>
-<div class="flex items-center space-x-4">
-<button class="text-slate-600 dark:text-slate-400 font-headline text-sm font-semibold hover:text-blue-800 transition-colors">Sign In</button>
-<button class="main-gradient-button text-white px-6 py-2.5 rounded-lg font-headline text-sm font-semibold hover:scale-105 transition-transform duration-200 shadow-sm">Create Account</button>
-</div>
-</div>
-</nav>
-<main class="pt-20">
+
+<main class="pt-8 lg:ml-64">
 <!-- Hero & Form Section -->
 <section class="hero-mesh min-h-[921px] flex items-center py-16 px-8">
 <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
@@ -235,4 +259,6 @@
 </div>
 </div>
 </footer>
-</body></html>
+</body>
+
+</html>
