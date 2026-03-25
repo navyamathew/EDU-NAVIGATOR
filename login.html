@@ -175,8 +175,17 @@ async function handleGoogleLogin() {
 
     if (res.ok) {
       localStorage.setItem("idToken", idToken);
-      alert("Google login successful!");
-      // window.location.href = "/dashboard";
+      localStorage.setItem("role", data.role);
+      // localStorage.setItem("userName", data.name); // Google login doesn't return name yet
+
+      const role = data.role;
+      if (role === "student") {
+        window.location.href = "StudHome.html";
+      } else if (role === "mentor") {
+        window.location.href = "mentorPage.html";
+      } else {
+        alert("Admin dashboard coming soon!");
+      }
     } else {
       alert("Error: " + data.error);
     }

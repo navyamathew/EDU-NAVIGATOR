@@ -115,7 +115,7 @@
 <span class="" style="">Notifications</span>
 </a>
 <!-- Active State Logic: Settings page, so Settings is active -->
-<a class="bg-white dark:bg-slate-800 text-blue-700 dark:text-blue-400 rounded-lg shadow-sm font-bold flex items-center gap-3 px-4 py-3 transition-all font-['Manrope'] font-semibold text-base" href="#" style="">
+<a class="bg-white dark:bg-slate-800 text-blue-700 dark:text-blue-400 rounded-lg shadow-sm font-bold flex items-center gap-3 px-4 py-3 transition-all font-['Manrope'] font-semibold text-base" href="StudProfileSetting.html" style="">
 <span class="material-symbols-outlined active-icon" data-icon="settings" style="font-variation-settings: &quot;FILL&quot; 1;">settings</span>
 <span class="" style="">Settings</span>
 </a>
@@ -326,10 +326,10 @@
 <div class="mt-16 pt-8 border-t border-outline-variant/30 flex flex-col md:flex-row justify-between items-center gap-6">
 <div>
 <h4 class="font-bold text-on-surface" style="">Account Management</h4>
-<p class="text-xs text-on-surface-variant" style="">Archiving your account will hide your profile from all institutional discovery.</p>
+<p class="text-xs text-on-surface-variant" style="">Securely log out of your account or manage your profile permanently.</p>
 </div>
 <div class="flex gap-4">
-<button class="px-6 py-2 rounded-lg text-sm font-bold text-on-surface-variant hover:bg-surface-container-highest transition-colors" style="">Deactivate</button>
+<button onclick="handleLogout()" class="px-6 py-2 rounded-lg text-sm font-bold text-on-surface-variant hover:bg-surface-container-highest transition-colors" style="">Logout</button>
 <button class="px-6 py-2 rounded-lg text-sm font-bold text-error border border-error/20 hover:bg-error-container/20 transition-colors" style="">Delete Permanently</button>
 </div>
 </div>
@@ -350,6 +350,15 @@
 <script>
 const idToken = localStorage.getItem("idToken");
 if (!idToken) window.location.href = "login.html";
+
+function handleLogout() {
+  if (confirm("Are you sure you want to log out?")) {
+    localStorage.removeItem("idToken");
+    localStorage.removeItem("role");
+    localStorage.removeItem("userName");
+    window.location.href = "login.html";
+  }
+}
 
 async function loadProfile() {
   const res = await fetch("http://localhost:5000/profile", {

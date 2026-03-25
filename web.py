@@ -139,10 +139,11 @@ def login():
     uid = result["localId"]
     email = result["email"]
     # Check if email is verified
-    user = auth.get_user(uid)
-    if not user.email_verified:
-        return jsonify({"error": "Please verify your email before logging in. Check your inbox!"}), 401
-    
+    id_token = result["idToken"]
+    decoded_token = auth.verify_id_token(id_token)
+
+    if not decoded_token.get("email_verified", False):
+        return jsonify({"error": "Please verify your email before logging in."}), 401
 
 
     # Save user in Firestore
@@ -163,7 +164,7 @@ def login():
         "idToken": result["idToken"],
         "refreshToken": result["refreshToken"],
         "localId": result["localId"],
-        "role": user.custom_claims.get("role") if user.custom_claims else role,
+        "role": stored_role,
         "name": user_data.get("name", "Student")
     }), 200
 
@@ -190,15 +191,25 @@ def google_login():
         uid = decoded_token["uid"]
         email = decoded_token.get("email")
 
-        db.collection("users").document(uid).set({
-            "email": email,
-            "provider": "google",
-            "role": role
-        }, merge=True)
+        user_doc = db.collection("users").document(uid).get()
+        if user_doc.exists:
+            user_data = user_doc.to_dict()
+            stored_role = user_data.get("role", "")
+            if stored_role != role:
+                return jsonify({"error": f"Incorrect role. You are registered as a {stored_role}."}), 401
+        else:
+            # New user, set the role
+            db.collection("users").document(uid).set({
+                "email": email,
+                "provider": "google",
+                "role": role,
+                "created_at": datetime.utcnow()
+            })
 
         return jsonify({
             "message": "Google login successful",
-            "uid": uid
+            "uid": uid,
+            "role": role
         }), 200
 
     except Exception as e:
@@ -384,13 +395,14 @@ def get_posts(post_type):
     if error:
         return jsonify({"error": error[0]}), error[1]
 
+    print(f"Fetching posts for type: {post_type}, user: {uid}")
+
     valid_types = ["workshop", "internship", "scholarship", "hackathon"]
     if post_type not in valid_types:
         return jsonify({"error": "Invalid post type"}), 400
 
     posts_ref = db.collection("posts") \
-        .where("type", "==", post_type) \
-        .order_by("created_at", direction=firestore.Query.DESCENDING)
+        .where("type", "==", post_type)
 
     docs = posts_ref.stream()
     posts = []
@@ -402,6 +414,10 @@ def get_posts(post_type):
             data["created_at"] = data["created_at"].strftime("%b %d, %Y")
         posts.append(data)
 
+    # Sort by created_at descending, handling missing dates
+    posts.sort(key=lambda x: x.get("created_at", ""), reverse=True)
+
+    print(f"Found {len(posts)} posts")
     return jsonify(posts), 200
 
 
