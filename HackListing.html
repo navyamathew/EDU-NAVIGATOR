@@ -258,9 +258,12 @@ async function loadHackathons() {
           <span class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest">Open</span>
           <h4 class="font-headline text-xl font-bold text-on-surface mt-2">${post.title}</h4>
         </div>
-        <button class="text-outline hover:text-primary transition-colors">
-          <span class="material-symbols-outlined">bookmark</span>
-        </button>
+        <div class="flex gap-2">
+          <button onclick="toggleInterest('${post.id}')" class="material-symbols-outlined text-outline hover:text-primary transition-colors" id="interest-${post.id}">thumb_up</button>
+          <button class="text-outline hover:text-primary transition-colors">
+            <span class="material-symbols-outlined">bookmark</span>
+          </button>
+        </div>
       </div>
       <p class="text-sm text-on-surface-variant mb-4">${post.description}</p>
       <div class="grid grid-cols-2 gap-4 mb-6">
@@ -294,6 +297,19 @@ async function loadHackathons() {
       </div>
     </div>
   `).join("");
+}
+
+function toggleInterest(postId) {
+  const button = document.getElementById(`interest-${postId}`);
+  const isInterested = button.classList.contains('text-primary');
+  
+  if (isInterested) {
+    button.classList.remove('text-primary');
+    button.classList.add('text-outline');
+  } else {
+    button.classList.remove('text-outline');
+    button.classList.add('text-primary');
+  }
 }
 
 loadHackathons();

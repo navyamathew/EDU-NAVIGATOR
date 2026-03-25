@@ -204,11 +204,14 @@ const idToken = localStorage.getItem("idToken");
 if (!idToken) window.location.href = "login.html";
 
 async function loadScholarships() {
+  console.log("Loading scholarships...");
   const res = await fetch("http://localhost:5000/posts/scholarship", {
     headers: { "Authorization": idToken }
   });
 
+  console.log("Response status:", res.status);
   const posts = await res.json();
+  console.log("Posts received:", posts);
   const container = document.getElementById("scholarshipList");
 
   if (!res.ok || posts.length === 0) {
@@ -221,7 +224,10 @@ async function loadScholarships() {
       <div class="p-6">
         <div class="flex justify-between items-start mb-4">
           <div class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">Open</div>
-          <span class="material-symbols-outlined text-outline">bookmark</span>
+          <div class="flex gap-2">
+            <button onclick="toggleInterest('${post.id}')" class="material-symbols-outlined text-outline hover:text-primary transition-colors" id="interest-${post.id}">thumb_up</button>
+            <span class="material-symbols-outlined text-outline">bookmark</span>
+          </div>
         </div>
         <h3 class="text-xl font-bold text-on-surface mb-1 leading-snug">${post.title}</h3>
         <p class="text-sm text-on-surface-variant mb-4">${post.description}</p>
@@ -251,4 +257,19 @@ async function loadScholarships() {
 }
 
 loadScholarships();
+
+function toggleInterest(postId) {
+  const button = document.getElementById(`interest-${postId}`);
+  const isInterested = button.style.fontVariationSettings.includes('FILL 1');
+  
+  if (isInterested) {
+    button.style.fontVariationSettings = 'FILL 0';
+    button.classList.remove('text-primary');
+    button.classList.add('text-outline');
+  } else {
+    button.style.fontVariationSettings = 'FILL 1';
+    button.classList.remove('text-outline');
+    button.classList.add('text-primary');
+  }
+}
 </script>
