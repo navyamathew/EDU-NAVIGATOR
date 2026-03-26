@@ -3,7 +3,7 @@
 <html class="light" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Mentor Directory</title>
+<title>Organizer Direct Page</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Plus+Jakarta+Sans:wght@400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
@@ -126,10 +126,7 @@
 <button class="w-full bg-gradient-to-br from-primary to-primary-container text-white py-3 rounded-xl font-semibold text-sm mb-4 transition-transform active:scale-95 shadow-lg shadow-blue-900/10">
                 Find Opportunities
             </button>
-<a class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg transition-all duration-300 ease-in-out" href="#">
-<span class="material-symbols-outlined" data-icon="help">help</span>
-<span class="font-plus-jakarta text-sm">Help Center</span>
-</a>
+
 </div>
 </aside>
 <!-- Main Content Canvas -->
@@ -140,7 +137,7 @@
 <div class="lg:hidden font-manrope font-extrabold text-blue-900 text-lg">Edu Navigator</div>
 <div class="relative max-w-md w-full hidden md:block">
 <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xl" data-icon="search">search</span>
-<input class="w-full pl-10 pr-4 py-2 bg-surface-container-high border-none rounded-lg focus:ring-2 focus:ring-primary/20 focus:bg-white transition-all text-sm" placeholder="Search mentors..." type="text"/>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container-high border-none rounded-lg focus:ring-2 focus:ring-primary/20 focus:bg-white transition-all text-sm" placeholder="Search organizers..." type="text"/>
 </div>
 </div>
 <div class="flex items-center gap-2 lg:gap-4">
@@ -170,7 +167,47 @@
 <div class="absolute inset-y-0 left-4 flex items-center pointer-events-none">
 <span class="material-symbols-outlined text-outline" data-icon="search">search</span>
 </div>
-<input class="w-full pl-12 pr-4 py-4 bg-surface-container-high rounded-xl border-none focus:ring-2 focus:ring-primary focus:bg-surface-container-lowest transition-all font-body" placeholder="Search your mentors..." type="text"/>
+<div class="bg-surface-container-lowest p-4 rounded-2xl shadow-sm space-y-4">
+
+  <!-- Title -->
+  <h3 class="font-bold text-on-surface">Filter Organizers</h3>
+
+  <!-- Preferences -->
+  <div>
+    <label class="text-xs font-bold text-on-surface-variant">PREFERENCES</label>
+    <select id="prefFilter" class="w-full mt-1 p-2 rounded-lg bg-surface-container-high">
+      <option value="">All</option>
+      <option value="internship">Internship</option>
+      <option value="workshop">Workshop</option>
+      <option value="hackathon">Hackathon</option>
+    </select>
+  </div>
+
+  <!-- Region -->
+  <div>
+    <label class="text-xs font-bold text-on-surface-variant">REGION</label>
+    <select id="regionFilter" class="w-full mt-1 p-2 rounded-lg bg-surface-container-high">
+      <option value="">All</option>
+      <option value="india">India</option>
+      <option value="global">Global</option>
+      <option value="remote">Remote</option>
+    </select>
+  </div>
+
+  <!-- Organizer -->
+  <div>
+    <label class="text-xs font-bold text-on-surface-variant">ORGANIZER</label>
+    <input id="orgFilter" type="text" placeholder="e.g. IIT"
+      class="w-full mt-1 p-2 rounded-lg bg-surface-container-high"/>
+  </div>
+
+  <!-- Button -->
+  <button onclick="applyFilters()" 
+    class="w-full py-2 bg-primary text-white rounded-lg font-bold">
+    Apply Filters
+  </button>
+
+</div>
 </div>
 </div>
 <!-- Mentor Cards Grid -->
@@ -179,75 +216,59 @@
 <div class="bg-surface-container-lowest p-6 rounded-3xl shadow-[0_10px_30px_rgba(25,28,29,0.04)] hover:bg-surface-bright transition-all group">
 <div class="flex items-start justify-between mb-4">
 <div class="flex items-center gap-4">
-<div class="w-16 h-16 rounded-2xl overflow-hidden relative">
-<img alt="Mentor Profile" class="w-full h-full object-cover" data-alt="Professional female mentor smiling in office" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzOtFh55YVZl4Fcunm3WZf_RoWbLxDX1kmPBxqL6vuiswyzgPUkzXagv_PwbiRCa3ginYfizHB2hvJGRaoyG4edQaRM3lO-v0kCDkfn4XK6BwqlPiOFUd08tVMdGJp0VGjYgGatsJGESuGZxvbjzyBhPlrm3mVyPaetl3HEHpYES37FcZuAqQfjGa_6JVeOKzmK7SWT4x4pKWCJz8tTRnjgucynr6BG20G0uhemmG2FrQgfxXl2eiblJMrb0m3v1-kbHoOLun5FjE"/>
-</div>
+
 <div>
-<h3 class="font-headline font-bold text-lg text-on-surface">Dr. Sarah Jenkins</h3>
-<div class="flex items-center gap-1">
-<span class="bg-secondary-container text-on-secondary-container text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">Open</span>
-<span class="text-on-surface-variant text-xs font-body">Computer Science</span>
+<h3 class="font-headline font-bold text-lg text-on-surface">IIT PALAKKAD</h3>
+<div class="mentor-card bg-surface-container-lowest p-6 rounded-3xl shadow-[0_10px_30px_rgba(25,28,29,0.04)] hover:bg-surface-bright transition-all group">
+
+  <div class="flex items-start justify-between mb-4">
+    
+    <div class="flex items-center gap-4">
+      <div>
+        <h3 class="font-headline font-bold text-lg text-on-surface">
+          IIT PALAKKAD
+        </h3>
+
+        <div class="flex items-center gap-1 mt-1">
+          <span class="bg-secondary-container text-on-secondary-container text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">
+            Open
+          </span>
+
+          <span class="text-on-surface-variant text-xs font-body">
+            SUMMER INTERNSHIP
+          </span>
+        </div>
+
+        <!-- Add region for filtering -->
+        <p class="text-xs text-on-surface-variant mt-1">
+          India
+        </p>
+      </div>
+    </div>
+
+    <button class="text-primary hover:bg-primary-fixed/30 p-2 rounded-full transition-colors">
+      <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">
+        person_check
+      </span>
+    </button>
+
+  </div>
+
+  <button class="w-full py-3 bg-gradient-to-r from-primary to-primary-container text-on-primary font-bold rounded-xl hover:scale-[1.02] active:scale-95 transition-all text-sm font-label">
+    REGISTER NOW
+  </button>
+
 </div>
 </div>
 </div>
-<button class="text-primary hover:bg-primary-fixed/30 p-2 rounded-full transition-colors"><span class="material-symbols-outlined" data-icon="person_check" style="font-variation-settings: 'FILL' 1;">person_check</span></button>
+<button class="text-primary hover:bg-primary-fixed/30 p-2 rounded-full transition-colors"><span class="material-symbols-outlined" data-icon="person_check" style="font-variation-settings: 'FILL' 1;">REGISTER</span></button>
 </div>
-<p class="text-on-surface-variant text-sm leading-relaxed mb-6 font-body">
-                    Former Senior Architect at Google with 12+ years of experience in distributed systems and cloud infrastructure.
-                </p>
+
 <button class="w-full py-3 bg-gradient-to-r from-primary to-primary-container text-on-primary font-bold rounded-xl hover:scale-[1.02] active:scale-95 transition-all text-sm font-label">
-                    View Profile
+                    REGISTER NOW
                 </button>
 </div>
-<!-- Mentor Card 2 -->
-<div class="bg-surface-container-lowest p-6 rounded-3xl shadow-[0_10px_30px_rgba(25,28,29,0.04)] hover:bg-surface-bright transition-all group">
-<div class="flex items-start justify-between mb-4">
-<div class="flex items-center gap-4">
-<div class="w-16 h-16 rounded-2xl overflow-hidden relative">
-<img alt="Mentor Profile" class="w-full h-full object-cover" data-alt="Male mentor with professional demeanor" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZYc8JfCaTae5JdVCEzmyeHOrlomE0ORSl3RwrmA9H4Z0cZAf5DHP_dTuSc0D7WZg9xADt5d1yuzUvxk52pUdDSzwtgQgc1iI-ukOaLRXdvnwihMjo56VzEKwUIu2tb62vNQGEndSQXQgk2uYr51xi1QNVBeGwpMgPHMq1ZhfQV8RdMMoBYN33ZDCQUVZOgHMQgzI8ViItu8YqjN_U_F0F-Ee0rOhk6ejpQkPpTH7jo7sgbGWa6ShXuHiUZ3JdiRzmr5s2jxC-g4E"/>
-</div>
-<div>
-<h3 class="font-headline font-bold text-lg text-on-surface">Marcus Thorne</h3>
-<div class="flex items-center gap-1">
-<span class="bg-tertiary-fixed text-on-tertiary-fixed text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">In Review</span>
-<span class="text-on-surface-variant text-xs font-body">Career Coach</span>
-</div>
-</div>
-</div>
-<button class="text-primary hover:bg-primary-fixed/30 p-2 rounded-full transition-colors"><span class="material-symbols-outlined" data-icon="person_check" style="font-variation-settings: 'FILL' 1;">person_check</span></button>
-</div>
-<p class="text-on-surface-variant text-sm leading-relaxed mb-6 font-body">
-                    Specializing in interview prep for Fortune 500 companies. Helping students transition from academia to high-impact roles.
-                </p>
-<button class="w-full py-3 bg-gradient-to-r from-primary to-primary-container text-on-primary font-bold rounded-xl hover:scale-[1.02] active:scale-95 transition-all text-sm font-label">
-                    View Profile
-                </button>
-</div>
-<!-- Mentor Card 3 -->
-<div class="bg-surface-container-lowest p-6 rounded-3xl shadow-[0_10px_30px_rgba(25,28,29,0.04)] hover:bg-surface-bright transition-all group">
-<div class="flex items-start justify-between mb-4">
-<div class="flex items-center gap-4">
-<div class="w-16 h-16 rounded-2xl overflow-hidden relative">
-<img alt="Mentor Profile" class="w-full h-full object-cover" data-alt="Confident female mentor in creative workspace" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFNTAv484ySmluBCDqdepz21OstOY5d79M5CY9uo2sSIMYdfcdiwNGSo75jaHqNGrGNMkSzOIQoInmRV2ASnkuhLcpRwM3prtWbFh7NjtqfETtwWXqEZXMjJwortxmRQX-2IM6Jg1vn1ntcLhOZRddS4TDBtqEgxE24zB6IumAY0PXIK6hWnq_Oe5omO6WYdFsn3U1myyxx5j6TetTL11Xh8KyS_t1VNrlqqwQ0M-LchhteTGA7Z9DaDspCeD5L4Ylq1ndxsB79Ws"/>
-</div>
-<div>
-<h3 class="font-headline font-bold text-lg text-on-surface">Elena Rodriguez</h3>
-<div class="flex items-center gap-1">
-<span class="bg-secondary-container text-on-secondary-container text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">Open</span>
-<span class="text-on-surface-variant text-xs font-body">UX Design</span>
-</div>
-</div>
-</div>
-<button class="text-primary hover:bg-primary-fixed/30 p-2 rounded-full transition-colors"><span class="material-symbols-outlined" data-icon="person_check" style="font-variation-settings: 'FILL' 1;">person_check</span></button>
-</div>
-<p class="text-on-surface-variant text-sm leading-relaxed mb-6 font-body">
-                    Design Lead at a top fintech startup. Passionate about accessibility, design systems, and inclusive product culture.
-                </p>
-<button class="w-full py-3 bg-gradient-to-r from-primary to-primary-container text-on-primary font-bold rounded-xl hover:scale-[1.02] active:scale-95 transition-all text-sm font-label">
-                    View Profile
-                </button>
-</div>
-</div>
+
 </div>
 </main>
 <!-- Bottom Navigation Bar -->
@@ -288,5 +309,28 @@ async function loadNotifications() {
 
 loadProfilePicture();
 loadNotifications();
+</script>
+<script>
+function applyFilters() {
+  const pref = document.getElementById("prefFilter").value.toLowerCase();
+  const region = document.getElementById("regionFilter").value.toLowerCase();
+  const org = document.getElementById("orgFilter").value.toLowerCase();
+
+  const cards = document.querySelectorAll(".mentor-card");
+
+  cards.forEach(card => {
+    const text = card.innerText.toLowerCase();
+
+    const matchPref = !pref || text.includes(pref);
+    const matchRegion = !region || text.includes(region);
+    const matchOrg = !org || text.includes(org);
+
+    if (matchPref && matchRegion && matchOrg) {
+      card.style.display = "block";
+    } else {
+      card.style.display = "none";
+    }
+  });
+}
 </script>
 </body></html>
