@@ -172,11 +172,7 @@
 <section class="lg:col-span-7 space-y-6">
 <div class="flex items-center justify-between">
 <h3 class="text-xl font-headline font-bold text-on-surface">Recently Added Events</h3>
-<div class="flex gap-2">
-<button class="px-3 py-1.5 bg-white rounded-lg text-sm font-medium text-slate-600 shadow-sm border border-slate-100">All</button>
-<button class="px-3 py-1.5 bg-white rounded-lg text-sm font-medium text-slate-600 shadow-sm border border-slate-100">Live</button>
-<button class="px-3 py-1.5 bg-white rounded-lg text-sm font-medium text-slate-600 shadow-sm border border-slate-100">Pending</button>
-</div>
+
 </div>
 <div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden">
 <table class="w-full text-left">
@@ -184,7 +180,6 @@
 <tr>
 <th class="px-6 py-4 text-xs font-bold text-on-surface-variant uppercase tracking-widest">Event Name</th>
 <th class="px-6 py-4 text-xs font-bold text-on-surface-variant uppercase tracking-widest">Date</th>
-<th class="px-6 py-4 text-xs font-bold text-on-surface-variant uppercase tracking-widest">Status</th>
 <th class="px-6 py-4 text-xs font-bold text-on-surface-variant uppercase tracking-widest text-right">Actions</th>
 </tr>
 </thead>
@@ -199,16 +194,9 @@
 <p class="text-sm font-medium text-on-surface">Oct 24, 2023</p>
 <p class="text-[10px] text-slate-400">10:00 AM</p>
 </td>
-<td class="px-6 py-5">
-<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary-container text-on-secondary-container text-[11px] font-bold">
-<span class="w-1.5 h-1.5 bg-secondary rounded-full"></span>
-                                        LIVE
-                                    </span>
-</td>
+
 <td class="px-6 py-5 text-right space-x-2">
-<button class="p-2 text-primary hover:bg-primary-fixed-dim/20 rounded-lg transition-colors">
-<span class="material-symbols-outlined text-lg">edit</span>
-</button>
+
 <button class="p-2 text-error hover:bg-error-container/40 rounded-lg transition-colors">
 <span class="material-symbols-outlined text-lg">delete</span>
 </button>
@@ -224,16 +212,9 @@
 <p class="text-sm font-medium text-on-surface">Nov 12, 2023</p>
 <p class="text-[10px] text-slate-400">09:30 AM</p>
 </td>
-<td class="px-6 py-5">
-<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary-container text-on-secondary-container text-[11px] font-bold">
-<span class="w-1.5 h-1.5 bg-secondary rounded-full"></span>
-                                        LIVE
-                                    </span>
-</td>
+
 <td class="px-6 py-5 text-right space-x-2">
-<button class="p-2 text-primary hover:bg-primary-fixed-dim/20 rounded-lg transition-colors">
-<span class="material-symbols-outlined text-lg">edit</span>
-</button>
+
 <button class="p-2 text-error hover:bg-error-container/40 rounded-lg transition-colors">
 <span class="material-symbols-outlined text-lg">delete</span>
 </button>
@@ -249,16 +230,9 @@
 <p class="text-sm font-medium text-on-surface">Nov 05, 2023</p>
 <p class="text-[10px] text-slate-400">02:00 PM</p>
 </td>
-<td class="px-6 py-5">
-<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed-variant text-[11px] font-bold uppercase">
-<span class="w-1.5 h-1.5 bg-tertiary rounded-full"></span>
-                                        In Review
-                                    </span>
-</td>
+
 <td class="px-6 py-5 text-right space-x-2">
-<button class="p-2 text-primary hover:bg-primary-fixed-dim/20 rounded-lg transition-colors">
-<span class="material-symbols-outlined text-lg">edit</span>
-</button>
+
 <button class="p-2 text-error hover:bg-error-container/40 rounded-lg transition-colors">
 <span class="material-symbols-outlined text-lg">delete</span>
 </button>
@@ -274,16 +248,9 @@
 <p class="text-sm font-medium text-on-surface">Dec 01, 2023</p>
 <p class="text-[10px] text-slate-400">11:00 AM</p>
 </td>
-<td class="px-6 py-5">
-<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-error-container text-on-error-container text-[11px] font-bold uppercase">
-<span class="w-1.5 h-1.5 bg-error rounded-full"></span>
-                                        Pending
-                                    </span>
-</td>
+
 <td class="px-6 py-5 text-right space-x-2">
-<button class="p-2 text-primary hover:bg-primary-fixed-dim/20 rounded-lg transition-colors">
-<span class="material-symbols-outlined text-lg">edit</span>
-</button>
+
 <button class="p-2 text-error hover:bg-error-container/40 rounded-lg transition-colors">
 <span class="material-symbols-outlined text-lg">delete</span>
 </button>
@@ -291,30 +258,13 @@
 </tr>
 </tbody>
 </table>
-<div class="px-6 py-4 bg-slate-50/30 border-t border-slate-100 flex items-center justify-between">
-<p class="text-xs text-slate-500 font-medium">Showing 4 of 128 events</p>
-<div class="flex gap-2">
-<button class="p-1.5 hover:bg-slate-200 rounded-md transition-colors">
-<span class="material-symbols-outlined text-sm">chevron_left</span>
-</button>
-<button class="p-1.5 hover:bg-slate-200 rounded-md transition-colors">
-<span class="material-symbols-outlined text-sm">chevron_right</span>
-</button>
-</div>
-</div>
+
 </div>
 </section>
 </div>
 </div>
 <!-- Footer / Bottom Branding -->
-<footer class="mt-auto px-8 py-6 border-t border-slate-200/40 bg-white/50 flex justify-between items-center">
-<p class="text-xs font-medium text-slate-500">© 2024 Scholar Stream Academic Curator — Kerala Institutional Division</p>
-<div class="flex gap-6">
-<a class="text-xs text-slate-400 hover:text-primary transition-colors" href="#">Documentation</a>
-<a class="text-xs text-slate-400 hover:text-primary transition-colors" href="#">API Access</a>
-<a class="text-xs text-slate-400 hover:text-primary transition-colors" href="#">System Status</a>
-</div>
-</footer>
+
 </main>
 <!-- Contextual Floating Action Button (Only on main dashboard as per rules) -->
 <button class="fixed bottom-8 right-8 w-14 h-14 bg-primary text-white rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all z-50 md:hidden">

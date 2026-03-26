@@ -2,92 +2,48 @@
 
 <html class="light" lang="en"><head>
 <meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Scholar Stream | Mastering the Ivy League SOP</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "on-surface-variant": "#424654",
-                        "secondary-fixed-dim": "#88d982",
-                        "surface-container-high": "#e7e8e9",
-                        "primary-fixed-dim": "#b2c5ff",
-                        "outline": "#737785",
-                        "tertiary-fixed-dim": "#55d7ed",
-                        "on-primary": "#ffffff",
-                        "secondary-container": "#a0f399",
-                        "on-secondary-fixed-variant": "#005312",
-                        "surface": "#f8f9fa",
-                        "secondary-fixed": "#a3f69c",
-                        "surface-container": "#edeeef",
-                        "tertiary-fixed": "#9eefff",
-                        "on-tertiary-fixed": "#001f24",
-                        "surface-container-lowest": "#ffffff",
-                        "on-surface": "#191c1d",
-                        "surface-container-highest": "#e1e3e4",
-                        "on-secondary-fixed": "#002204",
-                        "surface-container-low": "#f3f4f5",
-                        "on-primary-fixed": "#001847",
-                        "inverse-surface": "#2e3132",
-                        "on-background": "#191c1d",
-                        "inverse-primary": "#b2c5ff",
-                        "secondary": "#1b6d24",
-                        "on-tertiary-container": "#74eaff",
-                        "error-container": "#ffdad6",
-                        "primary": "#0040a1",
-                        "on-tertiary-fixed-variant": "#004e59",
-                        "primary-fixed": "#dae2ff",
-                        "on-error-container": "#93000a",
-                        "primary-container": "#0056d2",
-                        "outline-variant": "#c3c6d6",
-                        "background": "#f8f9fa",
-                        "on-error": "#ffffff",
-                        "inverse-on-surface": "#f0f1f2",
-                        "surface-variant": "#e1e3e4",
-                        "tertiary-container": "#006976",
-                        "on-tertiary": "#ffffff",
-                        "on-secondary": "#ffffff",
-                        "on-primary-fixed-variant": "#0040a1",
-                        "on-primary-container": "#ccd8ff",
-                        "error": "#ba1a1a",
-                        "on-secondary-container": "#217128",
-                        "tertiary": "#004f5a",
-                        "surface-dim": "#d9dadb",
-                        "surface-tint": "#0056d2",
-                        "surface-bright": "#f8f9fa"
-                    },
-                    fontFamily: {
-                        "headline": ["Manrope"],
-                        "body": ["Plus Jakarta Sans"],
-                        "label": ["Plus Jakarta Sans"]
-                    },
-                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
-                },
-            },
-        }
-    </script>
+
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+
+<!-- Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+
+<!-- Minimal Config -->
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        primary: "#0040a1",
+        surface: "#f8f9fa",
+        "surface-container-high": "#e7e8e9",
+        "on-surface": "#191c1d"
+      },
+      fontFamily: {
+        headline: ["Manrope"],
+        body: ["Plus Jakarta Sans"]
+      }
+    }
+  }
+}
+</script>
+
 <style>
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-            vertical-align: middle;
-        }
-        .bg-glass {
-            backdrop-filter: blur(20px);
-        }
-        .main-gradient-button {
-            background: linear-gradient(135deg, #0040a1 0%, #0056d2 100%);
-        }
-        .hero-mesh {
-            background-color: #f8f9fa;
-            background-image: radial-gradient(at 0% 0%, #dae2ff 0, transparent 50%), radial-gradient(at 100% 0%, #a0f399 0, transparent 50%);
-        }
-    </style>
+.material-symbols-outlined { vertical-align: middle; }
+.main-gradient-button {
+  background: linear-gradient(135deg,#0040a1,#0056d2);
+}
+.hero-mesh {
+  background: radial-gradient(at 0% 0%, #dae2ff, transparent 50%),
+              radial-gradient(at 100% 0%, #a0f399, transparent 50%);
+}
+</style>
 </head>
 <body class="bg-background font-body text-on-surface selection:bg-primary-fixed selection:text-on-primary-fixed">
     <aside class="hidden lg:flex h-screen w-64 fixed left-0 top-0 bg-slate-50 flex-col p-4 gap-y-2 z-50 border-r border-slate-200">
@@ -109,7 +65,7 @@
 
     <a href="MentorList.html" class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg">
       <span class="material-symbols-outlined">groups</span>
-      <span class="text-sm">Mentor</span>
+      <span class="text-sm">Organizers</span>
     </a>
 
     <a href="EventListing.html" class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg">
@@ -136,15 +92,11 @@
 <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
 <!-- Left Content: Editorial Information -->
 <div class="lg:col-span-7 space-y-8">
-<div class="inline-flex items-center px-4 py-1 rounded-full bg-secondary-container text-on-secondary-container font-label text-xs font-bold tracking-widest uppercase">
-                        Exclusive Masterclass
-                    </div>
+
 <h1 class="font-headline text-5xl md:text-6xl font-extrabold text-on-surface leading-[1.1] tracking-tight">
                         Mastering the <span class="text-primary">Ivy League</span> Statement of Purpose
                     </h1>
-<p class="text-lg text-on-surface-variant max-w-2xl leading-relaxed">
-                        Transform your academic journey with a strategic deep-dive into narrative crafting. Learn how to articulate your vision, align with institutional values, and secure your place at the world's most prestigious universities.
-                    </p>
+
 <div class="flex flex-wrap gap-6 items-center py-4">
 <div class="flex items-center gap-3">
 <div class="w-12 h-12 rounded-xl bg-surface-container-highest flex items-center justify-center text-primary">
@@ -168,22 +120,12 @@
 <!-- Highlights Bento -->
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
 <div class="bg-surface-container-lowest p-6 rounded-2xl flex items-center gap-4 hover:bg-surface-bright transition-all duration-300">
-<div class="bg-tertiary-fixed w-10 h-10 rounded-full flex items-center justify-center text-on-tertiary-fixed-variant">
-<span class="material-symbols-outlined" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
-</div>
-<div>
-<p class="font-headline font-bold text-on-surface">Verified Certificate</p>
-<p class="text-xs text-on-surface-variant">Industry recognized credential</p>
-</div>
+
+
 </div>
 <div class="bg-surface-container-lowest p-6 rounded-2xl flex items-center gap-4 hover:bg-surface-bright transition-all duration-300">
-<div class="bg-secondary-fixed w-10 h-10 rounded-full flex items-center justify-center text-on-secondary-fixed-variant">
-<span class="material-symbols-outlined" data-icon="groups" style="font-variation-settings: 'FILL' 1;">groups</span>
-</div>
-<div>
-<p class="font-headline font-bold text-on-surface">250+ Students Joined</p>
-<p class="text-xs text-on-surface-variant">Join a thriving global cohort</p>
-</div>
+
+
 </div>
 </div>
 </div>
@@ -191,7 +133,7 @@
 <div class="lg:col-span-5">
 <div class="bg-surface-container-lowest p-8 md:p-10 rounded-3xl shadow-lg shadow-on-surface/[0.04]">
 <h2 class="font-headline text-2xl font-bold text-on-surface mb-2">Secure Your Spot</h2>
-<p class="text-sm text-on-surface-variant mb-8">Limited seats available for the live Q&amp;A session.</p>
+
 <form action="#" class="space-y-6">
 <div class="space-y-1.5">
 <label class="font-label text-xs font-bold text-on-surface-variant uppercase tracking-wider block ml-1">Full Name</label>
@@ -212,9 +154,7 @@
 <button class="w-full main-gradient-button text-white py-4 rounded-xl font-headline font-bold text-lg hover:scale-[1.02] transition-transform shadow-md mt-4" type="submit">
                                 Register Now
                             </button>
-<p class="text-center text-[10px] text-outline px-4 leading-relaxed">
-                                By registering, you agree to Scholar Stream's Terms of Service and Privacy Policy. A confirmation link will be sent to your email.
-                            </p>
+
 </form>
 </div>
 </div>
@@ -224,20 +164,11 @@
 <section class="bg-surface py-24 px-8 border-t border-outline-variant/10">
 <div class="max-w-7xl mx-auto">
 <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+
 <div class="space-y-4">
-<span class="material-symbols-outlined text-primary text-4xl" data-icon="history_edu">history_edu</span>
-<h3 class="font-headline text-xl font-bold">Narrative Mastery</h3>
-<p class="text-on-surface-variant leading-relaxed">Move beyond standard templates and learn to tell a story that resonates with admission committees on a human level.</p>
-</div>
-<div class="space-y-4">
-<span class="material-symbols-outlined text-primary text-4xl" data-icon="architecture">architecture</span>
-<h3 class="font-headline text-xl font-bold">Structural Precision</h3>
-<p class="text-on-surface-variant leading-relaxed">Understand the architecture of a winning SOP, from the opening hook to the decisive conclusion.</p>
-</div>
-<div class="space-y-4">
-<span class="material-symbols-outlined text-primary text-4xl" data-icon="forum">forum</span>
-<h3 class="font-headline text-xl font-bold">Live Mentorship</h3>
-<p class="text-on-surface-variant leading-relaxed">Get your specific questions answered during our 30-minute interactive deep-dive and case study review.</p>
+
+<h3 class="font-headline text-xl font-bold"></h3>
+<p class="text-on-surface-variant leading-relaxed"></p>
 </div>
 </div>
 </div>
@@ -246,17 +177,8 @@
 <!-- Footer -->
 <footer class="w-full py-16 mt-auto bg-slate-100 dark:bg-slate-950">
 <div class="flex flex-col md:flex-row justify-between items-center px-12 max-w-7xl mx-auto border-t border-slate-200/50 dark:border-slate-800/50 pt-12">
-<div class="mb-8 md:mb-0">
-<span class="font-headline font-extrabold text-blue-900 dark:text-blue-100 text-xl">Scholar Stream</span>
-<p class="font-body text-xs text-slate-500 mt-2 uppercase tracking-widest">© 2024 Scholar Stream. The Academic Curator.</p>
-</div>
-<div class="flex flex-wrap justify-center gap-8">
-<a class="font-body text-xs uppercase tracking-widest text-slate-500 hover:text-blue-600 transition-all" href="#">Privacy Policy</a>
-<a class="font-body text-xs uppercase tracking-widest text-slate-500 hover:text-blue-600 transition-all" href="#">Terms of Service</a>
-<a class="font-body text-xs uppercase tracking-widest text-slate-500 hover:text-blue-600 transition-all" href="#">Accessibility</a>
-<a class="font-body text-xs uppercase tracking-widest text-slate-500 hover:text-blue-600 transition-all" href="#">Contact Support</a>
-<a class="font-body text-xs uppercase tracking-widest text-slate-500 hover:text-blue-600 transition-all" href="#">About Us</a>
-</div>
+
+
 </div>
 </footer>
 </body>
