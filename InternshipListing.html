@@ -146,7 +146,11 @@
 <button class="w-full bg-primary hover:bg-[#0040a1] text-white py-3.5 px-6 rounded-xl font-bold text-sm flex items-center justify-center gap-2 transition-all active:scale-[0.98] shadow-md shadow-primary/20">
 <span class="material-symbols-outlined text-lg">search</span>
     Apply Filters
-  </button>
+</button>
+<button onclick="loadAIRecommendations()" class="w-full mt-3 bg-gradient-to-br from-tertiary to-tertiary-container text-white py-3.5 px-6 rounded-xl font-bold text-sm flex items-center justify-center gap-2 transition-all active:scale-[0.98] shadow-md">
+<span class="material-symbols-outlined text-lg">psychology</span>
+    Find Best Matches for Me
+</button>
 </div></div>
 </div>
 </section>
@@ -198,6 +202,26 @@
 const idToken = localStorage.getItem("idToken");
 if (!idToken) window.location.href = "login.html";
 
+// Load profile picture
+async function loadProfilePicture() {
+  try {
+    const res = await fetch("http://localhost:5000/profile", {
+      headers: { "Authorization": idToken }
+    });
+    const data = await res.json();
+    if (res.ok && data.photo) {
+      const profileImg = document.querySelector('header img[alt="Student Profile"]');
+      if (profileImg) {
+        profileImg.src = data.photo;
+      }
+    }
+  } catch (error) {
+    console.error("Error loading profile picture:", error);
+  }
+}
+
+loadProfilePicture();
+
 async function loadInternships() {
   const res = await fetch("http://localhost:5000/posts/internship", {
     headers: { "Authorization": idToken }
@@ -212,12 +236,12 @@ async function loadInternships() {
   }
 
   container.innerHTML = posts.map(post => `
-    <div class="bg-surface-container-lowest rounded-[1.5rem] overflow-hidden group transition-all duration-300 hover:bg-surface-bright">
+    <div id="opportunity-${post.id}" class="bg-surface-container-lowest rounded-[1.5rem] overflow-hidden group transition-all duration-300 hover:bg-surface-bright">
       <div class="p-6">
         <div class="flex justify-between items-start mb-4">
           <div class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">Open</div>
           <div class="flex gap-2">
-            <button onclick="toggleInterest('${post.id}')" class="material-symbols-outlined text-outline hover:text-primary transition-colors" id="interest-${post.id}">thumb_up</button>
+            <button onclick="toggleInterest('${post.id}', '${encodeURIComponent(post.title || "")}')" class="material-symbols-outlined text-outline hover:text-primary transition-colors" id="interest-${post.id}">thumb_up</button>
             <span class="material-symbols-outlined text-outline">bookmark</span>
           </div>
         </div>
@@ -246,21 +270,140 @@ async function loadInternships() {
       </div>
     </div>
   `).join("");
+  loadInterestState();
 }
 
-function toggleInterest(postId) {
+async function loadAIRecommendations() {
+  const container = document.getElementById("internshipList");
+  container.innerHTML = '<p class="text-center text-on-surface-variant py-12">🤖 Finding best matches for you...</p>';
+
+  const res = await fetch("http://localhost:5000/ai/recommendations?type=internship", {
+    headers: { "Authorization": idToken }
+  });
+
+  const posts = await res.json();
+
+  if (!res.ok || posts.length === 0) {
+    container.innerHTML = '<p class="text-center text-on-surface-variant py-12">No matches found. Try completing your profile!</p>';
+    return;
+  }
+
+  container.innerHTML = `
+    <div class="mb-4 flex items-center gap-2 text-tertiary font-bold text-sm">
+      <span class="material-symbols-outlined">psychology</span>
+      AI Recommended for you
+    </div>
+  ` + posts.map(post => `
+    <div class="bg-surface-container-lowest rounded-[1.5rem] overflow-hidden group transition-all duration-300 hover:bg-surface-bright border-2 border-tertiary/20">
+      <div class="p-6">
+        <div class="flex justify-between items-start mb-4">
+          <div class="bg-tertiary-fixed text-on-tertiary-fixed-variant px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">AI Pick ✨</div>
+          <span class="material-symbols-outlined text-outline">bookmark</span>
+        </div>
+        <h3 class="text-xl font-bold text-on-surface mb-1 leading-snug">${post.title}</h3>
+        <p class="text-sm text-on-surface-variant mb-4">${post.description}</p>
+        <div class="flex items-center gap-6 mb-4">
+          ${post.funding ? `
+          <div>
+            <p class="text-[10px] uppercase tracking-tighter text-outline font-bold">Funding</p>
+            <p class="text-lg font-extrabold text-primary">${post.funding}</p>
+          </div>
+          <div class="h-8 w-[1px] bg-outline-variant/15"></div>` : ""}
+          ${post.deadline ? `
+          <div>
+            <p class="text-[10px] uppercase tracking-tighter text-outline font-bold">Deadline</p>
+            <p class="text-sm font-bold text-on-surface">${post.deadline}</p>
+          </div>` : ""}
+        </div>
+        <p class="text-xs text-on-surface-variant mb-4">📍 ${post.location || "Online"} &nbsp;|&nbsp; Posted by ${post.mentor_name}</p>
+        ${post.link ? `
+        <a href="${post.link}" target="_blank" class="block w-full py-4 rounded-xl bg-gradient-to-br from-primary to-primary-container text-white font-bold text-sm text-center">
+          Apply Now
+        </a>` : ""}
+      </div>
+    </div>
+  `).join("");
+}
+
+function loadInterestState() {
+  const liked = JSON.parse(localStorage.getItem('likedOpportunities') || '[]');
+  liked.forEach(item => {
+    const button = document.getElementById(`interest-${item.id}`);
+    if (button) {
+      button.classList.remove('text-outline');
+      button.classList.add('text-primary');
+      button.style.fontVariationSettings = 'FILL 1';
+    }
+  });
+}
+
+function persistInterest(postId, postTitle, add, type = 'internship') {
+  const existing = JSON.parse(localStorage.getItem('likedOpportunities') || '[]');
+  const decodedTitle = decodeURIComponent(postTitle || '');
+
+  let updated;
+  if (add) {
+    if (!existing.find(p => p.id === postId)) {
+      updated = [{ id: postId, title: decodedTitle, type, timestamp: Date.now() }, ...existing];
+    } else {
+      updated = existing;
+    }
+    updateRecentActivity(postId, decodedTitle, 'Liked', type);
+  } else {
+    updated = existing.filter(p => p.id !== postId);
+  }
+
+  localStorage.setItem('likedOpportunities', JSON.stringify(updated));
+}
+
+function updateRecentActivity(id, title, action, type = 'scholarship') {
+  const history = JSON.parse(localStorage.getItem('recentActivity') || '[]');
+  const trimmed = history.filter(item => item.id !== id);
+  trimmed.unshift({ id, title, action, type, time: new Date().toLocaleString() });
+  localStorage.setItem('recentActivity', JSON.stringify(trimmed.slice(0, 10)));
+}
+
+function toggleInterest(postId, postTitle) {
   const button = document.getElementById(`interest-${postId}`);
+  if (!button) return;
+
   const isInterested = button.classList.contains('text-primary');
-  
+
   if (isInterested) {
     button.classList.remove('text-primary');
     button.classList.add('text-outline');
+    button.style.fontVariationSettings = 'FILL 0';
+    persistInterest(postId, postTitle, false);
   } else {
     button.classList.remove('text-outline');
     button.classList.add('text-primary');
+    button.style.fontVariationSettings = 'FILL 1';
+    persistInterest(postId, postTitle, true, 'internship');
   }
 }
 
 loadInternships();
+
+// Apply saved like state when list is loaded
+setTimeout(() => {
+  loadInterestState();
+  scrollToHashOpportunity();
+}, 250);
+
+function scrollToHashOpportunity() {
+  const hash = window.location.hash;
+  if (!hash) return;
+
+  const target = document.querySelector(hash);
+  if (target) {
+    target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  } else {
+    // If not loaded yet, retry once after a short delay
+    setTimeout(() => {
+      const retryTarget = document.querySelector(hash);
+      if (retryTarget) retryTarget.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 400);
+  }
+}
 </script>
 </body></html>

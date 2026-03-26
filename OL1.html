@@ -87,59 +87,73 @@
     }
   </style>
   </head>
-<body class="bg-surface-container-low font-body text-on-surface min-h-screen">
+<body class="bg-surface-container-low font-body text-on-surface min-h-screen pb-20 lg:pb-0">
   <aside class="hidden lg:flex h-screen w-64 fixed left-0 top-0 border-r-0 bg-slate-50 flex-col p-4 gap-y-2 z-50">
 <div class="mb-8 px-2 py-4">
 <h1 class="font-manrope font-extrabold text-blue-900 text-xl tracking-tight">Edu Navigator</h1>
 <p class="text-xs font-medium text-slate-500">Student Portal</p>
 </div>
 <nav class="flex-1 flex flex-col gap-y-1">
-<a class="flex items-center gap-3 px-4 py-3 bg-blue-50 text-blue-700 rounded-lg font-semibold transition-all duration-300 ease-in-out" href="#">
-
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg transition-all duration-300 ease-in-out" href="StudHome.html">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
 <span class="font-plus-jakarta text-sm">HOME</span>
 </a>
-<a class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg transition-all duration-300 ease-in-out" href="OL1.html">
-
+<a class="flex items-center gap-3 px-4 py-3 bg-blue-50 text-blue-700 rounded-lg font-semibold transition-all duration-300 ease-in-out" href="OL1.html">
+<span class="material-symbols-outlined" data-icon="explore">explore</span>
 <span class="font-plus-jakarta text-sm uppercase">Opportunity Listing</span>
 </a>
 <a class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg transition-all duration-300 ease-in-out" href="MentorList.html">
-
-<span class="font-plus-jakarta text-sm uppercase">Organizer</span>
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+<span class="font-plus-jakarta text-sm uppercase">Mentor</span>
 </a>
 <a class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg transition-all duration-300 ease-in-out" href="EventListing.html">
-
+<span class="material-symbols-outlined" data-icon="event">event</span>
 <span class="font-plus-jakarta text-sm">Events</span>
 </a>
 <a class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg transition-all duration-300 ease-in-out" href="Notification.html">
-
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
 <span class="font-plus-jakarta text-sm">Notifications</span>
 </a>
 <a class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg transition-all duration-300 ease-in-out" href="StudProfileSetting.html">
-
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
 <span class="font-plus-jakarta text-sm">Settings</span>
 </a>
 </nav>
 
 <div class="mt-auto pt-4 border-t border-slate-200/60">
-
+<button class="w-full bg-gradient-to-br from-primary to-primary-container text-white py-3 rounded-xl font-semibold text-sm mb-4 transition-transform active:scale-95 shadow-lg shadow-blue-900/10">Find Opportunities</button>
 <a class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg transition-all duration-300 ease-in-out" href="#">
-
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span class="font-plus-jakarta text-sm">Help Center</span>
 </a>
 </div>
 </aside>
 
-<!-- Top Navigation Suppression: Not a top-level destination, it's a preference setting flow -->
-<header class="w-full top-0 sticky z-50 bg-[#f8f9fa] shadow-[0_2px_8px_rgba(25,28,29,0.02)]">
-<div class="flex items-center justify-between px-6 py-4 max-w-7xl mx-auto">
-<div class="flex items-center gap-4">
-<button onclick="window.location.href='StudHome.html'" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-high transition-colors">
-<span class="material-symbols-outlined text-xs" data-icon="arrow_forward"></span>
-</button>
+<!-- Main Content Canvas -->
+<main class="lg:ml-64 min-h-screen">
+<!-- TopNavBar Shell -->
+<header class="sticky top-0 w-full flex items-center justify-between px-4 lg:px-8 py-3 h-16 bg-white/80 backdrop-blur-md z-40 shadow-sm">
+<div class="flex items-center gap-4 flex-1">
+<div class="lg:hidden font-manrope font-extrabold text-blue-900 text-lg">Edu Navigator</div>
+<div class="relative max-w-md w-full hidden md:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xl" data-icon="search">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container-high border-none rounded-lg focus:ring-2 focus:ring-primary/20 focus:bg-white transition-all text-sm" placeholder="Search opportunities..." type="text"/>
 </div>
-
+</div>
+<div class="flex items-center gap-2 lg:gap-4">
+<button class="p-2 text-slate-500 hover:bg-slate-50 rounded-full transition-all duration-200 relative" onclick="window.location.href='Notification.html'">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span id="notifBadge" class="hidden absolute top-1 right-1 w-4 h-4 bg-red-500 text-white text-[9px] font-bold rounded-full flex items-center justify-center"></span>
+</button>
+<a href="StudProfileSet.html">
+  <div class="h-8 w-8 rounded-full bg-primary-fixed overflow-hidden ring-2 ring-white ml-2 shadow-sm cursor-pointer">
+    <img id="profilePhoto" src="" alt="Profile" class="w-full h-full object-cover" />
+  </div>
+</a>
+</div>
 </div>
 </header>
-<main class="max-w-md mx-auto px-6 pt-10 pb-10 bg-mesh min-h-[calc(100vh-72px)]">
+<div class="p-4 lg:p-8 max-w-7xl mx-auto">
 <!-- Editorial Header -->
 <div class="mb-12">
 <h2 class="font-headline text-3xl font-extrabold text-on-surface tracking-tight mb-3">
@@ -242,4 +256,41 @@
 </main>
 
 <!-- BottomNavBar Suppression: This is a focused Task-Focused screen (Preferences) -->
+<script>
+const idToken = localStorage.getItem("idToken");
+if (!idToken) window.location.href = "login.html";
+
+async function loadProfilePicture() {
+  try {
+    const res = await fetch("http://localhost:5000/profile", {
+      headers: { "Authorization": idToken }
+    });
+    const data = await res.json();
+    if (res.ok && data.photo) {
+      const profileImg = document.getElementById("profilePhoto");
+      if (profileImg) {
+        profileImg.src = data.photo;
+      }
+    }
+  } catch (error) {
+    console.error("Error loading profile picture:", error);
+  }
+}
+
+async function loadNotifications() {
+  const res = await fetch("http://localhost:5000/notifications/unread", {
+    headers: { "Authorization": idToken }
+  });
+
+  const data = await res.json();
+  if (res.ok && data.length > 0) {
+    const badge = document.getElementById("notifBadge");
+    badge.textContent = data.length > 9 ? "9+" : data.length;
+    badge.classList.remove("hidden");
+  }
+}
+
+loadProfilePicture();
+loadNotifications();
+</script>
 </body></html>

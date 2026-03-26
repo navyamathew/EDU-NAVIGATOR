@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head></head><body class="bg-surface text-on-surface selection:bg-primary-fixed">
+<!DOCTYPE html><html lang="en"><head></head><body class="bg-surface text-on-surface selection:bg-primary-fixed pb-20 lg:pb-0">
 
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -93,54 +93,59 @@
   </div>
 
   <nav class="flex-1 flex flex-col gap-y-1">
-
-    <a href="StudHome.html" class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg">
+    <a href="StudHome.html" class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg transition-all duration-300 ease-in-out">
       <span class="material-symbols-outlined">dashboard</span>
       <span class="text-sm">Home</span>
     </a>
-
-    <a href="OL1.html" class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg">
+    <a href="OL1.html" class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg transition-all duration-300 ease-in-out">
       <span class="material-symbols-outlined">explore</span>
       <span class="text-sm">Opportunity Listing</span>
     </a>
-
-    <a href="MentorList.html" class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg">
+    <a href="MentorList.html" class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg transition-all duration-300 ease-in-out">
       <span class="material-symbols-outlined">groups</span>
       <span class="text-sm">Mentor</span>
     </a>
-
-    <a href="EventListing.html" class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg">
+    <a href="EventListing.html" class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg transition-all duration-300 ease-in-out">
       <span class="material-symbols-outlined">event</span>
-      <span class="text-sm">Event</span>
+      <span class="text-sm">Events</span>
     </a>
-
-    <a href="Notification.html" class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg">
+    <a href="Notification.html" class="flex items-center gap-3 px-4 py-3 bg-blue-50 text-blue-700 rounded-lg font-semibold transition-all duration-300 ease-in-out">
       <span class="material-symbols-outlined">notifications</span>
       <span class="text-sm">Notifications</span>
     </a>
-
-    <a href="StudProfileSetting.html" class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg">
+    <a href="StudProfileSetting.html" class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg transition-all duration-300 ease-in-out">
       <span class="material-symbols-outlined">settings</span>
       <span class="text-sm">Settings</span>
     </a>
-
   </nav>
+  <div class="mt-auto pt-4 border-t border-slate-200/60">
+    <button class="w-full bg-gradient-to-br from-primary to-primary-container text-white py-3 rounded-xl font-semibold text-sm mb-4 transition-transform active:scale-95 shadow-lg shadow-blue-900/10">Find Opportunities</button>
+    <a class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg transition-all duration-300 ease-in-out" href="#">
+      <span class="material-symbols-outlined">help</span>
+      <span class="text-sm">Help Center</span>
+    </a>
+  </div>
 </aside>
-<!-- TopAppBar -->
-<header class="w-full top-0 sticky z-40 bg-[#f8f9fa] dark:bg-slate-900 flex justify-between items-center px-6 py-4">
-<div class="flex items-center gap-3">
-<div class="p-2 rounded-xl hover:bg-[#edeeef] dark:hover:bg-slate-800 transition-colors scale-102 transition-transform duration-200 cursor-pointer">
-<span class="material-symbols-outlined text-[#0040a1] dark:text-blue-400" style="">grid_view</span>
+<!-- Main Content Canvas -->
+<main class="lg:ml-64 min-h-screen pb-20 lg:pb-0">
+<!-- TopNavBar Shell -->
+<header class="sticky top-0 w-full flex items-center justify-between px-4 lg:px-8 py-3 h-16 bg-white/80 backdrop-blur-md z-40 shadow-sm">
+<div class="flex items-center gap-4 flex-1">
+<div class="lg:hidden font-manrope font-extrabold text-blue-900 text-lg">Edu Navigator</div>
 </div>
-<h1 class="font-['Manrope'] font-bold text-lg tracking-tight text-[#0040a1] dark:text-blue-400" style="">EDU NAVIGATOR</h1>
-</div>
-<div class="flex items-center gap-4">
-<div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center overflow-hidden border-2 border-white dark:border-slate-800 shadow-sm">
-<img alt="Student Profile" class="w-full h-full object-cover" data-alt="Student profile avatar with scholarly look" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7HsJh5A0Pq0H3n8ELr4WU-PJ5lYIXQC5CFbXzg-5RSJx5sDBd4B7SbtVhSxZs_3ITTbP6CVmT0hnbrLkpBROF6U3FLL2VKw1yKK8XL3UpjBENn6b0Da1tl5M_K9LAmJoOxmEIp8FGptduLg17YjziveXXLABmBYr_OtOA5HT0lNM7bezJFUZLx8Yp8zsUjEZvwLLdN1RDbRULNP3WiXUDY-yql_Jgx_gate3Xr1FrUKzCnw_hZXJ8N301hrfuz6bbBSNu67lw-0A" style="">
-</div>
+<div class="flex items-center gap-2 lg:gap-4">
+<button class="p-2 text-slate-500 hover:bg-slate-50 rounded-full transition-all duration-200 relative" onclick="window.location.href='Notification.html'">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span id="notifBadge" class="hidden absolute top-1 right-1 w-4 h-4 bg-red-500 text-white text-[9px] font-bold rounded-full flex items-center justify-center"></span>
+</button>
+<a href="StudProfileSet.html">
+  <div class="h-8 w-8 rounded-full bg-primary-fixed overflow-hidden ring-2 ring-white ml-2 shadow-sm cursor-pointer">
+    <img id="profilePhoto" src="" alt="Profile" class="w-full h-full object-cover" />
+  </div>
+</a>
 </div>
 </header>
-<main class="max-w-4xl mx-auto px-6 pt-8 pb-32 lg:ml-64">
+<div class="p-4 lg:p-8 max-w-7xl mx-auto">
 <!-- Applied Opportunities List -->
 <div class="space-y-4">
 <h3 class="text-sm font-bold uppercase tracking-widest text-on-surface-variant mb-6 flex items-center gap-2" style="">
@@ -270,4 +275,44 @@
 <span class="font-['Plus_Jakarta_Sans'] font-medium text-[11px]" style="">Profile</span>
 </div>
 </nav>
+<script>
+const idToken = localStorage.getItem("idToken");
+if (!idToken) window.location.href = "login.html";
+
+// Load profile picture
+async function loadProfilePicture() {
+  try {
+    const res = await fetch("http://localhost:5000/profile", {
+      headers: { "Authorization": idToken }
+    });
+    const data = await res.json();
+    if (res.ok && data.photo) {
+      document.getElementById('profilePhoto').src = data.photo;
+    }
+  } catch (error) {
+    console.error("Error loading profile picture:", error);
+  }
+}
+
+async function loadNotifications() {
+  try {
+    const res = await fetch("http://localhost:5000/notifications/unread", {
+      headers: { "Authorization": idToken }
+    });
+    const data = await res.json();
+    const badge = document.getElementById('notifBadge');
+    if (data.unread_count > 0) {
+      badge.textContent = data.unread_count;
+      badge.classList.remove('hidden');
+    } else {
+      badge.classList.add('hidden');
+    }
+  } catch (error) {
+    console.error("Error loading notifications:", error);
+  }
+}
+
+loadProfilePicture();
+loadNotifications();
+</script>
 ```</body></html>

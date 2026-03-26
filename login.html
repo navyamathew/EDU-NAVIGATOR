@@ -130,12 +130,12 @@ async function handleLogin(e) {
 
   const email = document.querySelector('input[type="email"]').value;
   const password = document.querySelector('input[type="password"]').value;
-  const role = document.querySelector('select').value.toLowerCase();
+  const selectedRole = document.querySelector('select').value.toLowerCase();
 
   const res = await fetch("http://localhost:5000/login", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ email, password, role })
+    body: JSON.stringify({ email, password, role: selectedRole })
   });
 
   const data = await res.json();
@@ -145,10 +145,10 @@ if (res.ok) {
   localStorage.setItem("role", data.role);
   localStorage.setItem("userName", data.name);
 
-  const role = data.role;
-  if (role === "student") {
+  const userRole = data.role;
+  if (userRole === "student") {
     window.location.href = "StudHome.html";
-  } else if (role === "mentor") {
+  } else if (userRole === "mentor") {
     window.location.href = "mentorPage.html";
   } else {
     alert("Admin dashboard coming soon!");
@@ -159,7 +159,7 @@ if (res.ok) {
 }
 
 async function handleGoogleLogin() {
-  const role = document.querySelector('select').value.toLowerCase();
+  const selectedRole = document.querySelector('select').value.toLowerCase();
 
   try {
     const result = await auth.signInWithPopup(provider);
@@ -168,7 +168,7 @@ async function handleGoogleLogin() {
     const res = await fetch("http://localhost:5000/google-login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ idToken, role })
+      body: JSON.stringify({ idToken, role: selectedRole })
     });
 
     const data = await res.json();
@@ -178,10 +178,10 @@ async function handleGoogleLogin() {
       localStorage.setItem("role", data.role);
       // localStorage.setItem("userName", data.name); // Google login doesn't return name yet
 
-      const role = data.role;
-      if (role === "student") {
+      const userRole = data.role;
+      if (userRole === "student") {
         window.location.href = "StudHome.html";
-      } else if (role === "mentor") {
+      } else if (userRole === "mentor") {
         window.location.href = "mentorPage.html";
       } else {
         alert("Admin dashboard coming soon!");

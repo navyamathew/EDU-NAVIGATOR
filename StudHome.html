@@ -140,8 +140,7 @@
 </button>
 <a href="StudProfileSet.html">
   <div class="h-8 w-8 rounded-full bg-primary-fixed overflow-hidden ring-2 ring-white ml-2 shadow-sm cursor-pointer">
-    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7faN7oqjMhlOdA6BTq-9vQXSXCRiTihfAF0wdNxdZLUNVXfLYcsp6MDe1h_OZZKmyyv8uO8Anioqeq5KoRo6_dgRcs-TkkDAdwOo153LRrLYUjI0GtWak37D3pHfeA1uqMcWwGhCpMCy9C0KzkXbzrJkoveKsEbGB0cV6NkhX36hgDn4hSMUijG-qfg9akQi_JQmI4XDqcOKWwIlJCy_dbhJIcu1nuBkXJ1cWSN47Eqf6RMQREBZokqOOV_sbUSQfvTRkVXZbRwM" 
-         class="w-full h-full object-cover" />
+    <img id="profilePhoto" src="" alt="Profile" class="w-full h-full object-cover" />
   </div>
 </a>
 </div>
@@ -220,27 +219,8 @@
 <!-- Activity Breakdown -->
 <div class="col-span-12 lg:col-span-8 bg-surface-container-lowest p-6 rounded-xl shadow-sm mt-4">
 <h3 class="font-manrope font-bold text-xl text-on-surface mb-6">Recent Activity</h3>
-<div class="space-y-6">
-<div class="flex items-center gap-4 group">
-<div class="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all">
-<span class="material-symbols-outlined" data-icon="edit_note">edit_note</span>
-</div>
-<div class="flex-1">
-<p class="text-sm font-bold text-on-surface">Application Started</p>
-<p class="text-xs text-on-surface-variant">Global Leadership Internship Summer Program</p>
-</div>
-<span class="text-xs text-slate-400">2h ago</span>
-</div>
-<div class="flex items-center gap-4 group">
-<div class="w-12 h-12 rounded-xl bg-green-50 flex items-center justify-center text-secondary group-hover:bg-secondary group-hover:text-white transition-all">
-<span class="material-symbols-outlined" data-icon="terminal">terminal</span>
-</div>
-<div class="flex-1">
-<p class="text-sm font-bold text-on-surface">Hackathon Update</p>
-<p class="text-xs text-on-surface-variant">Team 'CodeCurators' formed for the AI Challenge</p>
-</div>
-<span class="text-xs text-slate-400">Yesterday</span>
-</div>
+<div id="recentActivityList" class="space-y-6">
+  <!-- Recent activities from transition and likes appear here -->
 </div>
 </div>
 <!-- Mentors Sidebar -->
@@ -330,9 +310,30 @@
     // Set name
     const name = localStorage.getItem("userName") || "Student";
     document.getElementById("welcomeName").textContent = "Welcome back, " + name + "!";
+
+    // Load profile picture
+    await loadProfilePicture();
+  }
+
+  async function loadProfilePicture() {
+    try {
+      const res = await fetch("http://localhost:5000/profile", {
+        headers: { "Authorization": idToken }
+      });
+      const data = await res.json();
+      if (res.ok && data.photo) {
+        const profileImg = document.getElementById("profilePhoto");
+        if (profileImg) {
+          profileImg.src = data.photo;
+        }
+      }
+    } catch (error) {
+      console.error("Error loading profile picture:", error);
+    }
   }
 
   loadUserInfo();
+  loadProfilePicture();
 
   async function loadNotifications() {
   const res = await fetch("http://localhost:5000/notifications/unread", {
@@ -348,5 +349,48 @@
 }
 
 loadNotifications();
+</script>
+<script>
+function renderRecentActivity() {
+  const container = document.getElementById('recentActivityList');
+  const history = JSON.parse(localStorage.getItem('recentActivity') || '[]');
+
+  if (!container) return;
+  if (!history.length) {
+    container.innerHTML = `<div class="text-center py-10 text-on-surface-variant">No activity yet. Like an opportunity to see it here.</div>`;
+    return;
+  }
+
+  container.innerHTML = history.map(item => {
+    const color = item.action === 'Liked' ? 'bg-primary/10 text-primary' : 'bg-blue-50 text-primary';
+    const icon = item.action === 'Liked' ? 'thumb_up' : 'history';
+    let href = 'OL1.html';
+    if (item.type === 'internship') href = `InternshipListing.html#opportunity-${item.id}`;
+    else if (item.type === 'scholarship') href = `ScholarListing.html#opportunity-${item.id}`;
+    else if (item.type === 'hackathon') href = `HacListing.html#opportunity-${item.id}`;
+    else if (item.type === 'workshop') href = `MentorCLW.html#opportunity-${item.id}`;
+
+    return `
+      <a href="${href}" class="block rounded-xl hover:bg-surface-container-highest transition-all p-3">
+        <div class="flex items-center gap-4 group">
+          <div class="w-12 h-12 rounded-xl ${color} flex items-center justify-center transition-all">
+            <span class="material-symbols-outlined">${icon}</span>
+          </div>
+          <div class="flex-1">
+            <p class="text-sm font-bold text-on-surface">${item.action}</p>
+            <p class="text-xs text-on-surface-variant">${item.title}</p>
+          </div>
+          <span class="text-xs text-slate-400">${item.time}</span>
+        </div>
+      </a>
+    `;
+  }).join('');
+}
+
+function loadRecentActivity() {
+  renderRecentActivity();
+}
+
+window.addEventListener('DOMContentLoaded', loadRecentActivity);
 </script>
 </body></html>

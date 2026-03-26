@@ -124,46 +124,68 @@
     </div>
   </div>
 </div>
-<body class="text-on-surface">
-<!-- SideNavBar -->
-<aside class="w-72 h-screen fixed left-0 top-0 bg-slate-50 dark:bg-slate-900 border-r border-slate-100 dark:border-slate-800 z-50 flex flex-col p-6 space-y-2">
-<div class="mb-10 px-4">
-<h1 class="font-['Manrope'] font-bold text-xl text-blue-800 dark:text-blue-200">Edu Navigator</h1>
-<p class="text-xs text-on-surface-variant uppercase tracking-widest mt-1">Opportunity Awaits</p>
-</div>
-<nav class="flex-1 space-y-1"><a class="text-slate-500 dark:text-slate-400 flex items-center gap-3 px-4 py-3 hover:bg-slate-100 dark:hover:bg-slate-800/80 transition-all font-['Manrope'] font-semibold text-base" href="StudHome.html">
-<span class="material-symbols-outlined" data-icon="home">home</span>
-<span>Home</span>
-</a><a class="text-slate-500 dark:text-slate-400 flex items-center gap-3 px-4 py-3 hover:bg-slate-100 dark:hover:bg-slate-800/80 transition-all font-['Manrope'] font-semibold text-base" href="OL1.html">
-<span class="material-symbols-outlined" data-icon="search">search</span>
-<span>Opportunity Listing</span>
-</a>
-<a class="text-slate-500 dark:text-slate-400 flex items-center gap-3 px-4 py-3 hover:bg-slate-100 dark:hover:bg-slate-800/80 transition-all font-['Manrope'] font-semibold text-base" href="Mentors.html">
-<span class="material-symbols-outlined" data-icon="record_voice_over">record_voice_over</span>
-<span>Organization</span>
-</a>
-<a class="text-slate-500 dark:text-slate-400 flex items-center gap-3 px-4 py-3 hover:bg-slate-100 dark:hover:bg-slate-800/80 transition-all font-['Manrope'] font-semibold text-base" href="Events.html">
-<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
-<span>Events</span>
-</a>
-<a class="text-slate-500 dark:text-slate-400 flex items-center gap-3 px-4 py-3 hover:bg-slate-100 dark:hover:bg-slate-800/80 transition-all font-['Manrope'] font-semibold text-base" href="Notification.html">
-<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
-<span>Notifications</span>
-</a>
-<a class="bg-white dark:bg-slate-800 text-blue-700 dark:text-blue-400 rounded-lg shadow-sm font-bold flex items-center gap-3 px-4 py-3 transition-all font-['Manrope'] font-semibold text-base" href="#">
-<span class="material-symbols-outlined active-icon" data-icon="settings" style="font-variation-settings: 'FILL' 1;">settings</span>
-<span>Settings</span>
-</a>
-</nav>
-<div class="mt-auto pt-6 border-t border-slate-200/50">
-<button class="w-full bg-primary-container text-white py-3 px-4 rounded-xl font-bold flex items-center justify-center gap-2 hover:opacity-90 transition-opacity">
-<span class="material-symbols-outlined text-sm" data-icon="add_circle">add_circle</span>
-                Find Scholarships
-            </button>
-</div>
+<body class="text-on-surface pb-20 lg:pb-0">
+<!-- Sidebar -->
+<aside class="hidden lg:flex h-screen w-64 fixed left-0 top-0 bg-slate-50 flex-col p-4 gap-y-2 z-50 border-r border-slate-200">
+  <div class="mb-8 px-2 py-4">
+    <h1 class="font-headline font-extrabold text-blue-900 text-xl tracking-tight">Edu Navigator</h1>
+    <p class="text-xs font-medium text-slate-500">Student Portal</p>
+  </div>
+
+  <nav class="flex-1 flex flex-col gap-y-1">
+    <a href="StudHome.html" class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg transition-all duration-300 ease-in-out">
+      <span class="material-symbols-outlined">dashboard</span>
+      <span class="text-sm">Home</span>
+    </a>
+    <a href="OL1.html" class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg transition-all duration-300 ease-in-out">
+      <span class="material-symbols-outlined">explore</span>
+      <span class="text-sm">Opportunity Listing</span>
+    </a>
+    <a href="MentorList.html" class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg transition-all duration-300 ease-in-out">
+      <span class="material-symbols-outlined">groups</span>
+      <span class="text-sm">Mentor</span>
+    </a>
+    <a href="EventListing.html" class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg transition-all duration-300 ease-in-out">
+      <span class="material-symbols-outlined">event</span>
+      <span class="text-sm">Events</span>
+    </a>
+    <a href="Notification.html" class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg transition-all duration-300 ease-in-out">
+      <span class="material-symbols-outlined">notifications</span>
+      <span class="text-sm">Notifications</span>
+    </a>
+    <a href="StudProfileSetting.html" class="flex items-center gap-3 px-4 py-3 bg-blue-50 text-blue-700 rounded-lg font-semibold transition-all duration-300 ease-in-out">
+      <span class="material-symbols-outlined">settings</span>
+      <span class="text-sm">Settings</span>
+    </a>
+  </nav>
+  <div class="mt-auto pt-4 border-t border-slate-200/60">
+    <button class="w-full bg-gradient-to-br from-primary to-primary-container text-white py-3 rounded-xl font-semibold text-sm mb-4 transition-transform active:scale-95 shadow-lg shadow-blue-900/10">Find Opportunities</button>
+    <a class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg transition-all duration-300 ease-in-out" href="#">
+      <span class="material-symbols-outlined">help</span>
+      <span class="text-sm">Help Center</span>
+    </a>
+  </div>
 </aside>
+<!-- Top Header -->
+<header class="sticky top-0 w-full flex items-center justify-between px-4 lg:px-8 py-3 h-16 bg-white/80 backdrop-blur-md z-40 shadow-sm lg:ml-64">
+<div class="flex items-center gap-4 flex-1">
+<div class="lg:hidden font-manrope font-extrabold text-blue-900 text-lg">Edu Navigator</div>
+<h1 class="font-manrope font-extrabold text-blue-900 text-lg hidden md:block">Settings</h1>
+</div>
+<div class="flex items-center gap-2 lg:gap-4">
+<button class="p-2 text-slate-500 hover:bg-slate-50 rounded-full transition-all duration-200 relative" onclick="window.location.href='Notification.html'">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span id="notifBadge" class="hidden absolute top-1 right-1 w-4 h-4 bg-red-500 text-white text-[9px] font-bold rounded-full flex items-center justify-center"></span>
+</button>
+<a href="StudProfileSet.html">
+  <div class="h-8 w-8 rounded-full bg-primary-fixed overflow-hidden ring-2 ring-white ml-2 shadow-sm cursor-pointer">
+    <img id="profilePhoto" src="" alt="Profile" class="w-full h-full object-cover" />
+  </div>
+</a>
+</div>
+</header>
 <!-- Main Canvas -->
-<main class="ml-72 min-h-screen p-12 max-w-7xl">
+<main class="lg:ml-64 min-h-screen pb-20 lg:pb-0 p-4 lg:p-8 max-w-7xl mx-auto">
 <!-- Alert Banner -->
 <div class="mb-8 flex flex-col md:flex-row items-center justify-between gap-4 p-4 bg-primary text-white rounded-xl shadow-lg animate-pulse hover:animate-none transition-all">
 <div class="flex items-center gap-3">
@@ -541,6 +563,39 @@ function confirmLogout() {
   localStorage.removeItem("userName");
   window.location.href = "login.html";
 }
+
+async function loadProfilePicture() {
+  try {
+    const res = await fetch("http://localhost:5000/profile", {
+      headers: { "Authorization": idToken }
+    });
+    const data = await res.json();
+    if (res.ok && data.photo) {
+      const profileImg = document.getElementById("profilePhotoHeader");
+      if (profileImg) {
+        profileImg.src = data.photo;
+      }
+    }
+  } catch (error) {
+    console.error("Error loading profile picture:", error);
+  }
+}
+
+async function loadNotifications() {
+  const res = await fetch("http://localhost:5000/notifications/unread", {
+    headers: { "Authorization": idToken }
+  });
+
+  const data = await res.json();
+  if (res.ok && data.length > 0) {
+    const badge = document.getElementById("notifBadge");
+    badge.textContent = data.length > 9 ? "9+" : data.length;
+    badge.classList.remove("hidden");
+  }
+}
+
+loadProfilePicture();
+loadNotifications();
 </script>
 
 </body></html>

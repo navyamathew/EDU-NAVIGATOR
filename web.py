@@ -7,36 +7,22 @@ from flask_cors import CORS
 import firebase_admin
 from firebase_admin import credentials, auth, firestore
 from dotenv import load_dotenv
-
-# ... your existing imports ...
-import google.generativeai as genai
-
-load_dotenv()
-
-# --- AI CONFIGURATION START ---
-genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
-
-system_instruction = """
-You are the EDU-NAVIGATOR Matching Engine... (copy the full text from the previous message)
-"""
-
-model = genai.GenerativeModel(
-    model_name='gemini-1.5-flash',
-    system_instruction=system_instruction
-)
-# --- AI CONFIGURATION END ---
-
-app = Flask(__name__)
-# ... your Firebase init code ...
+from google import genai
+from google.genai import types
 
 # ==============================
 # LOAD ENV VARIABLES
 # ==============================
 load_dotenv()
 
+# ==============================
+# GEMINI CONFIGURATION
+# ==============================
+gemini_client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
+
 app = Flask(__name__)
 CORS(app, resources={r"/*": {
-    "origins": "*",  
+    "origins": "*",
     "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     "allow_headers": ["Content-Type", "Authorization"]
 }})
@@ -212,6 +198,8 @@ def google_login():
         decoded_token = auth.verify_id_token(id_token)
         uid = decoded_token["uid"]
         email = decoded_token.get("email")
+        name = decoded_token.get("name", "")
+        photo_url = decoded_token.get("picture", "")
 
         user_doc = db.collection("users").document(uid).get()
         if user_doc.exists:
@@ -220,9 +208,11 @@ def google_login():
             if stored_role != role:
                 return jsonify({"error": f"Incorrect role. You are registered as a {stored_role}."}), 401
         else:
-            # New user, set the role
+            # New user, set the role and Google profile data
             db.collection("users").document(uid).set({
+                "name": name,
                 "email": email,
+                "photo": photo_url,
                 "provider": "google",
                 "role": role,
                 "created_at": datetime.utcnow()
@@ -267,9 +257,11 @@ def get_ai_recommendations():
         return jsonify({"error": "Profile not found"}), 404
     profile = user_doc.to_dict()
 
-    # 2. Fetch all posts
+    # 2. Fetch posts (filtered by type if provided)
+    post_type_filter = request.args.get("type", None)
     all_posts = []
-    for post_type in ["scholarship", "internship", "hackathon", "workshop"]:
+    types_to_fetch = [post_type_filter] if post_type_filter else ["scholarship", "internship", "hackathon", "workshop"]
+    for post_type in types_to_fetch:
         docs = db.collection("posts").where("type", "==", post_type).stream()
         for doc in docs:
             data = doc.to_dict()
@@ -313,7 +305,10 @@ RETURN ONLY valid JSON in this exact format, no markdown, no extra text:
 """
 
     try:
-        response = model.generate_content(prompt)
+        response = gemini_client.models.generate_content(
+            model="gemini-1.5-flash",
+            contents=prompt
+        )
         raw = response.text.strip()
         # Strip markdown fences if present
         if raw.startswith("```"):
@@ -322,7 +317,15 @@ RETURN ONLY valid JSON in this exact format, no markdown, no extra text:
                 raw = raw[4:]
         ai_result = json.loads(raw.strip())
     except Exception as e:
-        return jsonify({"error": f"AI error: {str(e)}"}), 500
+        print("AI ERROR:", str(e))
+
+    # 🔥 fallback instead of crash
+    fallback = all_posts[:5]
+    for post in fallback:
+        post["ai_score"] = 50
+        post["match_reason"] = "Recommended based on general relevance"
+
+    return jsonify(fallback), 200
 
     # 4. Merge AI scores back into post data
     post_map = {p["id"]: p for p in all_posts}
