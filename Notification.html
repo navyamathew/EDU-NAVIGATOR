@@ -118,37 +118,30 @@
 
   <nav class="flex-1 flex flex-col gap-y-1">
     <a href="StudHome.html" class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg transition-all duration-300 ease-in-out">
-      <span class="material-symbols-outlined">dashboard</span>
-      <span class="text-sm">Home</span>
+      <span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+      <span class="font-plus-jakarta text-sm">HOME</span>
     </a>
     <a href="OL1.html" class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg transition-all duration-300 ease-in-out">
-      <span class="material-symbols-outlined">explore</span>
-      <span class="text-sm">Opportunity Listing</span>
+      <span class="material-symbols-outlined" data-icon="explore">explore</span>
+      <span class="font-plus-jakarta text-sm uppercase">Opportunity Listing</span>
     </a>
     <a href="MentorList.html" class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg transition-all duration-300 ease-in-out">
-      <span class="material-symbols-outlined">groups</span>
-      <span class="text-sm">Organize</span>
+      <span class="material-symbols-outlined" data-icon="groups">groups</span>
+      <span class="font-plus-jakarta text-sm uppercase">Mentor</span>
     </a>
     <a href="EventListing.html" class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg transition-all duration-300 ease-in-out">
-      <span class="material-symbols-outlined">event</span>
-      <span class="text-sm">Events</span>
+      <span class="material-symbols-outlined" data-icon="event">event</span>
+      <span class="font-plus-jakarta text-sm">EVENTS</span>
     </a>
     <a href="Notification.html" class="flex items-center gap-3 px-4 py-3 bg-blue-50 text-blue-700 rounded-lg font-semibold transition-all duration-300 ease-in-out">
-      <span class="material-symbols-outlined">notifications</span>
-      <span class="text-sm">Notifications</span>
+      <span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+      <span class="font-plus-jakarta text-sm">NOTIFICATIONS</span>
     </a>
     <a href="StudProfileSetting.html" class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg transition-all duration-300 ease-in-out">
-      <span class="material-symbols-outlined">settings</span>
-      <span class="text-sm">Settings</span>
+      <span class="material-symbols-outlined" data-icon="settings">settings</span>
+      <span class="font-plus-jakarta text-sm">SETTINGS</span>
     </a>
   </nav>
-  <div class="mt-auto pt-4 border-t border-slate-200/60">
-    <button class="w-full bg-gradient-to-br from-primary to-primary-container text-white py-3 rounded-xl font-semibold text-sm mb-4 transition-transform active:scale-95 shadow-lg shadow-blue-900/10">Find Opportunities</button>
-    <a class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg transition-all duration-300 ease-in-out" href="#">
-      <span class="material-symbols-outlined">help</span>
-      <span class="text-sm">Help Center</span>
-    </a>
-  </div>
 </aside>
 
 <!-- Main Content -->
@@ -184,17 +177,20 @@
     </div>
 
     <!-- Tab Filters -->
-    <div class="flex gap-2 mb-6 overflow-x-auto custom-scrollbar">
-      <button onclick="filterNotifications('all')" id="tab-all" class="px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all active:scale-95 bg-primary text-white">
+    <div class="flex gap-2 mb-6 overflow-x-auto custom-scrollbar pr-4">
+      <button onclick="filterNotifications('all')" id="tab-all" class="px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all active:scale-95 bg-primary text-white flex-shrink-0">
         All
       </button>
-      <button onclick="filterNotifications('deadline_alert')" id="tab-deadline_alert" class="px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all active:scale-95 bg-surface-container-high text-on-surface-variant hover:bg-surface-variant">
+      <button onclick="filterNotifications('deadline_alert')" id="tab-deadline_alert" class="px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all active:scale-95 bg-surface-container-high text-on-surface-variant hover:bg-surface-variant flex-shrink-0">
         🔔 Deadline Alerts
       </button>
-      <button onclick="filterNotifications('interest')" id="tab-interest" class="px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all active:scale-95 bg-surface-container-high text-on-surface-variant hover:bg-surface-variant">
+      <button onclick="filterNotifications('interest')" id="tab-interest" class="px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all active:scale-95 bg-surface-container-high text-on-surface-variant hover:bg-surface-variant flex-shrink-0">
         👍 Interests
       </button>
-      <button onclick="filterNotifications('alert')" id="tab-alert" class="px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all active:scale-95 bg-surface-container-high text-on-surface-variant hover:bg-surface-variant">
+      <button onclick="filterNotifications('event_edit')" id="tab-event_edit" class="px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all active:scale-95 bg-surface-container-high text-on-surface-variant hover:bg-surface-variant flex-shrink-0">
+        🔄 Updates
+      </button>
+      <button onclick="filterNotifications('alert')" id="tab-alert" class="px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all active:scale-95 bg-surface-container-high text-on-surface-variant hover:bg-surface-variant flex-shrink-0">
         📢 General
       </button>
     </div>
@@ -498,6 +494,7 @@ function getNotifIcon(type) {
   switch(type) {
     case 'deadline_alert': return 'alarm';
     case 'interest': return 'thumb_up';
+    case 'event_edit': return 'update';
     case 'alert': return 'campaign';
     default: return 'notifications';
   }
@@ -507,6 +504,7 @@ function getNotifIconBg(type) {
   switch(type) {
     case 'deadline_alert': return 'bg-error-container';
     case 'interest': return 'bg-primary-fixed';
+    case 'event_edit': return 'bg-amber-100';
     case 'alert': return 'bg-tertiary-fixed';
     default: return 'bg-surface-container';
   }
@@ -516,6 +514,7 @@ function getNotifIconColor(type) {
   switch(type) {
     case 'deadline_alert': return 'text-error';
     case 'interest': return 'text-primary';
+    case 'event_edit': return 'text-amber-700';
     case 'alert': return 'text-tertiary';
     default: return 'text-on-surface-variant';
   }
@@ -538,7 +537,7 @@ function filterNotifications(type) {
   currentFilter = type;
 
   // Update tab UI
-  ['all', 'deadline_alert', 'interest', 'alert'].forEach(t => {
+  ['all', 'deadline_alert', 'interest', 'event_edit', 'alert'].forEach(t => {
     const tab = document.getElementById(`tab-${t}`);
     if (t === type) {
       tab.className = 'px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all active:scale-95 bg-primary text-white';

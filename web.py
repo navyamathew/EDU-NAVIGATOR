@@ -692,8 +692,11 @@ def update_post(post_id):
         return jsonify({"error": "Unauthorized"}), 403
 
     data = request.get_json()
+    new_title = data.get("title")
+    post_type = post.to_dict().get("type")
+
     post_ref.update({
-        "title": data.get("title"),
+        "title": new_title,
         "description": data.get("description"),
         "date": data.get("date", ""),
         "time": data.get("time", ""),
@@ -703,7 +706,29 @@ def update_post(post_id):
         "deadline": data.get("deadline", "")
     })
 
-    return jsonify({"message": "Post updated"}), 200
+    # Notify interested users
+    try:
+        # Note: This requires a composite index for collection group 'interests' with 'post_id' field.
+        interests = db.collection_group("interests").where("post_id", "==", post_id).stream()
+        for doc in interests:
+            # doc.reference is users/{uid}/interests/{post_id}
+            # so doc.reference.parent.parent is users/{uid}
+            student_uid = doc.reference.parent.parent.id
+            if student_uid:
+                db.collection("users").document(student_uid).collection("notifications").add({
+                    "title": f"Update: {new_title}",
+                    "message": f"Organizers have updated the details for \"{new_title}\". Check the new information now!",
+                    "type": "event_edit",
+                    "priority": "normal",
+                    "post_id": post_id,
+                    "post_type": post_type,
+                    "is_read": False,
+                    "created_at": datetime.utcnow()
+                })
+    except Exception as e:
+        print(f"Error notifying users on post update: {e}")
+
+    return jsonify({"message": "Post updated and notifications sent"}), 200
 
 # ==================================================
 # NOTIFICATIONS SECTION

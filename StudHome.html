@@ -114,23 +114,17 @@
 </a>
 <a class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg transition-all duration-300 ease-in-out" href="EventListing.html">
 <span class="material-symbols-outlined" data-icon="event">event</span>
-<span class="font-plus-jakarta text-sm">Events</span>
+<span class="font-plus-jakarta text-sm">EVENTS</span>
 </a>
 <a class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg transition-all duration-300 ease-in-out" href="Notification.html">
 <span class="material-symbols-outlined" data-icon="notifications">notifications</span>
-<span class="font-plus-jakarta text-sm">Notifications</span>
+<span class="font-plus-jakarta text-sm">NOTIFICATIONS</span>
 </a>
 <a class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg transition-all duration-300 ease-in-out" href="StudProfileSetting.html">
 <span class="material-symbols-outlined" data-icon="settings">settings</span>
-<span class="font-plus-jakarta text-sm">Settings</span>
+<span class="font-plus-jakarta text-sm">SETTINGS</span>
 </a>
 </nav>
-<div class="mt-auto pt-4 border-t border-slate-200/60">
-<button class="w-full bg-gradient-to-br from-primary to-primary-container text-white py-3 rounded-xl font-semibold text-sm mb-4 transition-transform active:scale-95 shadow-lg shadow-blue-900/10">
-                Find Opportunities
-            </button>
-
-</div>
 </aside>
 <!-- Main Content Canvas -->
 <main class="lg:ml-64 min-h-screen">
@@ -161,7 +155,7 @@
 <div class="mb-8 lg:mb-10 flex flex-col md:flex-row md:items-end justify-between gap-6">
 <div>
 <h2 class="font-manrope text-2xl lg:text-3xl font-extrabold text-on-surface tracking-tight mb-2" id="welcomeName">Welcome back</h2>
-<p class="text-on-surface-variant font-medium text-sm lg:text-base">You have 2 new internship and hackathon updates today.</p>
+<p id="welcomeStats" class="text-on-surface-variant font-medium text-sm lg:text-base">Checking for updates...</p>
 </div>
 <div class="flex gap-3">
 <div class="flex items-center gap-2 px-4 py-2 bg-secondary-container/30 text-secondary rounded-full font-semibold text-xs border border-secondary/10">
@@ -178,52 +172,12 @@
 <h3 class="font-manrope font-bold text-xl text-on-surface">Top Opportunities</h3>
 <button class="text-primary font-bold text-sm hover:underline">Explore Explorer</button>
 </div>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-<!-- Recommendation Card 1: Internship -->
-<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm border border-transparent hover:border-outline-variant/20 hover:shadow-md transition-all group">
-<div class="flex justify-between items-start mb-4">
-<div class="bg-tertiary-fixed text-on-tertiary-fixed-variant px-2.5 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider">Internship</div>
-<button class="text-slate-400 group-hover:text-primary transition-colors">
-<span class="material-symbols-outlined" data-icon="bookmark">bookmark</span>
-</button>
-</div>
-<h4 class="font-bold text-on-surface mb-1 text-lg leading-snug">Data Analyst Summer Intern</h4>
-<p class="text-primary text-xs font-bold mb-2">FinTech Solutions</p>
-<p class="text-on-surface-variant text-xs mb-4">Location: Remote / Trivandrum</p>
-<div class="flex flex-wrap gap-2 mb-6">
-<span class="px-2 py-0.5 bg-surface-container-high rounded text-[10px] text-slate-600 font-medium">Python</span>
-<span class="px-2 py-0.5 bg-surface-container-high rounded text-[10px] text-slate-600 font-medium">SQL</span>
-<span class="px-2 py-0.5 bg-surface-container-high rounded text-[10px] text-slate-600 font-medium">Tableau</span>
-</div>
-<div class="pt-4 border-t border-slate-50 flex items-center justify-between">
-<span class="text-[10px] text-slate-400">Match score: 94%</span>
-<div class="flex items-center gap-1 text-primary text-xs font-bold cursor-pointer hover:underline">
-                                    Apply Now <span class="material-symbols-outlined text-xs" data-icon="arrow_forward">arrow_forward</span>
-</div>
-</div>
-</div>
-<!-- Recommendation Card 2: Hackathon -->
-<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm border border-transparent hover:border-outline-variant/20 hover:shadow-md transition-all group">
-<div class="flex justify-between items-start mb-4">
-<div class="bg-secondary-container text-on-secondary-container px-2.5 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider">Hackathon</div>
-<button class="text-slate-400 group-hover:text-primary transition-colors">
-<span class="material-symbols-outlined" data-icon="bookmark">bookmark</span>
-</button>
-</div>
-<h4 class="font-bold text-on-surface mb-1 text-lg leading-snug">Global AI Innovation Challenge</h4>
-<p class="text-primary text-xs font-bold mb-2">Tech Giants Foundation</p>
-<p class="text-on-surface-variant text-xs mb-4">Prizes: $10,000 + Incubation</p>
-<div class="flex flex-wrap gap-2 mb-6">
-<span class="px-2 py-0.5 bg-surface-container-high rounded text-[10px] text-slate-600 font-medium">Machine Learning</span>
-<span class="px-2 py-0.5 bg-surface-container-high rounded text-[10px] text-slate-600 font-medium">Cloud Dev</span>
-</div>
-<div class="pt-4 border-t border-slate-50 flex items-center justify-between">
-<span class="text-[10px] text-slate-400">Registration Closes in 3 days</span>
-<div class="flex items-center gap-1 text-primary text-xs font-bold cursor-pointer hover:underline">
-                                    Register <span class="material-symbols-outlined text-xs" data-icon="arrow_forward">arrow_forward</span>
-</div>
-</div>
-</div>
+<div id="topOpportunitiesContainer" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+  <!-- Dynamic cards will be injected here -->
+  <div class="col-span-full py-12 text-center text-on-surface-variant/60">
+    <span class="material-symbols-outlined text-4xl mb-2 animate-pulse">auto_awesome</span>
+    <p>Finding the best matches for you...</p>
+  </div>
 </div>
 </div>
 <!-- Activity Breakdown -->
@@ -247,7 +201,6 @@
 <div class="flex gap-8">
 <a class="text-slate-500 hover:text-blue-500 transition-colors text-xs font-medium" href="#">Terms of Service</a>
 <a class="text-slate-500 hover:text-blue-500 transition-colors text-xs font-medium" href="#">Privacy Policy</a>
-<a class="text-slate-500 hover:text-blue-500 transition-colors text-xs font-medium" href="#">Help Center</a>
 </div>
 </div>
 </footer>
@@ -296,10 +249,87 @@
     document.getElementById("welcomeName").textContent = "Welcome back, " + name + "!";
 
     // Load profile picture
-    await loadProfilePicture();
-  }
+    await  loadTopOpportunities();
+}
 
-  async function loadProfilePicture() {
+async function loadTopOpportunities() {
+  const container = document.getElementById("topOpportunitiesContainer");
+  const types = ["scholarship", "internship", "hackathon", "workshop"];
+  
+  try {
+    // Fetch all types
+    const responses = await Promise.all(
+      types.map(t => fetch(`http://localhost:5000/posts/${t}`, {
+        headers: { "Authorization": idToken }
+      }).then(r => r.json()))
+    );
+
+    // Flatten and tag with type
+    let allPosts = [];
+    responses.forEach((posts, idx) => {
+      if (Array.isArray(posts)) {
+        posts.forEach(p => {
+          p.categoryType = types[idx];
+          allPosts.push(p);
+        });
+      }
+    });
+
+    if (allPosts.length === 0) {
+      container.innerHTML = `<div class="col-span-full py-12 text-center text-on-surface-variant/60">No opportunities found today. Check back later!</div>`;
+      return;
+    }
+
+    // Shuffle and pick 2
+    const shuffled = allPosts.sort(() => 0.5 - Math.random());
+    const selected = shuffled.slice(0, 2);
+
+    container.innerHTML = selected.map(post => {
+      const score = Math.floor(Math.random() * 15) + 84; // 84-98%
+      const badgeColor = {
+        scholarship: "bg-secondary-container text-on-secondary-container",
+        internship: "bg-tertiary-fixed text-on-tertiary-fixed-variant",
+        hackathon: "bg-secondary-container text-on-secondary-container",
+        workshop: "bg-primary-fixed text-on-primary-fixed-variant"
+      }[post.categoryType];
+
+      const href = {
+        scholarship: "ScholarListing.html",
+        internship: "InternshipListing.html",
+        hackathon: "HackListing.html",
+        workshop: "WorkshopListing.html"
+      }[post.categoryType] + "#opportunity-" + post.id;
+
+      return `
+        <div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm border border-transparent hover:border-outline-variant/20 hover:shadow-md transition-all group flex flex-col justify-between h-full">
+          <div>
+            <div class="flex justify-between items-start mb-4">
+              <div class="${badgeColor} px-2.5 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider">${post.categoryType}</div>
+              <button class="text-slate-400 group-hover:text-primary transition-colors">
+                <span class="material-symbols-outlined">bookmark</span>
+              </button>
+            </div>
+            <h4 class="font-bold text-on-surface mb-1 text-lg leading-snug">${post.title}</h4>
+            <p class="text-primary text-xs font-bold mb-2">${post.mentor_name || "Official Partner"}</p>
+            <p class="text-on-surface-variant text-[11px] mb-4 line-clamp-2">${post.description}</p>
+          </div>
+          <div class="pt-4 border-t border-slate-50 flex items-center justify-between">
+            <span class="text-[10px] text-slate-400">Match score: ${score}%</span>
+            <a href="${href}" class="flex items-center gap-1 text-primary text-xs font-bold cursor-pointer hover:underline">
+              View Details <span class="material-symbols-outlined text-xs">arrow_forward</span>
+            </a>
+          </div>
+        </div>
+      `;
+    }).join("");
+
+  } catch (error) {
+    console.error("Error loading top opportunities:", error);
+    container.innerHTML = `<div class="col-span-full py-12 text-center text-error">Failed to load recommendations. Please refresh.</div>`;
+  }
+}
+
+async function loadProfilePicture() {
     try {
       const res = await fetch("http://localhost:5000/profile", {
         headers: { "Authorization": idToken }
@@ -325,10 +355,26 @@
   });
 
   const data = await res.json();
-  if (res.ok && data.length > 0) {
-    const badge = document.getElementById("notifBadge");
-    badge.textContent = data.length > 9 ? "9+" : data.length;
-    badge.classList.remove("hidden");
+  const welcomeStats = document.getElementById("welcomeStats");
+  
+  if (res.ok) {
+    const unreadCount = data.length;
+    if (unreadCount > 0) {
+      const badge = document.getElementById("notifBadge");
+      badge.textContent = unreadCount > 9 ? "9+" : unreadCount;
+      badge.classList.remove("hidden");
+      if (welcomeStats) {
+        welcomeStats.textContent = `You have ${unreadCount} new notification${unreadCount > 1 ? 's' : ''} today.`;
+      }
+    } else {
+      if (welcomeStats) {
+        welcomeStats.textContent = "You're all caught up! No new notifications.";
+      }
+    }
+  } else {
+    if (welcomeStats) {
+      welcomeStats.textContent = "Welcome to your student portal.";
+    }
   }
 }
 
@@ -361,8 +407,8 @@ function renderRecentActivity() {
             <span class="material-symbols-outlined">${icon}</span>
           </div>
           <div class="flex-1">
-            <p class="text-sm font-bold text-on-surface">${item.action}</p>
-            <p class="text-xs text-on-surface-variant">${item.title}</p>
+            <p class="text-sm font-bold text-on-surface">${item.title}</p>
+            <p class="text-[10px] text-on-surface-variant uppercase tracking-wider font-semibold opacity-70">${item.action}</p>
           </div>
           <span class="text-xs text-slate-400">${item.time}</span>
         </div>

@@ -111,23 +111,17 @@
 </a>
 <a class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg transition-all duration-300 ease-in-out" href="EventListing.html">
 <span class="material-symbols-outlined" data-icon="event">event</span>
-<span class="font-plus-jakarta text-sm">Events</span>
+<span class="font-plus-jakarta text-sm">EVENTS</span>
 </a>
 <a class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg transition-all duration-300 ease-in-out" href="Notification.html">
 <span class="material-symbols-outlined" data-icon="notifications">notifications</span>
-<span class="font-plus-jakarta text-sm">Notifications</span>
+<span class="font-plus-jakarta text-sm">NOTIFICATIONS</span>
 </a>
 <a class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg transition-all duration-300 ease-in-out" href="StudProfileSetting.html">
 <span class="material-symbols-outlined" data-icon="settings">settings</span>
-<span class="font-plus-jakarta text-sm">Settings</span>
+<span class="font-plus-jakarta text-sm">SETTINGS</span>
 </a>
 </nav>
-<div class="mt-auto pt-4 border-t border-slate-200/60">
-<button class="w-full bg-gradient-to-br from-primary to-primary-container text-white py-3 rounded-xl font-semibold text-sm mb-4 transition-transform active:scale-95 shadow-lg shadow-blue-900/10">
-                Find Opportunities
-            </button>
-
-</div>
 </aside>
 <!-- Main Content Canvas -->
 <main class="lg:ml-64 min-h-screen">
@@ -135,11 +129,14 @@
 <header class="sticky top-0 w-full flex items-center justify-between px-4 lg:px-8 py-3 h-16 bg-white/80 backdrop-blur-md z-40 shadow-sm">
 <div class="flex items-center gap-4 flex-1">
 <div class="lg:hidden font-manrope font-extrabold text-blue-900 text-lg">Edu Navigator</div>
+
+<!-- Unified Search Bar -->
 <div class="relative max-w-md w-full hidden md:block">
-<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xl" data-icon="search">search</span>
-<input class="w-full pl-10 pr-4 py-2 bg-surface-container-high border-none rounded-lg focus:ring-2 focus:ring-primary/20 focus:bg-white transition-all text-sm" placeholder="Search organizers..." type="text"/>
+  <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xl" data-icon="search">search</span>
+  <input id="headerSearchInput" class="w-full pl-10 pr-4 py-2 bg-surface-container-high border-none rounded-lg focus:ring-2 focus:ring-primary/20 focus:bg-white transition-all text-sm" placeholder="Search organizers..." type="text"/>
 </div>
 </div>
+
 <div class="flex items-center gap-2 lg:gap-4">
 <button class="p-2 text-slate-500 hover:bg-slate-50 rounded-full transition-all duration-200 relative" onclick="window.location.href='Notification.html'">
 <span class="material-symbols-outlined" data-icon="notifications">notifications</span>
@@ -309,12 +306,19 @@ async function loadNotifications() {
 
 loadProfilePicture();
 loadNotifications();
+
+// Add search listener
+const headerSearch = document.getElementById("headerSearchInput");
+if (headerSearch) {
+  headerSearch.addEventListener("input", applyFilters);
+}
 </script>
 <script>
 function applyFilters() {
   const pref = document.getElementById("prefFilter").value.toLowerCase();
   const region = document.getElementById("regionFilter").value.toLowerCase();
   const org = document.getElementById("orgFilter").value.toLowerCase();
+  const headerSearch = document.getElementById("headerSearchInput") ? document.getElementById("headerSearchInput").value.toLowerCase() : "";
 
   const cards = document.querySelectorAll(".mentor-card");
 
@@ -324,8 +328,9 @@ function applyFilters() {
     const matchPref = !pref || text.includes(pref);
     const matchRegion = !region || text.includes(region);
     const matchOrg = !org || text.includes(org);
+    const matchHeader = !headerSearch || text.includes(headerSearch);
 
-    if (matchPref && matchRegion && matchOrg) {
+    if (matchPref && matchRegion && matchOrg && matchHeader) {
       card.style.display = "block";
     } else {
       card.style.display = "none";

@@ -144,18 +144,28 @@
 </head>
 <body class="bg-surface-container-low text-on-surface min-h-screen pb-32">
 <!-- TopAppBar -->
-<header class="fixed top-0 w-full lg:ml-64 z-50 bg-[#f8f9fa] dark:bg-slate-900 flex items-center justify-between px-6 h-16">
-<div class="flex items-center gap-4">
+
+<main class="lg:ml-64 min-h-screen">
+<!-- TopNavBar Shell -->
+<header class="sticky top-0 w-full z-50 bg-white/80 backdrop-blur-md flex items-center justify-between px-6 h-16 shadow-sm">
+<div class="flex items-center gap-4 flex-1">
 <span onclick="window.location.href='OL1.html'" class="material-symbols-outlined text-[#0040a1] cursor-pointer">arrow_back</span>
-<h1 class="font-['Manrope'] font-bold text-2xl tracking-tight text-[#0040a1] dark:text-blue-400 font-extrabold tracking-tighter">Curator</h1>
+<h1 class="font-['Manrope'] font-bold text-2xl tracking-tight text-[#0040a1] dark:text-blue-400 font-extrabold tracking-tighter hidden md:block">Curator</h1>
+
+<!-- Unified Search Bar -->
+<div class="relative max-w-md w-full hidden md:block ml-4">
+  <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xl" data-icon="search">search</span>
+  <input id="headerSearchInput" class="w-full pl-10 pr-4 py-2 bg-surface-container-high border-none rounded-lg focus:ring-2 focus:ring-primary/20 focus:bg-white transition-all text-sm" placeholder="Search hackathons..." type="text"/>
 </div>
-<div class="flex items-center gap-2">
-<div class="w-8 h-8 rounded-full overflow-hidden bg-surface-variant">
-<img alt="Student Portrait" class="w-full h-full object-cover" data-alt="Student profile avatar placeholder" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGzDyHklmH80hYw8I3gBLT6HXPgGTPci2n8T8noY4CyEa7eFFGAi0MJDHbhakIEo1biPPja9EJoBz1YlLnhmN4n7OMt9ldxk7Q_yqdO-oL0k1_MWyzEYMNnd6aw9aDI_Rk6eJOBgx-gUps6W-W8I8hXVXEGD85mMs18kk5Srk05Sqnla-w6egnivHzjm4iGSBBfXD29t3BIgGKRBv6T0okrb32qaDu6VopkuzA_aCdAEXy09ro7PwNy37SF9venA7zxYvt_w29SAM"/>
+</div>
+
+<div class="flex items-center gap-2 pr-64 lg:pr-0">
+<div class="w-8 h-8 rounded-full overflow-hidden bg-surface-variant ring-2 ring-white shadow-sm">
+<img alt="Student Portrait" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGzDyHklmH80hYw8I3gBLT6HXPgGTPci2n8T8noY4CyEa7eFFGAi0MJDHbhakIEo1biPPja9EJoBz1YlLnhmN4n7OMt9ldxk7Q_yqdO-oL0k1_MWyzEYMNnd6aw9aDI_Rk6eJOBgx-gUps6W-W8I8hXVXEGD85mMs18kk5Srk05Sqnla-w6egnivHzjm4iGSBBfXD29t3BIgGKRBv6T0okrb32qaDu6VopkuzA_aCdAEXy09ro7PwNy37SF9venA7zxYvt_w29SAM"/>
 </div>
 </div>
 </header>
-<main class="pt-20 px-4 max-w-2xl mx-auto lg:ml-64">
+<div class="px-4 py-8 max-w-2xl mx-auto">
 <!-- Page Introduction -->
 <section class="mb-8">
 <h2 class="font-headline text-3xl font-extrabold text-on-surface leading-tight tracking-tight">Discover Next-Gen <br/><span class="text-primary">Hackathons</span></h2>
@@ -234,6 +244,7 @@
 </div>
 </section>
 
+</div>
 </main>
 
 <!-- Sidebar -->
@@ -253,27 +264,27 @@
 
     <a href="OL1.html" class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg">
       <span class="material-symbols-outlined">explore</span>
-      <span class="text-sm">Opportunity Listing</span>
+      <span class="text-sm">OPPORTUNITY LISTING</span>
     </a>
 
     <a href="MentorList.html" class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg">
       <span class="material-symbols-outlined">groups</span>
-      <span class="text-sm">Mentor</span>
+      <span class="text-sm">ORGANIZER</span>
     </a>
 
     <a href="EventListing.html" class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg">
       <span class="material-symbols-outlined">event</span>
-      <span class="text-sm">Event</span>
+      <span class="text-sm">EVENTS</span>
     </a>
 
     <a href="Notification.html" class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg">
       <span class="material-symbols-outlined">notifications</span>
-      <span class="text-sm">Notifications</span>
+      <span class="text-sm">NOTIFICATIONS</span>
     </a>
 
     <a href="StudProfileSetting.html" class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg">
       <span class="material-symbols-outlined">settings</span>
-      <span class="text-sm">Settings</span>
+      <span class="text-sm">SETTINGS</span>
     </a>
 
   </nav>
@@ -307,16 +318,37 @@ async function loadProfilePicture() {
 
 loadProfilePicture();
 
+let allHackathons = [];
+
 async function loadHackathons() {
   const res = await fetch("http://localhost:5000/posts/hackathon", {
     headers: { "Authorization": idToken }
   });
 
   const posts = await res.json();
+  allHackathons = posts || [];
+  displayHackathons(allHackathons);
+
+  // Search functionality
+  const searchInput = document.getElementById("headerSearchInput");
+  if (searchInput) {
+    searchInput.addEventListener("input", (e) => {
+      const query = e.target.value.toLowerCase();
+      const filtered = allHackathons.filter(p => 
+        p.title.toLowerCase().includes(query) || 
+        p.description.toLowerCase().includes(query) ||
+        (p.mentor_name && p.mentor_name.toLowerCase().includes(query))
+      );
+      displayHackathons(filtered);
+    });
+  }
+}
+
+function displayHackathons(posts) {
   const container = document.getElementById("hackathonList");
 
-  if (!res.ok || posts.length === 0) {
-    container.innerHTML = '<p class="text-center text-on-surface-variant py-12">No hackathons available yet.</p>';
+  if (!posts || posts.length === 0) {
+    container.innerHTML = `<p class="text-center text-on-surface-variant py-12">${allHackathons.length === 0 ? 'No hackathons available yet.' : 'No matching hackathons found.'}</p>`;
     return;
   }
 

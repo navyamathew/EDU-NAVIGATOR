@@ -131,16 +131,26 @@
 </head>
 <body class="bg-background text-on-surface min-h-screen pb-24">
 <!-- TopAppBar -->
-<header class="fixed top-0 w-full z-50 bg-[#f8f9fa] flex items-center justify-between px-6 h-16 w-full">
-<div class="flex items-center gap-4">
+
+<main class="lg:ml-64 min-h-screen">
+<!-- TopNavBar Shell -->
+<header class="sticky top-0 w-full z-50 bg-white/80 backdrop-blur-md flex items-center justify-between px-6 h-16 shadow-sm">
+<div class="flex items-center gap-4 flex-1">
 <span onclick="window.location.href='OL1.html'" class="material-symbols-outlined text-[#0040a1] cursor-pointer">arrow_back</span>
-<span class="font-['Manrope'] font-bold text-2xl tracking-tight text-[#0040a1]">Curator</span>
+<span class="font-['Manrope'] font-bold text-2xl tracking-tight text-[#0040a1] hidden md:block">Curator</span>
+
+<!-- Unified Search Bar -->
+<div class="relative max-w-md w-full hidden md:block ml-4">
+  <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xl" data-icon="search">search</span>
+  <input id="headerSearchInput" class="w-full pl-10 pr-4 py-2 bg-surface-container-high border-none rounded-lg focus:ring-2 focus:ring-primary/20 focus:bg-white transition-all text-sm" placeholder="Search internships..." type="text"/>
 </div>
-<div class="w-8 h-8 rounded-full bg-surface-container-highest overflow-hidden">
-<img alt="Student Profile" data-alt="User avatar placeholder for student profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQ-pxIUqr_cgqokb9kMXb_gGMeI0AqFBco9FRV8MpTJt1tLI7eOToDbUnBHLAVafHuhe_LepK3L6gZHEjqqZWjYeX2-bNukQVLFXHO5kRlIU061b_PbmjRZN0X5ldpitF4oMVC7WRIgeFGoj_P3RdDZboNR-f3uSAOQ5spuaO2Ba-Juh8cj2d_Ybqoqwt_FllLbjvfKOzixJUHvObWDDXq-LNxYBCVqNlAul-ST6rcI7Kj54wr3IfdtTnEN7mvip10mZS_te-9Ld8"/>
+</div>
+
+<div class="w-8 h-8 rounded-full bg-surface-container-highest overflow-hidden ring-2 ring-white shadow-sm">
+<img alt="Student Profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQ-pxIUqr_cgqokb9kMXb_gGMeI0AqFBco9FRV8MpTJt1tLI7eOToDbUnBHLAVafHuhe_LepK3L6gZHEjqqZWjYeX2-bNukQVLFXHO5kRlIU061b_PbmjRZN0X5ldpitF4oMVC7WRIgeFGoj_P3RdDZboNR-f3uSAOQ5spuaO2Ba-Juh8cj2d_Ybqoqwt_FllLbjvfKOzixJUHvObWDDXq-LNxYBCVqNlAul-ST6rcI7Kj54wr3IfdtTnEN7mvip10mZS_te-9Ld8"/>
 </div>
 </header>
-<main class="mt-20 px-6 lg:ml-64">
+<div class="p-6">
 <!-- Hero Section -->
 <section class="mb-8">
 <h1 class="text-[2.25rem] leading-tight font-extrabold text-primary tracking-tight mb-2">Discover Futures.</h1>
@@ -210,6 +220,7 @@
 <div id="internshipList" class="space-y-6">
   <p class="text-center text-on-surface-variant py-12">Loading internships...</p>
 </div>
+</div>
 </main>
 <!-- Sidebar -->
 <aside class="hidden lg:flex h-screen w-64 fixed left-0 top-0 bg-slate-50 flex-col p-4 gap-y-2 z-50 border-r border-slate-200">
@@ -219,36 +230,30 @@
 </div>
 <nav class="flex-1 flex flex-col gap-y-1">
   <a href="StudHome.html" class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg transition-all">
-    <span class="material-symbols-outlined">dashboard</span>
-    <span class="text-sm">HOME</span>
+    <span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+    <span class="font-plus-jakarta text-sm">HOME</span>
   </a>
-  <a href="OL1.html" class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg transition-all">
-    <span class="material-symbols-outlined">explore</span>
-    <span class="text-sm uppercase">Opportunity Listing</span>
+  <a href="OL1.html" class="flex items-center gap-3 px-4 py-3 bg-blue-50 text-blue-700 rounded-lg font-semibold transition-all">
+    <span class="material-symbols-outlined" data-icon="explore">explore</span>
+    <span class="font-plus-jakarta text-sm uppercase">Opportunity Listing</span>
   </a>
   <a href="MentorList.html" class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg transition-all">
-    <span class="material-symbols-outlined">groups</span>
-    <span class="text-sm uppercase">Mentor</span>
+    <span class="material-symbols-outlined" data-icon="groups">groups</span>
+    <span class="font-plus-jakarta text-sm uppercase">ORGANIZER</span>
   </a>
   <a href="EventListing.html" class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg transition-all">
-    <span class="material-symbols-outlined">event</span>
-    <span class="text-sm">Events</span>
+    <span class="material-symbols-outlined" data-icon="event">event</span>
+    <span class="font-plus-jakarta text-sm">EVENTS</span>
   </a>
   <a href="Notification.html" class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg transition-all">
-    <span class="material-symbols-outlined">notifications</span>
-    <span class="text-sm">Notifications</span>
+    <span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+    <span class="font-plus-jakarta text-sm">NOTIFICATIONS</span>
   </a>
   <a href="StudProfileSetting.html" class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg transition-all">
-    <span class="material-symbols-outlined">settings</span>
-    <span class="text-sm">Settings</span>
+    <span class="material-symbols-outlined" data-icon="settings">settings</span>
+    <span class="font-plus-jakarta text-sm">SETTINGS</span>
   </a>
 </nav>
-<div class="mt-auto pt-4 border-t border-slate-200/60">
-  <a href="StudHome.html" class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg transition-all">
-    <span class="material-symbols-outlined">help</span>
-    <span class="text-sm">Help Center</span>
-  </a>
-</div>
 </aside>
 <script>
 const idToken = localStorage.getItem("idToken");
@@ -274,16 +279,37 @@ async function loadProfilePicture() {
 
 loadProfilePicture();
 
+let allInternships = [];
+
 async function loadInternships() {
   const res = await fetch("http://localhost:5000/posts/internship", {
     headers: { "Authorization": idToken }
   });
 
   const posts = await res.json();
+  allInternships = posts || [];
+  displayInternships(allInternships);
+  
+  // Search functionality
+  const searchInput = document.getElementById("headerSearchInput");
+  if (searchInput) {
+    searchInput.addEventListener("input", (e) => {
+      const query = e.target.value.toLowerCase();
+      const filtered = allInternships.filter(p => 
+        p.title.toLowerCase().includes(query) || 
+        p.description.toLowerCase().includes(query) ||
+        (p.mentor_name && p.mentor_name.toLowerCase().includes(query))
+      );
+      displayInternships(filtered);
+    });
+  }
+}
+
+function displayInternships(posts) {
   const container = document.getElementById("internshipList");
 
-  if (!res.ok || posts.length === 0) {
-    container.innerHTML = '<p class="text-center text-on-surface-variant py-12">No internships available yet.</p>';
+  if (!posts || posts.length === 0) {
+    container.innerHTML = `<p class="text-center text-on-surface-variant py-12">${allInternships.length === 0 ? 'No internships available yet.' : 'No matching internships found.'}</p>`;
     return;
   }
 

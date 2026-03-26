@@ -99,23 +99,23 @@
     </a>
     <a href="OL1.html" class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg transition-all duration-300 ease-in-out">
       <span class="material-symbols-outlined">explore</span>
-      <span class="text-sm">Opportunity Listing</span>
+      <span class="text-sm">OPPORTUNITY LISTING</span>
     </a>
     <a href="MentorList.html" class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg transition-all duration-300 ease-in-out">
       <span class="material-symbols-outlined">groups</span>
-      <span class="text-sm">Mentor</span>
+      <span class="text-sm">ORGANIZER</span>
     </a>
     <a href="EventListing.html" class="flex items-center gap-3 px-4 py-3 bg-blue-50 text-blue-700 rounded-lg font-semibold transition-all duration-300 ease-in-out">
       <span class="material-symbols-outlined">event</span>
-      <span class="text-sm">Events</span>
+      <span class="text-sm">EVENTS</span>
     </a>
     <a href="Notification.html" class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg transition-all duration-300 ease-in-out">
       <span class="material-symbols-outlined">notifications</span>
-      <span class="text-sm">Notifications</span>
+      <span class="text-sm">NOTIFICATIONS</span>
     </a>
     <a href="StudProfileSetting.html" class="flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-200/50 rounded-lg transition-all duration-300 ease-in-out">
       <span class="material-symbols-outlined">settings</span>
-      <span class="text-sm">Settings</span>
+      <span class="text-sm">SETTINGS</span>
     </a>
   </nav>
 </aside>
@@ -125,8 +125,14 @@
 <header class="sticky top-0 w-full flex items-center justify-between px-4 lg:px-8 py-3 h-16 bg-white/80 backdrop-blur-md z-40 shadow-sm">
 <div class="flex items-center gap-4 flex-1">
 <div class="lg:hidden font-manrope font-extrabold text-blue-900 text-lg">Edu Navigator</div>
-<h1 class="font-manrope font-extrabold text-blue-900 text-lg hidden md:block">Kerala Campus Events</h1>
+
+<!-- Unified Search Bar -->
+<div class="relative max-w-md w-full hidden md:block">
+  <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xl" data-icon="search">search</span>
+  <input id="headerSearchInput" class="w-full pl-10 pr-4 py-2 bg-surface-container-high border-none rounded-lg focus:ring-2 focus:ring-primary/20 focus:bg-white transition-all text-sm" placeholder="Search events..." type="text"/>
 </div>
+</div>
+
 <div class="flex items-center gap-2 lg:gap-4">
 <button class="p-2 text-slate-500 hover:bg-slate-50 rounded-full transition-all duration-200 relative" onclick="window.location.href='Notification.html'">
 <span class="material-symbols-outlined" data-icon="notifications">notifications</span>
@@ -148,12 +154,9 @@
 <span class="text-on-surface-variant/60 font-medium text-2xl">Across Kerala's Top Campuses</span>
 </p>
 </section>
-<!-- Search / Filter -->
-<div class="mb-8">
-<div class="bg-surface-container-high rounded-xl px-4 py-3 flex items-center gap-3 transition-all focus-within:bg-surface-container-lowest focus-within:ring-2 focus-within:ring-primary/20">
-<span class="material-symbols-outlined text-on-surface-variant" data-icon="search">search</span>
-<input class="bg-transparent border-none outline-none w-full text-body-md placeholder:text-on-surface-variant/50 focus:ring-0" placeholder="Search events or colleges..." type="text"/>
-</div>
+<!-- Section Header -->
+<div class="flex items-center justify-between mb-2">
+  <h1 class="font-manrope font-extrabold text-blue-900 text-lg">Kerala Campus Events</h1>
 </div>
 <!-- Events List -->
 <div class="space-y-6">
@@ -270,6 +273,24 @@ async function loadNotifications() {
 
 loadProfilePicture();
 loadNotifications();
+
+// Add search listener
+const headerSearch = document.getElementById("headerSearchInput");
+if (headerSearch) {
+  headerSearch.addEventListener("input", (e) => {
+    const query = e.target.value.toLowerCase();
+    const cards = document.querySelectorAll(".bg-surface-container-lowest.rounded-\\[1\\.5rem\\]");
+    
+    cards.forEach(card => {
+      const text = card.innerText.toLowerCase();
+      if (text.includes(query)) {
+        card.style.display = "block";
+      } else {
+        card.style.display = "none";
+      }
+    });
+  });
+}
 </script>
 
 </body></html>
