@@ -77,6 +77,19 @@
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 5px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #e2e8f0;
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #cbd5e1;
+        }
     </style>
 </head>
 <body class="bg-surface-container-low text-on-surface pb-20 lg:pb-0">
@@ -219,7 +232,7 @@
 <!-- Activity Breakdown -->
 <div class="col-span-12 lg:col-span-8 bg-surface-container-lowest p-6 rounded-xl shadow-sm mt-4">
 <h3 class="font-manrope font-bold text-xl text-on-surface mb-6">Recent Activity</h3>
-<div id="recentActivityList" class="space-y-6">
+<div id="recentActivityList" class="space-y-6 max-h-[480px] overflow-y-auto custom-scrollbar pr-2">
   <!-- Recent activities from transition and likes appear here -->
 </div>
 </div>
@@ -367,8 +380,8 @@ function renderRecentActivity() {
     let href = 'OL1.html';
     if (item.type === 'internship') href = `InternshipListing.html#opportunity-${item.id}`;
     else if (item.type === 'scholarship') href = `ScholarListing.html#opportunity-${item.id}`;
-    else if (item.type === 'hackathon') href = `HacListing.html#opportunity-${item.id}`;
-    else if (item.type === 'workshop') href = `MentorCLW.html#opportunity-${item.id}`;
+    else if (item.type === 'hackathon') href = `HackListing.html#opportunity-${item.id}`;
+    else if (item.type === 'workshop') href = `WorkshopListing.html#opportunity-${item.id}`;
 
     return `
       <a href="${href}" class="block rounded-xl hover:bg-surface-container-highest transition-all p-3">

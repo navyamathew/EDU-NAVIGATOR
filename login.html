@@ -111,6 +111,24 @@ New here? <a href="register.html" class="text-blue-600 font-bold">Create account
 </section>
 
 </main>
+
+<!-- AI RECOMMENDATIONS SECTION -->
+<section class="w-full bg-gradient-to-br from-slate-50 to-slate-100 py-16 px-6 sm:px-12">
+<div class="max-w-6xl mx-auto">
+<div class="mb-12 text-center">
+<div class="flex items-center justify-center gap-2 mb-4">
+<span class="material-symbols-outlined text-tertiary text-2xl">psychology</span>
+<h2 class="text-3xl font-bold">Opportunities Waiting For You</h2>
+</div>
+<p class="text-gray-600 max-w-2xl mx-auto">AI-curated opportunities in scholarships, internships, hackathons, and workshops tailored for students like you</p>
+</div>
+
+<!-- Recommendations Grid -->
+<div id="recommendationsContainer" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<p class="text-center text-gray-500 col-span-full py-8">Loading AI recommendations...</p>
+</div>
+</section>
+
 <script>
   const firebaseConfig = {
   apiKey: "AIzaSyB-7PjG5gfg1f4FyKSKMeKsMIjiRUAPsx0",
@@ -205,6 +223,95 @@ function togglePassword() {
     icon.textContent = "visibility";
   }
 }
+
+// Load AI Recommendations
+async function loadAIRecommendations() {
+  const container = document.getElementById("recommendationsContainer");
+  
+  try {
+    const res = await fetch("http://localhost:5000/ai/recommendations/public");
+    const posts = await res.json();
+
+    if (!res.ok || posts.length === 0) {
+      container.innerHTML = '<p class="text-center text-gray-500 col-span-full py-8">Loading opportunities...</p>';
+      return;
+    }
+
+    // Display top 2 recommendations
+    const topTwo = posts.slice(0, 2);
+    
+    container.innerHTML = topTwo.map((post, index) => `
+      <div class="bg-white rounded-2xl overflow-hidden group transition-all duration-300 hover:shadow-xl border-2 border-tertiary/20">
+        <div class="p-6">
+          <!-- Type Badge and Score -->
+          <div class="flex justify-between items-start mb-4">
+            <div class="flex gap-2">
+              <span class="bg-tertiary-fixed text-on-tertiary-fixed-variant px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">
+                <span class="material-symbols-outlined text-xs" style="font-variation-settings: 'FILL' 1;">psychology</span> AI Pick
+              </span>
+              <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">
+                ${post.type || 'Opportunity'}
+              </span>
+            </div>
+            <span class="text-tertiary font-bold text-sm">${post.ai_score || 0}% match</span>
+          </div>
+
+          <!-- Title -->
+          <h3 class="text-xl font-bold text-gray-900 mb-2 line-clamp-2">${post.title || 'Untitled'}</h3>
+
+          <!-- Match Reason -->
+          ${post.match_reason ? `
+            <p class="text-sm text-tertiary font-semibold mb-4">
+              ✨ ${post.match_reason}
+            </p>
+          ` : ''}
+
+          <!-- Description -->
+          <p class="text-sm text-gray-600 mb-4 line-clamp-2">${post.description || ''}</p>
+
+          <!-- Details Grid -->
+          <div class="space-y-2 mb-4 text-xs text-gray-600">
+            ${post.funding ? `
+              <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-sm text-tertiary">attach_money</span>
+                <span><strong>Funding:</strong> ${post.funding}</span>
+              </div>
+            ` : ''}
+            ${post.deadline ? `
+              <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-sm text-tertiary">calendar_today</span>
+                <span><strong>Deadline:</strong> ${post.deadline}</span>
+              </div>
+            ` : ''}
+            ${post.location ? `
+              <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-sm text-tertiary">location_on</span>
+                <span><strong>Location:</strong> ${post.location}</span>
+              </div>
+            ` : ''}
+          </div>
+
+          <!-- CTA Button -->
+          <button onclick="handleExplore('${post.type || 'scholarship'}')" class="w-full py-3 rounded-lg bg-gradient-to-br from-tertiary to-tertiary-container text-white font-bold text-sm hover:shadow-lg transition-all active:scale-95">
+            Learn More
+          </button>
+        </div>
+      </div>
+    `).join("");
+
+  } catch (error) {
+    console.error("Error loading recommendations:", error);
+    container.innerHTML = '<p class="text-center text-gray-500 col-span-full py-8">Unable to load recommendations. Please try again later.</p>';
+  }
+}
+
+// Navigate to opportunity type after login
+function handleExplore(type) {
+  alert(`Sign in to explore all ${type}s and apply!`);
+}
+
+// Load recommendations when page loads
+document.addEventListener("DOMContentLoaded", loadAIRecommendations);
 </script>
 </body>
 </html>

@@ -82,6 +82,51 @@
     body {
       min-height: max(884px, 100dvh);
     }
+    #toast-container {
+      position: fixed;
+      bottom: 100px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 9999;
+      pointer-events: none;
+    }
+    .toast {
+      background: #1e293b;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 16px;
+      font-size: 13px;
+      font-weight: 600;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+      animation: toastIn 0.35s ease-out, toastOut 0.35s ease-in 2.2s forwards;
+      white-space: nowrap;
+    }
+    @keyframes toastIn {
+      from { opacity: 0; transform: translateY(20px) scale(0.95); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    @keyframes toastOut {
+      from { opacity: 1; transform: translateY(0) scale(1); }
+      to { opacity: 0; transform: translateY(-10px) scale(0.95); }
+    }
+    @keyframes highlightPost {
+      0% { 
+        box-shadow: 0 0 0 4px rgba(0, 64, 161, 0.4);
+        background-color: rgba(0, 64, 161, 0.05);
+      }
+      100% { 
+        box-shadow: 0 0 0 0 rgba(0, 64, 161, 0);
+        background-color: transparent;
+      }
+    }
+    .highlight-post {
+      animation: highlightPost 2s ease-out forwards;
+      border-radius: 1.5rem;
+    }
   </style>
 </head>
 <body class="bg-background text-on-surface min-h-screen pb-24">
@@ -302,7 +347,7 @@ function displayScholarships(posts) {
         <div class="flex justify-between items-start mb-4">
           <div class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">Open</div>
           <div class="flex gap-2">
-            <button onclick="toggleInterest('${post.id}', '${encodeURIComponent(post.title || "")}')" class="material-symbols-outlined text-outline hover:text-primary transition-colors" id="interest-${post.id}">thumb_up</button>
+            <button onclick="toggleInterest('${post.id}', '${encodeURIComponent(post.title || "")}', '${encodeURIComponent(post.deadline || "")}')" class="material-symbols-outlined text-outline hover:text-primary transition-colors" id="interest-${post.id}">thumb_up</button>
             <span class="material-symbols-outlined text-outline">bookmark</span>
           </div>
         </div>
@@ -427,7 +472,9 @@ function testFilters() {
   applyFilters();
 }
 
-loadScholarships();
+loadScholarships().then(() => {
+  setTimeout(scrollToHashOpportunity, 100);
+});
 
 async function loadAIRecommendations() {
   const container = document.getElementById("scholarshipList");
@@ -457,7 +504,10 @@ async function loadAIRecommendations() {
       <div class="p-6">
         <div class="flex justify-between items-start mb-4">
           <div class="bg-tertiary-fixed text-on-tertiary-fixed-variant px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">AI Pick ✨</div>
-          <span class="material-symbols-outlined text-outline">bookmark</span>
+          <div class="flex gap-2">
+            <button onclick="toggleInterest('${post.id}', '${encodeURIComponent(post.title || "")}', '${encodeURIComponent(post.deadline || "")}')" class="material-symbols-outlined text-outline hover:text-primary transition-colors" id="interest-${post.id}">thumb_up</button>
+            <span class="material-symbols-outlined text-outline">bookmark</span>
+          </div>
         </div>
         <h3 class="text-xl font-bold text-on-surface mb-1 leading-snug">${post.title}</h3>
         <p class="text-sm text-on-surface-variant mb-4">${post.description}</p>
@@ -490,30 +540,55 @@ function scrollToHashOpportunity() {
   const hash = window.location.hash;
   if (!hash) return;
 
+  function highlightTarget(el) {
+    if (!el) return;
+    el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    setTimeout(() => {
+      el.classList.add('highlight-post');
+      el.addEventListener('animationend', () => el.classList.remove('highlight-post'), { once: true });
+    }, 400);
+  }
+
   const target = document.querySelector(hash);
   if (target) {
-    target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    highlightTarget(target);
   } else {
-    setTimeout(() => {
-      const retryTarget = document.querySelector(hash);
-      if (retryTarget) retryTarget.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }, 400);
+    setTimeout(() => highlightTarget(document.querySelector(hash)), 600);
   }
 }
 
 function loadInterestState() {
-  const liked = JSON.parse(localStorage.getItem('likedOpportunities') || '[]');
-  liked.forEach(item => {
-    const button = document.getElementById(`interest-${item.id}`);
-    if (button) {
-      button.classList.remove('text-outline');
-      button.classList.add('text-primary');
-      button.style.fontVariationSettings = 'FILL 1';
-    }
+  fetch("http://localhost:5000/interests", {
+    headers: { "Authorization": idToken }
+  })
+  .then(res => res.json())
+  .then(interests => {
+    const liked = interests.map(i => ({ id: i.post_id || i.id, title: i.post_title, type: i.post_type, timestamp: Date.now() }));
+    localStorage.setItem('likedOpportunities', JSON.stringify(liked));
+    
+    interests.forEach(item => {
+      const button = document.getElementById(`interest-${item.post_id || item.id}`);
+      if (button) {
+        button.classList.remove('text-outline');
+        button.classList.add('text-primary');
+        button.style.fontVariationSettings = 'FILL 1';
+      }
+    });
+  })
+  .catch(err => {
+    const liked = JSON.parse(localStorage.getItem('likedOpportunities') || '[]');
+    liked.forEach(item => {
+      const button = document.getElementById(`interest-${item.id}`);
+      if (button) {
+        button.classList.remove('text-outline');
+        button.classList.add('text-primary');
+        button.style.fontVariationSettings = 'FILL 1';
+      }
+    });
   });
 }
 
-function persistInterest(postId, postTitle, add, type = 'scholarship') {
+function persistInterest(postId, postTitle, add, type = 'scholarship', deadline = '') {
   const existing = JSON.parse(localStorage.getItem('likedOpportunities') || '[]');
   const decodedTitle = decodeURIComponent(postTitle || '');
 
@@ -525,8 +600,19 @@ function persistInterest(postId, postTitle, add, type = 'scholarship') {
       updated = existing;
     }
     updateRecentActivity(postId, decodedTitle, 'Liked', type);
+    
+    fetch(`http://localhost:5000/interests/${postId}`, {
+      method: "POST",
+      headers: { "Authorization": idToken, "Content-Type": "application/json" },
+      body: JSON.stringify({ title: decodedTitle, type: type, deadline: deadline })
+    }).catch(err => console.error("Error saving interest:", err));
   } else {
     updated = existing.filter(p => p.id !== postId);
+    
+    fetch(`http://localhost:5000/interests/${postId}`, {
+      method: "DELETE",
+      headers: { "Authorization": idToken }
+    }).catch(err => console.error("Error removing interest:", err));
   }
 
   localStorage.setItem('likedOpportunities', JSON.stringify(updated));
@@ -536,26 +622,40 @@ function updateRecentActivity(id, title, action, type = 'scholarship') {
   const history = JSON.parse(localStorage.getItem('recentActivity') || '[]');
   const trimmed = history.filter(item => item.id !== id);
   trimmed.unshift({ id, title, action, type, time: new Date().toLocaleString() });
-  localStorage.setItem('recentActivity', JSON.stringify(trimmed.slice(0, 10)));
+  localStorage.setItem('recentActivity', JSON.stringify(trimmed.slice(0, 15)));
 }
 
-function toggleInterest(postId, postTitle) {
+function toggleInterest(postId, postTitle, postDeadline) {
   const button = document.getElementById(`interest-${postId}`);
   if (!button) return;
 
   const isInterested = button.classList.contains('text-primary');
+  const deadline = postDeadline ? decodeURIComponent(postDeadline) : '';
 
   if (isInterested) {
     button.classList.remove('text-primary');
     button.classList.add('text-outline');
     button.style.fontVariationSettings = 'FILL 0';
     persistInterest(postId, postTitle, false);
+    showToast('Interest removed', 'thumb_down');
   } else {
     button.classList.remove('text-outline');
     button.classList.add('text-primary');
     button.style.fontVariationSettings = 'FILL 1';
-    persistInterest(postId, postTitle, true, 'scholarship');
+    persistInterest(postId, postTitle, true, 'scholarship', deadline);
+    showToast('Interested! You\'ll be notified before the deadline', 'thumb_up');
   }
+}
+
+function showToast(message, icon = 'notifications') {
+  let container = document.getElementById('toast-container');
+  if (!container) {
+    container = document.createElement('div');
+    container.id = 'toast-container';
+    document.body.appendChild(container);
+  }
+  container.innerHTML = `<div class="toast"><span class="material-symbols-outlined" style="font-size:18px;font-variation-settings:'FILL' 1">${icon}</span>${message}</div>`;
+  setTimeout(() => { container.innerHTML = ''; }, 2600);
 }
 
 loadInterestState();

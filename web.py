@@ -243,7 +243,108 @@ def dashboard():
     }), 200
 
 # ==============================
-# AI RECOMMENDATIONS
+# AI RECOMMENDATIONS (Public - No Auth Required)
+# ==============================
+@app.route("/ai/recommendations/public", methods=["GET"])
+def get_public_ai_recommendations():
+    """Get top 2 AI recommendations for unauthenticated users (e.g., login page)"""
+    
+    # 1. Fetch all posts from all types
+    all_posts = []
+    types_to_fetch = ["scholarship", "internship", "hackathon", "workshop"]
+    for post_type in types_to_fetch:
+        docs = db.collection("posts").where("type", "==", post_type).stream()
+        for doc in docs:
+            data = doc.to_dict()
+            data["id"] = doc.id
+            data["type"] = post_type
+            if "created_at" in data:
+                data["created_at"] = data["created_at"].strftime("%b %d, %Y")
+            all_posts.append(data)
+
+    if not all_posts:
+        return jsonify([]), 200
+
+    # 2. Build prompt for Gemini with generic student profile
+    prompt = f"""
+You are an academic opportunity matching engine for a student portal in Kerala, India.
+
+GENERIC STUDENT PROFILE:
+- A college student interested in growth opportunities
+- Open to scholarships, internships, hackathons, and workshops
+- Looking for diverse learning experiences
+- Located in Kerala, India
+
+AVAILABLE OPPORTUNITIES (JSON):
+{json.dumps(all_posts, indent=2)}
+
+TASK:
+Select the top 2 most compelling and diverse opportunities that would appeal to a general college student.
+Aim for variety (e.g., one scholarship + one internship, or hackathon + workshop).
+For each, provide a short 1-sentence reason why it's beneficial.
+Score each opportunity from 0 to 100.
+
+RETURN ONLY valid JSON in this exact format, no markdown, no extra text:
+{{
+  "recommendations": [
+    {{
+      "post_id": "<id from the opportunity>",
+      "score": <0-100>,
+      "match_reason": "<1 sentence why this is great>"
+    }}
+  ]
+}}
+"""
+
+    try:
+        response = gemini_client.models.generate_content(
+            model="gemini-1.5-flash",
+            contents=prompt
+        )
+        raw = response.text.strip()
+        # Strip markdown fences if present
+        if raw.startswith("```"):
+            raw = raw.split("```")[1]
+            if raw.startswith("json"):
+                raw = raw[4:]
+        ai_result = json.loads(raw.strip())
+        
+        # Merge AI scores back into post data
+        post_map = {p["id"]: p for p in all_posts}
+        enriched = []
+        for rec in ai_result.get("recommendations", []):
+            post = post_map.get(rec["post_id"])
+            if post:
+                post["ai_score"] = rec["score"]
+                post["match_reason"] = rec["match_reason"]
+                enriched.append(post)
+        
+        if enriched:
+            return jsonify(enriched), 200
+        
+    except Exception as e:
+        print("Public AI Recommendation ERROR:", str(e))
+
+    # Fallback: return top 2 most recent posts from different types
+    sorted_by_type = {}
+    for post in all_posts:
+        post_type = post.get("type", "scholarship")
+        if post_type not in sorted_by_type:
+            sorted_by_type[post_type] = []
+        sorted_by_type[post_type].append(post)
+    
+    fallback = []
+    for post_type in ["scholarship", "internship", "hackathon", "workshop"]:
+        if post_type in sorted_by_type and len(fallback) < 2:
+            top_post = sorted_by_type[post_type][0]
+            top_post["ai_score"] = 75
+            top_post["match_reason"] = f"Popular {post_type} opportunity"
+            fallback.append(top_post)
+    
+    return jsonify(fallback), 200
+
+# ==============================
+# AI RECOMMENDATIONS (Authenticated)
 # ==============================
 @app.route("/ai/recommendations", methods=["GET"])
 def get_ai_recommendations():
@@ -718,6 +819,200 @@ def mark_all_read():
         doc.reference.update({"is_read": True})
 
     return jsonify({"message": "All notifications marked as read"}), 200
+
+
+# ==================================================
+# INTERESTS (Student marks post as "Interested")
+# ==================================================
+
+# MARK INTEREST
+@app.route("/interests/<post_id>", methods=["POST"])
+def add_interest(post_id):
+    uid, error = verify_user()
+    if error:
+        return jsonify({"error": error[0]}), error[1]
+
+    data = request.get_json()
+    post_title = data.get("title", "Untitled")
+    post_type = data.get("type", "scholarship")
+    deadline = data.get("deadline", "")
+
+    # Save interest in user's subcollection
+    db.collection("users") \
+        .document(uid) \
+        .collection("interests") \
+        .document(post_id) \
+        .set({
+            "post_id": post_id,
+            "post_type": post_type,
+            "post_title": post_title,
+            "deadline": deadline,
+            "created_at": datetime.utcnow()
+        })
+
+    # Create a notification for the interest
+    db.collection("users") \
+        .document(uid) \
+        .collection("notifications") \
+        .add({
+            "title": f"Interest Marked: {post_title}",
+            "message": f"You expressed interest in this {post_type}. We'll notify you as the deadline approaches.",
+            "type": "interest",
+            "priority": "normal",
+            "post_id": post_id,
+            "post_type": post_type,
+            "is_read": False,
+            "created_at": datetime.utcnow()
+        })
+
+    return jsonify({"message": "Interest saved"}), 201
+
+
+# REMOVE INTEREST
+@app.route("/interests/<post_id>", methods=["DELETE"])
+def remove_interest(post_id):
+    uid, error = verify_user()
+    if error:
+        return jsonify({"error": error[0]}), error[1]
+
+    db.collection("users") \
+        .document(uid) \
+        .collection("interests") \
+        .document(post_id) \
+        .delete()
+
+    return jsonify({"message": "Interest removed"}), 200
+
+
+# GET ALL INTERESTS
+@app.route("/interests", methods=["GET"])
+def get_interests():
+    uid, error = verify_user()
+    if error:
+        return jsonify({"error": error[0]}), error[1]
+
+    interests_ref = db.collection("users") \
+        .document(uid) \
+        .collection("interests")
+
+    docs = interests_ref.stream()
+
+    interests = []
+    for doc in docs:
+        data = doc.to_dict()
+        data["id"] = doc.id
+        if "created_at" in data and hasattr(data["created_at"], "strftime"):
+            data["created_at"] = data["created_at"].strftime("%b %d, %Y")
+        interests.append(data)
+
+    return jsonify(interests), 200
+
+
+# DEADLINE ALERTS — checks interests and generates notifications
+@app.route("/notifications/deadline-alerts", methods=["GET"])
+def get_deadline_alerts():
+    uid, error = verify_user()
+    if error:
+        return jsonify({"error": error[0]}), error[1]
+
+    interests_ref = db.collection("users") \
+        .document(uid) \
+        .collection("interests")
+
+    docs = interests_ref.stream()
+    now = datetime.utcnow()
+    alerts = []
+
+    for doc in docs:
+        data = doc.to_dict()
+        deadline_str = data.get("deadline", "")
+        if not deadline_str:
+            continue
+
+        # Try to parse deadline in multiple formats
+        deadline_date = None
+        formats_to_try = [
+            "%Y-%m-%d",
+            "%b %d, %Y",
+            "%B %d, %Y",
+            "%d/%m/%Y",
+            "%m/%d/%Y",
+            "%d-%m-%Y",
+        ]
+        for fmt in formats_to_try:
+            try:
+                deadline_date = datetime.strptime(deadline_str, fmt)
+                break
+            except ValueError:
+                continue
+
+        if not deadline_date:
+            continue
+
+        days_remaining = (deadline_date - now).days
+
+        # Only alert for deadlines within 7 days and not yet passed
+        if days_remaining < 0 or days_remaining > 7:
+            continue
+
+        # Determine urgency
+        if days_remaining <= 1:
+            priority = "critical"
+            urgency_label = "🔴 DEADLINE TODAY!" if days_remaining == 0 else "🔴 1 DAY LEFT!"
+        elif days_remaining <= 3:
+            priority = "warning"
+            urgency_label = f"🟡 {days_remaining} DAYS LEFT"
+        else:
+            priority = "info"
+            urgency_label = f"🔵 {days_remaining} DAYS LEFT"
+
+        post_title = data.get("post_title", "Untitled")
+        post_type = data.get("post_type", "opportunity")
+        post_id = data.get("post_id", doc.id)
+
+        alert = {
+            "id": f"deadline-{post_id}",
+            "title": f"Deadline Approaching: {post_title}",
+            "message": f"{urgency_label} — The deadline for this {post_type} is {deadline_str}. Don't miss out!",
+            "type": "deadline_alert",
+            "priority": priority,
+            "post_id": post_id,
+            "post_type": post_type,
+            "deadline": deadline_str,
+            "days_remaining": days_remaining,
+            "is_read": False,
+            "created_at": now.strftime("%b %d, %Y")
+        }
+        alerts.append(alert)
+
+        # Auto-create notification if one doesn't already exist for this deadline cycle
+        notif_check_id = f"deadline_{post_id}_{now.strftime('%Y-%m-%d')}"
+        existing_notif = db.collection("users") \
+            .document(uid) \
+            .collection("notifications") \
+            .document(notif_check_id) \
+            .get()
+
+        if not existing_notif.exists:
+            db.collection("users") \
+                .document(uid) \
+                .collection("notifications") \
+                .document(notif_check_id) \
+                .set({
+                    "title": f"⏰ Deadline Approaching: {post_title}",
+                    "message": f"{urgency_label} — The deadline for this {post_type} is {deadline_str}.",
+                    "type": "deadline_alert",
+                    "priority": priority,
+                    "post_id": post_id,
+                    "post_type": post_type,
+                    "is_read": False,
+                    "created_at": datetime.utcnow()
+                })
+
+    # Sort alerts by days_remaining (most urgent first)
+    alerts.sort(key=lambda x: x["days_remaining"])
+
+    return jsonify(alerts), 200
 
 
 # ==============================
